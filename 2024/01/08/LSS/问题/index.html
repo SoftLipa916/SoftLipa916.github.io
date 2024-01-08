@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>实际问题-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,基础,开发问题,">
+<meta name="description" content="一些开发中遇到的实际问题">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/基础">基础</a></li>
+            
+            <li><a href="/tags/开发问题">开发问题</a></li>
+            
+            
+        </ul>
+        
+        <h1>实际问题</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/基础/" target="_blank" >基础</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <p>别人的问题其实也是自身的问题，起码别人是这么认为的，只看结果就好了。</p>
+<p>多想啊，多跟代码啊，问题一定能跟代码跟出来的，凡事总有个尽头。</p>
+<h3 id="他人说："><a href="#他人说：" class="headerlink" title="他人说："></a>他人说：</h3><p>如果你的项目，返回的结果结构比较复杂，对结果集进行一次转换是非常有必要的。</p>
+<p>写代码呀，其实就像写文章一样。</p>
+<p>重视基础</p>
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><h3 id="阿里巴巴Java开发规范"><a href="#阿里巴巴Java开发规范" class="headerlink" title="阿里巴巴Java开发规范"></a>阿里巴巴Java开发规范</h3><ol>
+<li><p>严格遵守驼峰，即便是TCP UDP 这种常见的大写命名时除首字母写作小写</p>
+</li>
+<li><p>常量尽可能大写命名，如MAX_XXXX ，要表达清楚含义</p>
+</li>
+<li><p>测试某类就以其命名 + Test</p>
+</li>
+<li><p>中括号放在类名后 即String[] arr</p>
+</li>
+<li><p><strong>pojo中的布尔类型变量不要用is</strong>，会引起序列化错误</p>
+</li>
+<li><p>类型建议体现用到的设计模式</p>
+</li>
+<li><p>任何常量都要先定义再使用，常量类的分割，常量复用（跨应用 应用内 子工程 包内 类内</p>
+</li>
+<li><p>小写l容易跟1混淆</p>
+</li>
+<li><p>注释和内容之间隔一个空格</p>
+</li>
+<li><p>运算符与下文一起换行。 面向对象规约：？？？\4. 【强制】外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生 影响。接口过时必须加@Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么。</p>
+</li>
+<li><p>可变参数：？？？ <strong>参数个数不确定，类型确定的情况</strong>尽量不用 Object…. ，编译器为其隐含创建一数组</p>
+</li>
+<li><p>Object.equals(见下文)</p>
+<p>13.包装类对象之间值的比较，建议用equals,因为有一个范围的问题（如Integer</p>
+<p>补充规范：</p>
+<p>迭代Map中的key与value直接用entrySet()好于先keySet()再去get，当然只需要key可以直接用keySet()</p>
+<p>要考虑到集合扩容的时间复杂度问题</p>
+<p>工具类建立一个private构造方法，屏蔽公有的</p>
+<p>字符串转化使用String.valueOf(value) 代替 “ “ + value</p>
+<p>BigDecimal的精度损失风险</p>
+<p>返回null???</p>
+<pre><code>return fileName.equals(&quot;Charming&quot;);  -&gt;  return Objects.equals(&quot;Charming&quot;,fileName);
+//减少了空指针异常风险
+</code></pre>
+<p>14.类成员与方法访问要严格控制。</p>
+<p>15.自定义对象做为 Map 的键，那么必须重写 hashCode 和 equals</p>
+<p>16.只有String类型在mybatis中才需要判断是否&#96;！&#x3D;’’，另外如果是定义了一个String str &#x3D; 单个字符在mybatis中会当作char类型去处理同样</p>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>subList是List视图的问题，对其的操作会反映在原列表上。</p>
+<p>BeansUtils.getProperties</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3></li>
+<li><p>Maven依赖配置的修改 增加了镜像等</p>
+</li>
+<li><p>启动命令过长 改下IDEA配置</p>
+<p>filenotfound 改下Yaml配置 数据库的也得改</p>
+<p>在这个系统中菜单同时还对应着一些资源 ？？资源 ，由数据库中的RESOURCE_NAME看应该是表示按钮。</p>
+<p>lambda表达式，函数作为参数传递</p>
+</li>
+</ol>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p>利用标签结合复用*Mapper.xml中的各种，如：</p>
+<pre><code>&lt;insert id=&quot;insertSelective&quot; parameterType=&quot;com.pty.pa.security.entity.PtyApplication&quot;&gt;
+    INSERT INTO afa_application (
+    &lt;include refid=&quot;insertSelectiveColumn&quot; /&gt;
+    ) VALUES (
+    &lt;include refid=&quot;insertSelectiveValue&quot; /&gt;
+    )
+&lt;/insert&gt;
+</code></pre>
+<p>insertSelectiveColumn</p>
+<pre><code>&lt;sql id=&quot;insertSelectiveColumn&quot;&gt;
+    &lt;trim suffixOverrides=&quot;,&quot;&gt;
+        &lt;if test=&quot;appName != null and appName != &#39;&#39;&quot;&gt;
+            APP_NAME,
+        &lt;/if&gt;
+        &lt;if test=&quot;isDelete != null and isDelete != &#39;&#39;&quot;&gt;
+            IS_DELETE,
+        &lt;/if&gt;
+      
+    &lt;/trim&gt;
+&lt;/sql&gt;
+&lt;sql id=&quot;insertSelectiveValue&quot;&gt;
+    &lt;trim suffixOverrides=&quot;,&quot;&gt;
+        &lt;if test=&quot;appName != null and appName != &#39;&#39;&quot;&gt;
+            #&#123;appName,jdbcType=VARCHAR&#125;,
+        &lt;/if&gt;
+        &lt;if test=&quot;isDelete != null and isDelete != &#39;&#39;&quot;&gt;
+            #&#123;isDelete,jdbcType=VARCHAR&#125;,
+        &lt;/if&gt;
+    &lt;/trim&gt;
+&lt;/sql&gt;
+</code></pre>
+<p>isDeleted的作用</p>
+<p>WHERE xxx IN ( xx, xxx ,x x)可以匹配多个值</p>
+<p>动态sql示例：</p>
+<pre><code>&lt;select id=&quot;selectFuncTreeList&quot; parameterType=&quot;com.pty.pa.security.entity.vo.AppFunctionTree&quot; resultType=&quot;com.pty.pa.security.entity.vo.AppFunctionTree&quot;&gt;
+&lt;见下
+      &lt;where&gt;
+          &lt;if test=&quot;excludeList.size() &gt; 0&quot;&gt;
+              and APP_ID not in
+              &lt;foreach collection=&quot;excludeList&quot; item=&quot;appId&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt;
+                  #&#123;appId&#125;
+              &lt;/foreach&gt;
+          &lt;/if&gt;
+      &lt;/where&gt;
+      order by FUNC_CODE asc
+  &lt;/select&gt;
+</code></pre>
+<p>select</p>
+<pre><code>SELECT  FUNC_CODE AS id, FUNC_NAME AS NAME,
+CASE
+WHEN PARENT_FUNC_CODE IS NULL THEN APP_ID    
+WHEN PARENT_FUNC_CODE = &#39;&#39;    THEN APP_ID   #从表中根据条件查询出 
+ELSE  PARENT_FUNC_CODE  END AS pid,       #如果都不满足，将其作为pid,END表示终止，case-end语句结束后再给语句中查询出的APP_ID起别名
+APP_ID AS appId, IS_DISABLE as isDisable
+FROM afa_app_function
+</code></pre>
+<p>selectVoByRoleCodeList</p>
+<pre><code>SELECT menuId,parentMenuId,menuName,menuParam,menuUrl,isLeaf,menuLevel,isShow,menuSeq,funcCode,appId,func_code,
+sort_no,sfBlank,field01 FROM
+ (
+# 测试库中存在大量重复字段，删除然后判断是否显示
+SELECT DISTINCT m.MENU_ID AS menuId,
+     m.PARENT_MENU_ID AS parentMenuId,
+     m.MENU_NAME AS menuName,
+     m.MENU_PARAM AS menuParam,
+     m.MENU_URL AS menuUrl, m.IS_LEAF AS isLeaf,
+     m.MENU_LEVEL AS menuLevel,
+     ( CASE WHEN m.IS_SHOW IS NULL THEN 1 ELSE m.IS_SHOW END ) AS isShow,m.MENU_SEQ AS menuSeq,f.FUNC_CODE AS funcCode, f.APP_ID AS appId,m.func_code,m.sort_no,m.sf_blank AS sfBlank,m.field01 AS field01 FROM AFA_APP_MENU m
+        LEFT JOIN AFA_APP_FUNCTION f ON m.FUNC_CODE = f.FUNC_CODE
+        LEFT JOIN AFA_AUTH_FUNCTION af ON f.FUNC_CODE = af.FUNC_CODE
+        WHERE af.PARTY_CODE IN
+        &lt;foreach collection=&quot;roleList&quot; open=&quot;(&quot; separator=&quot;,&quot;
+                 close=&quot;)&quot; item=&quot;item&quot;&gt;
+            #&#123;item.roleCode&#125;
+        &lt;/foreach&gt;
+        &lt;if test=&quot;fiscal != null and fiscal !=&#39;&#39;&quot;&gt;
+            AND af.fiscal=#&#123;fiscal,jdbcType=INTEGER&#125;
+        &lt;/if&gt;
+        AND (m.IS_DELETE IS NULL OR m.IS_DELETE != 1)
+        AND (f.IS_DELETE IS NULL OR f.IS_DELETE != 1)
+        AND (m.IS_DISABLE = &#39;0&#39; or m.IS_DISABLE is NULL)
+        AND (af.IS_DELETE IS NULL OR af.IS_DELETE != 1)
+        &lt;if test=&quot;menuFilter != null and menuFilter !=&#39;&#39;&quot;&gt;
+            AND m.menu_id=#&#123;menuFilter,jdbcType=VARCHAR&#125;
+        &lt;/if&gt;
+        ) t
+        ORDER BY
+        CASE
+        WHEN LENGTH( t.menuSeq ) &gt; 14 THEN
+        LEFT ( t.menuSeq, LENGTH( t.menuSeq ) - INSTR( REVERSE( t.menuSeq ), &#39;-&#39; ) ) ELSE t.menuSeq
+        END,
+        t.sort_no
+    &lt;/select&gt;
+</code></pre>
+<p>由于Mybatis的机制问题，数据库无法直接接收Java对象的属性为空值，此时可以考虑使用mybatis-plus的@TableFiled注解。不过在pty制度上传时不起作用。</p>
+<p>此时比较好的处理方式（无需引入依赖），是在dao层另写一个针对这些空字段的方法，在xml中将这些字段设为null，然后在Service层调用。</p>
+<p>多表查询</p>
+<pre><code>&lt;select id=&quot;selectAgyUser&quot; parameterType=&quot;com.pty.pa.security.entity.PtyRole&quot;
+        resultType=&quot;com.pty.pa.security.entity.vo.PtyRoleVo&quot;&gt;
+    select o.ORG_CODE as agyCode,o.ORG_NAME as agyName,us.USER_CODE as
+    userCode,us.USER_NAME as userName from
+    afa_role ro
+    left join afa_auth_party au on ro.ROLE_CODE = au.ROLE_CODE
+    left join afa_user us on au.PARTY_CODE = us.USER_CODE
+    left join afa_org o on us.MAIN_ORGID = o.ORG_ID
+    left join mad_afa_org mao on o.ORG_ID = mao.afa_org_id
+</code></pre>
+<p>Dao层传xml可以使用两个参数，以Map的形式</p>
+<p>sql遍历列表</p>
+<pre><code>&lt;select id=&quot;selectByOrgIdList&quot; resultType=&quot;com.pty.pa.security.entity.PtyOrgUser&quot;&gt;
+    SELECT us.RELAT_ID         as relatId,
+           us.APP_ID           as appId,
+           us.IS_DELETE        as isDelete,
+           us.IS_MAIN          as isMain,
+           us.LAST_MODIFY_TIME as lastModifyTime,
+           us.ORG_ID           as orgId,
+           us.TENANT_ID        as tenantId,
+           us.USER_CODE        as userCode
+    FROM afa_org_user us
+    WHERE us.ORG_ID IN
+    &lt;foreach collection=&quot;orgIdList&quot; index=&quot;index&quot; item=&quot;orgId&quot;
+             open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt;
+        #&#123;orgId&#125;
+    &lt;/foreach&gt;
+      and fiscal = $&#123;fiscal&#125;
+&lt;/select&gt;
+</code></pre>
+<p>查询组织列表</p>
+<pre><code>&lt;select id=&quot;selectByIds&quot; parameterType=&quot;java.util.List&quot; resultType=&quot;com.pty.pa.security.entity.PtyOrg&quot;&gt;
+    SELECT
+    &lt;include refid=&quot;allColumnAlias&quot;/&gt;
+    FROM afa_org
+    WHERE ORG_ID IN
+    &lt;trim suffixOverrides=&quot; OR ORG_ID IN ()&quot;&gt;
+        &lt;foreach item=&quot;id&quot; index=&quot;index&quot; collection=&quot;list&quot; open=&quot;(&quot; close=&quot;)&quot;&gt;
+            &lt;if test=&quot;index != 0&quot;&gt;
+                &lt;choose&gt;
+                    &lt;when test=&quot;index % 1000 == 999&quot;&gt;)
+                        OR ORG_ID IN (
+                    &lt;/when&gt;
+                    &lt;otherwise&gt;,&lt;/otherwise&gt;
+                &lt;/choose&gt;
+            &lt;/if&gt;
+            #&#123;id&#125;
+        &lt;/foreach&gt;
+    &lt;/trim&gt;
+&lt;/select&gt;
+</code></pre>
+<p>SQL查询含有英文字母的字段REGEXP’[a-z]+’，</p>
+<pre><code>ALTER TABLE t_user ADD COLUMN user_age int(11) DEFAULT NULL COMMENT &#39;年龄&#39; AFTER user_email;
+</code></pre>
+<p>不要直接在*mapper.xml中用注释注释掉sql语句，编译时会引起参数问题，实际这是编码规范性问题</p>
+<p>删除</p>
+<pre><code>DELETE 
+FROM
+    afa_auth_resource 
+WHERE
+    resource_id IN (
+    SELECT
+        resource_id 
+    FROM
+        (
+        SELECT
+            MAX( RESOURCE_ID ) RESOURCE_ID,
+            PARTY_CODE,
+            resource_name,
+            func_code,
+            resource_code 
+        FROM
+            afa_auth_resource
+        WHERE
+            party_code = &#39;800&#39; 
+        GROUP BY
+            resource_name,
+            resource_code,
+            func_code,
+            PARTY_CODE 
+        HAVING
+            COUNT( 1 )&gt; 1 
+        ) t 
+    )
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
+from information_schema.KEY_COLUMN_USAGE
+where TABLE_NAME = &#39;mad_infunc&#39;;
+</code></pre>
+<h4 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h4><p>数据库（Oracle)关键字冲突问题，人大金仓兼容问题（‘’与“”)</p>
+<h4 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h4><pre><code>&lt;update id=&quot;updateBatchSortNo&quot; parameterType=&quot;com.pty.pa.security.entity.vo.PtyAppMenuVo&quot;&gt;
+    update afa_app_menu
+    &lt;trim prefix=&quot;set&quot; suffixOverrides=&quot;,&quot;&gt;
+        &lt;trim prefix=&quot;sort_no =case&quot; suffix=&quot;end,&quot;&gt;
+            &lt;foreach collection=&quot;list&quot; item=&quot;item&quot; index=&quot;index&quot;&gt;
+                &lt;if test=&quot;item.sortNo != null&quot;&gt;
+                    when MENU_ID=#&#123;item.menuId&#125; then #&#123;item.sortNo&#125;
+                &lt;/if&gt;
+            &lt;/foreach&gt;
+        &lt;/trim&gt;
+    &lt;/trim&gt;
+    where MENU_ID in
+    &lt;foreach collection=&quot;list&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot; item=&quot;item&quot; index=&quot;index&quot;&gt;
+        #&#123;item.menuId&#125;
+    &lt;/foreach&gt;
+&lt;/update&gt;
+</code></pre>
+<p>Oracle连接<a href="https://gitee.com/link?target=https://www.cnblogs.com/bingdaocaihong/p/10268861.html">https://www.cnblogs.com/bingdaocaihong/p/10268861.html</a></p>
+<p>join和left join</p>
+<p>Join:两张表关联后，查询结果有交集时才会取值。</p>
+<p>Left Join：两张表关联后，即使查询结果没有交集，也会取值。无数值时用Null填充。会返回左表中所有行和右表中符合条件的行</p>
+<p>能够发现在 LEFT JOIN 模式下， ON 过滤条件相当于只增加了对于右侧表的过滤条件，而左侧表的内容，总是会全部返回的。</p>
+<p>另：从这里引申出了MySQL这种关系型数据库，其实连接查询正是这种数据库区别于文档型的特点，因为有这种连接查询因此开始不知道各个表间的关系也没关系（当然这句话的应该是说没必要完全知道而不是一点都不知道）。</p>
+<p>约束</p>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>lambda表达式——允许将函数作为参数传递给方法，其重要特征如下:</p>
+<ul>
+<li><strong>可选类型声明：</strong>不需要声明参数类型，编译器可以统一识别参数值。</li>
+<li><strong>可选的参数圆括号：</strong>一个参数无需定义圆括号，但多个参数需要定义圆括号。</li>
+<li><strong>可选的大括号：</strong>如果主体包含了一个语句，就不需要使用大括号。</li>
+<li><strong>可选的返回关键字：</strong>如果主体只有一个表达式返回值则编译器会自动返回值，大括号需要指定明表达式返回了一个数值。</li>
+</ul>
+<p>Optional类</p>
+<p>stream流：生成的stream不是一种数据结构，而是某种数据源的一个视图。即对其的任何修改都不会对原数据造成影响。</p>
+<p>与集合（如List）和Map灵活结合。</p>
+<ul>
+<li><p>forEach()：迭代流中的每个数据。</p>
+</li>
+<li><p>map（）：映射每个元素到对应结果。</p>
+</li>
+<li><p>filter（）：设置条件过滤出元素</p>
+</li>
+<li><p>Collectors():将流转换为集合和聚合元素。可用于返回列表或字符串。</p>
+</li>
+<li><p>distinct() 去重</p>
+</li>
+<li><pre><code>// 按照userCode对用户分组
+Map&lt;String, List&lt;PtyOrgUser&gt;&gt; userOrgMap =userOrgList.stream().collect(groupingBy(PtyOrgUser::getUserCode));
+// 从map中取出entry 遍历指定条件
+List&lt;Map.Entry&lt;String, List&lt;PtyOrgUser&gt;&gt;&gt; singleOrgList = userOrgMap.entrySet().stream().filter(e -&gt; e.getValue().size() == 1).collect(toList());
+// 过滤 取出首个符合条件
+PtyOrgUser orgUser = multipleUserOrgList.stream().filter(ptyOrgUser -&gt;StrUtil.equals(ptyOrgUser.getIsMain(), &quot;N&quot;)).findFirst().get();
+
+// findAny orElse
+keyValueList.stream().filter(kv -&gt; &#123;return key.equals(kv.getKey());&#125;).findAny().orElse(KeyValue.create(&quot;&quot;, &quot;&quot;)).getValue();
+</code></pre>
+</li>
+</ul>
+<p>缓存问题</p>
+<p>变成列表：</p>
+<pre><code>List&lt;String&gt; arr = Arrays.asList(excludeStr.split(&quot;,&quot;))
+
+树形数据
+
+
+
+Spring事务
+
+​```java
+@Transactional(value = &quot;boss-transactionManager&quot;, rollbackFor = RuntimeException.class)
+</code></pre>
+<p>文件流</p>
+<pre><code>public static &lt;T extends Serializable&gt; T deepCopy(T obj) &#123;
+   T copyObj = null;
+   try &#123;
+      ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      ObjectOutputStream oos = new ObjectOutputStream(bos);
+      oos.writeObject(obj);
+      oos.close();
+
+      ByteArrayInputStream bais = new ByteArrayInputStream(bos.toByteArray());
+      ObjectInputStream ois = new ObjectInputStream(bais);
+      copyObj = (T) ois.readObject();
+      ois.close();
+   &#125; catch (Exception e) &#123;
+      e.printStackTrace();
+   &#125;
+   return copyObj;
+&#125;
+</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAAAAACIM/FCAAACh0lEQVR4Ae3ch5W0OgyG4dt/mQJ2xgQPzJoM1m3AbALrxzrf28FzsoP0HykJEEAAAUQTBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEkKK0789+GK/I2ezfQB522PnS1qc8pGgXvr4tE4aY0XOUWlGImThWgyCk6DleixzE7qwBkg/MGiDPlVVAyp1VQGrPKiACDhFI6VkF5LmzCki+sg7IwDoglnVAil0IMkeG9CyUiwsxLFUVFzJJOQaKCjFCDN9RXMjIX7W6ztZXZDKKCyn8sWJvH+nca7WHDN9lROlAliPH9iRKCPI4cswFJQWxB46toLQgQ9jhn5QYZA9DOkoMUoQde5YapAxDWkoNYsOQR3KQd9CxUnIQF4S49CB9ENKlBxmDEKsFUgMCCCCAAHIrSF61f6153Ajy8nyiPr8L5MXnmm4CyT2fzN4DUvHZ+ntA2tOQBRBAAAEEEEAAAQQQ7ZBaC6TwSiDUaYHQ2yuB0MN+ft+43whyrs4rgVCjBUKTFshLC6TUAjGA3AxSaYFYLZBOC2RUAsk8h5qTg9QcbEoOsoQhQ2qQhsO5xCD5dgB5JQaZ+KBKGtKecvR81Ic0ZDjByKdDx0rSEDZ/djQbH+bkIdvfJFm98BfV8hD2zprfVdlu9PxVeyYAkciREohRAplJCaRSAplJCcQogTjSAdlyHRBvSAekJR0QRzogA+mADJkOiCPSAPEtqYBshlRAXC43hxix2QiOuEZkVERykGyNo9idIZKE0HO7XrG6OiMShlDWjstVzdPgXtUH9v0CEidAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQP4HgjZxTpdEii0AAAAASUVORK5CYII=" alt="image-20210812175252445"></p>
+<p>authRoleResource返回结果</p>
+<h4 id="集合-1"><a href="#集合-1" class="headerlink" title="集合"></a>集合</h4><p>CollectionUtil中的collectAll方法应该是用到了可变参数，把列表作为列表中的元素</p>
+<p>项目中大量用到了extends</p>
+<p>Lists List的集合？？</p>
+<p>分批处理List</p>
+<pre><code>public static boolean hasLogin(String user) &#123;
+    // 是否已登录  ？？？ ！
+   if (!CloudUtil.onCloud()) &#123;
+      return users.contains(user);
+   &#125; else &#123;
+      return false;
+   &#125;
+&#125;
+</code></pre>
+<p>enum</p>
+<p>Jackson:对象与Json字符串相互转化的类，其中用readValue()字符串转对象 反序列化</p>
+<p>JavaType 设定一个Java类</p>
+<p>使用ObjectMapper序列化</p>
+<pre><code>JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, PaUserMenuVo.class);
+</code></pre>
+<p>@Bean <a href="https://gitee.com/link?target=https://mp.weixin.qq.com/s/iu7b1bYwz9AI3OOqthynNA">https://mp.weixin.qq.com/s/iu7b1bYwz9AI3OOqthynNA</a></p>
+<pre><code>List&lt;String&gt; roleIds = roleList.stream().sorted(Comparator.comparing(PtyRole::getRoleId))
+      .map(PtyRole::getRoleId).collect(Collectors.toList());
+</code></pre>
+<p><a href="https://gitee.com/link?target=https://mp.weixin.qq.com/s/72s475xa-UvQsavIXpPoMg">https://mp.weixin.qq.com/s/72s475xa-UvQsavIXpPoMg</a> Stream流详解</p>
+<p>向列表中加入些值（个别类的源码就是这么搞的比如说CronExpression)</p>
+<pre><code>private static List&lt;String&gt; HEAD_MAPPER = new ArrayList&lt;&gt;();
+static &#123;
+    //jpg
+    HEAD_MAPPER.add(&quot;FFD8FF&quot;);
+    HEAD_MAPPER.add(&quot;XXXX&quot;);
+</code></pre>
+<p>CopyOnWriteArrayList：并发集合类来避免ConcurrentModificationException</p>
+<pre><code>authResourceIdList.forEach(stringPtyAppResourceMap::remove);
+</code></pre>
+<p>一般返回的时候会用这个 Arrays.asList() 但是这样去产生的列表是不可更改的，需要注意上层接口在调用方法时如果返回这个再去修改肯定会有问题。</p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAAAAACIM/FCAAACh0lEQVR4Ae3ch5W0OgyG4dt/mQJ2xgQPzJoM1m3AbALrxzrf28FzsoP0HykJEEAAAUQTBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEkKK0789+GK/I2ezfQB522PnS1qc8pGgXvr4tE4aY0XOUWlGImThWgyCk6DleixzE7qwBkg/MGiDPlVVAyp1VQGrPKiACDhFI6VkF5LmzCki+sg7IwDoglnVAil0IMkeG9CyUiwsxLFUVFzJJOQaKCjFCDN9RXMjIX7W6ztZXZDKKCyn8sWJvH+nca7WHDN9lROlAliPH9iRKCPI4cswFJQWxB46toLQgQ9jhn5QYZA9DOkoMUoQde5YapAxDWkoNYsOQR3KQd9CxUnIQF4S49CB9ENKlBxmDEKsFUgMCCCCAAHIrSF61f6153Ajy8nyiPr8L5MXnmm4CyT2fzN4DUvHZ+ntA2tOQBRBAAAEEEEAAAQQQ7ZBaC6TwSiDUaYHQ2yuB0MN+ft+43whyrs4rgVCjBUKTFshLC6TUAjGA3AxSaYFYLZBOC2RUAsk8h5qTg9QcbEoOsoQhQ2qQhsO5xCD5dgB5JQaZ+KBKGtKecvR81Ic0ZDjByKdDx0rSEDZ/djQbH+bkIdvfJFm98BfV8hD2zprfVdlu9PxVeyYAkciREohRAplJCaRSAplJCcQogTjSAdlyHRBvSAekJR0QRzogA+mADJkOiCPSAPEtqYBshlRAXC43hxix2QiOuEZkVERykGyNo9idIZKE0HO7XrG6OiMShlDWjstVzdPgXtUH9v0CEidAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQP4HgjZxTpdEii0AAAAASUVORK5CYII=" alt="image-20210827173636242"></p>
+<p>所谓哈希表，就是数组+链表。——可以用来判断一个元素是否出现过,</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><pre><code>//分组 列表转map
+Map&lt;String, List&lt;PtyOrgUser&gt;&gt; userOrgMap = userOrgList.stream().collect(groupingBy(PtyOrgUser::getUserCode));
+</code></pre>
+<p>values()</p>
+<p>entrySet()</p>
+<p>keySet()</p>
+<p>Map.Entry()</p>
+<p>遍历Map：entry 其实就是一个key-value</p>
+<pre><code>//第一种：普遍使用，二次取值
+  System.out.println(&quot;通过Map.keySet遍历key和value：&quot;);
+  for (String key : map.keySet()) &#123;
+   System.out.println(&quot;key= &quot;+ key + &quot; and value= &quot; + map.get(key));
+  &#125;
+  
+  //第二种
+  System.out.println(&quot;通过Map.entrySet使用iterator遍历key和value：&quot;);
+  Iterator&lt;Map.Entry&lt;String, String&gt;&gt; it = map.entrySet().iterator();
+  while (it.hasNext()) &#123;
+   Map.Entry&lt;String, String&gt; entry = it.next();
+   System.out.println(&quot;key= &quot; + entry.getKey() + &quot; and value= &quot; + entry.getValue());
+  &#125;
+  
+  //第三种：推荐，尤其是容量大时
+  System.out.println(&quot;通过Map.entrySet遍历key和value&quot;);
+  for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;
+   System.out.println(&quot;key= &quot; + entry.getKey() + &quot; and value= &quot; + entry.getValue());
+  &#125;
+ 
+  //第四种
+  System.out.println(&quot;通过Map.values()遍历所有的value，但不能遍历key&quot;);
+  for (String v : map.values()) &#123;
+   System.out.println(&quot;value= &quot; + v);
+  &#125;
+</code></pre>
+<p>集合转Map .collect是转换的方法指定转换成什么</p>
+<pre><code>Map&lt;String, String&gt; userCodeMainOrgIdMap = ptyUserList.stream().collect(Collectors.toMap(PtyUser::getUserCode, PtyUser::getMainOrgid));
+</code></pre>
+<p>Map其实也可以直接转成对象，如： 其实这里后来可以用JsonObject，JsonObject看源码其实是对map的实现</p>
+<pre><code>Map userMap = (Map) addObj.get(&quot;ptyUser&quot;);  //前提是接收前端
+PtyUser ptyUser = new PtyUser();
+BeanUtils.copyProperties(ptyUser, userMap);
+</code></pre>
+<p>正向代理：服务端不知道客户端，代理的是客户端</p>
+<p>反向代理：客户端不知道服务提供者，代理的是服务端（如Nginx</p>
+<p>一切都可以重写。 获取属性 –思路太死板，其实还是技术水平问题</p>
+<p>实体类是大有可为的， 不是仅限于对属性的封装和set&amp;get</p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p>List根据特定字段排序 这样会造成内存的浪费</p>
+<pre><code>return menuVoList.stream().sorted(Comparator.comparing(PtyAppMenuVo::getSortNo)).collect(Collectors.toList());
+</code></pre>
+<p>占内存太大，建议用Collection.sort()</p>
+<pre><code>if (o1.getSortNo() == null) &#123;
+        o1.setSortNo(Integer.MAX_VALUE);
+        if (o2.getSortNo() == null) &#123;
+            o2.setSortNo(Integer.MAX_VALUE);
+            return 0;
+        &#125;
+        return o2.getSortNo() - o1.getSortNo();
+    &#125;
+    if (o2.getSortNo() == null) &#123;
+        o2.setSortNo(Integer.MAX_VALUE);
+        if (o1.getSortNo() == null) &#123;
+            o1.setSortNo(Integer.MAX_VALUE);
+            return 0;
+        &#125;
+        return o1.getSortNo() - o2.getSortNo();
+    &#125;
+    if (o1.getSortNo() == null &amp;&amp; o2.getSortNo() == null) &#123;
+        o1.setSortNo(Integer.MAX_VALUE);
+        o2.setSortNo(Integer.MAX_VALUE);
+        return 0;
+    &#125;
+    return -1;
+&#125;
+</code></pre>
+<p>三元表达式：通过三元表达式，在对值进行判断时可以得到任何想要的。</p>
+<pre><code>Collections.sort(menuVoList, new Comparator&lt;PtyAppMenuVo&gt;() &#123;
+    @Override
+    public int compare(PtyAppMenuVo o1, PtyAppMenuVo o2) &#123;
+        int no1 = o1.getSortNo() == null ? Integer.MAX_VALUE : o1.getSortNo();
+        int no2 = o2.getSortNo() == null ? Integer.MAX_VALUE : o2.getSortNo();
+        return no1 - no2;
+
+    &#125;
+&#125;);
+</code></pre>
+<p>日志问题也要注意</p>
+<p>缓存也会带来问题</p>
+<p>Bean的获取 反射</p>
+<pre><code>OrgService proxyBean = SpringUtil.getBean(OrgService.class);
+//通过class获取Bean.
+    public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz)&#123;
+        return getApplicationContext().getBean(clazz);
+    &#125;
+</code></pre>
+<p>树的非递归遍历（暂时看不出来速度的提升但是由于新建了内存，以空间的牺牲一定能换取时间</p>
+<pre><code>/*
+ *递归形式
+ */
+private void getOrgWithChildren(List&lt;PtyOrg&gt; orgList, DyAgency agency) &#123;
+    PtyOrg org = agency.toPtyOrg();
+    List&lt;DyAgency&gt; childrenList = agency.getChildren();
+    orgList.add(org);
+    if (CollectionUtil.isNotEmpty(childrenList)) &#123;
+        for (DyAgency child : childrenList) &#123;
+            getOrgWithChildren(orgList, child);
+        &#125;
+    &#125;
+&#125;
+
+/*
+ *用栈实现深度遍历，用队列实现广度遍历
+ */
+ private void getOrgWithStack(Stack&lt;DyAgency&gt; agyStack, List&lt;PtyOrg&gt; orgList) &#123;
+        // 开始写的方法不行，导致栈pop出的又push进，原因是没有理解对象的生成与存储
+     //这里要注意，进入Stack源码中发现其方法加了个synchronized这会导致时间上的损耗因此这种
+     //方式很可能不会获得速度上的提升，观察队列源码没有这个修饰符因此我们暂且认为队列的实现更好
+        while (!agyStack.isEmpty()) &#123;
+            DyAgency agency = agyStack.pop();
+            PtyOrg org = agency.toPtyOrg();
+            orgList.add(org);
+            // 每次都经过这里 取得永远是agency的children
+            List&lt;DyAgency&gt; agencies = agency.getChildren();
+            if (CollectionUtil.isNotEmpty(agencies)) &#123;
+                for (DyAgency child : agencies) &#123;
+                    agyStack.push(child);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<p>全局变量和局部变量的安排对于程序的效率和安全都是有影响的，比如说我们在两层for循环中去用到一个变量为什么要在里面初始化呢这样每次循环都要去创建一次变量。</p>
+<p>另外类的全局变量和方法的局部变量如果从JVM的角度去理解，应该怎么理解。</p>
+<p>方法肯定是储存在栈中，一个方法就对应一个栈帧，局部变量存储在栈帧中是线程安全的，全局变量存储在堆里。</p>
+<p>要了解使用类的api，更好地去调用来实现想要的需求。</p>
+<p>比如说在map中，map.containsKey（）可以去判断是否含有该key的值，那么我们为什么要去map.get(key) !&#x3D; 0 去判断是不是有呢，这样会造成空指针的问题。</p>
+<p>另外，map.put(num, map.getOrDefault(num, 0) + 1) 在getOrDefault（）方法中自会去判断这个num对应的value我们去直接用if（map.containsKey()) 再去else 这样子会更好吗？</p>
+<h3 id="数据库文档生成"><a href="#数据库文档生成" class="headerlink" title="数据库文档生成"></a>数据库文档生成</h3><pre><code>/**
+ * @Author: Li Yf
+ * @Create: 2021/8/6 14:31
+ * @Version: 1.0
+ * @Description:
+ */
+public class MainApp &#123;
+    public static void main(String[] args) &#123;
+        DataSource dataSource = getDataSource();
+        // 获取库文档生成配置
+        EngineConfig engineConfig = getEngineConfig();
+        // 获取数据库表的处理配置，可忽略
+//        ProcessConfig processConfig = getProcessConfig();
+        // Screw完整配置
+        Configuration config = getScrewConfig(dataSource, engineConfig);
+        // 执行生成数据库文档
+        new DocumentationExecute(config).execute();
+    &#125;
+
+    // 数据库源
+    private static DataSource getDataSource() &#123;
+        // 数据源
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setDriverClassName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+        hikariConfig.setJdbcUrl(&quot;jdbc:mysql://192.168.2.121:33308/boss?serverTimezone=CTT&quot;);
+        hikariConfig.setUsername(&quot;test&quot;);
+        hikariConfig.setPassword(&quot;J3A*&amp;dnda@LO^@DF&quot;);
+        // 设置可以获取tables remark配置
+        hikariConfig.addDataSourceProperty(&quot;useInformationSchema&quot;, &quot;true&quot;);
+        hikariConfig.setMinimumIdle(2);
+        hikariConfig.setMaximumPoolSize(5);
+        return new HikariDataSource(hikariConfig);
+    &#125;
+
+    /**
+     * 获取文件生成配置
+     */
+    private static EngineConfig getEngineConfig() &#123;
+        // 生成配置
+        return EngineConfig.builder()
+                // 默认存放在项目doc目录下
+                .openOutputDir(true)
+                .fileType(EngineFileType.MD)
+                .produceType(EngineTemplateType.freemarker)
+                .fileName(&quot;数据库结构文档&quot;).build();
+    &#125;
+
+    /**
+     *  获取数据库表的处理配置，可忽略 可指定生成哪个表 哪些表（通过忽略某些表的方式）
+     */
+//    private static ProcessConfig getProcessConfig() &#123;
+   / ArrayList&lt;String&gt; ignoreTableName = new ArrayList&lt;&gt;();
+    ignoreTableName.add(&quot;test_user&quot;);
+    ignoreTableName.add(&quot;test_group&quot;);
+    ArrayList&lt;String&gt; ignorePrefix = new ArrayList&lt;&gt;();
+    ignorePrefix.add(&quot;test_&quot;);
+    ArrayList&lt;String&gt; ignoreSuffix = new ArrayList&lt;&gt;();
+    ignoreSuffix.add(&quot;_test&quot;); */
+//        return ProcessConfig.builder()
+//                .designatedTableName(new ArrayList&lt;&gt;(Collections.singleton(&quot;blog&quot;)))
+//                .build();
+//    &#125;
+
+    /**
+     * 生成完整配置
+     */
+    private static Configuration getScrewConfig(DataSource dataSource, EngineConfig engineConfig) &#123;
+        return Configuration.builder()
+                .version(&quot;1.0.0&quot;)
+                .description(&quot;数据库文档生成&quot;)
+                .dataSource(dataSource)
+                .engineConfig(engineConfig)
+                .build();
+    &#125;
+
+
+&#125;
+</code></pre>
+<p>java -jar ptytools-1.0.0-SNAPSHOT.jar -db boss -f html</p>
+<p>使用压缩软件打开jar包 删除：META-INF目录下的除了mainfest.mf，.rsa及maven文件夹 以外的其他所有文件</p>
+<p>Optional 解决空指针问题</p>
+<h3 id="类与注解"><a href="#类与注解" class="headerlink" title="类与注解"></a>类与注解</h3><p>SpringbootApplication与@EnableAutoConfiguration的冲突</p>
+<p>secrurity模块下的</p>
+<p>角色管理页面：</p>
+<p>@RestSchema 注解 ：通过设置schemaId限制作用范围，类比之前的@RestController</p>
+<p>pub模块下common包的bean包下的ParamBean看不懂</p>
+<p>@RestclientMapping</p>
+<p>@JsonProperty：用于属性上，作用是将该属性的名称序列化为另一个名称。如userid—&gt;id，此时尽管后端的属性名是userid，但是返给前端参数实际上是id。 其access属性可控制能否被序列化</p>
+<p>另：@JsonIgnore指定的属性可以使得Pojo在json序列化时被忽略掉，即不会将数据传给前端。</p>
+<p>自定义@MybatisDao ？？？感觉作用像是@Mapper</p>
+<p>资源类型button，对用户权限的控制。</p>
+<p>@Transactional</p>
+<ol>
+<li>事务开始时，通过AOP机制，生成一个代理connection对象， 并将其放入 DataSource 实例的某个与 DataSourceTransactionManager 相关的某处容器中。 在接下来的整个事务中，客户代码都应该使用该 connection 连接数据库， 执行所有数据库命令。 [不使用该 connection 连接数据库执行的数据库命令，在本事务回滚的时候得不到回滚] （物理连接 connection 逻辑上新建一个会话session； DataSource 与 TransactionManager 配置相同的数据源）</li>
+<li>事务结束时，回滚在第1步骤中得到的代理 connection 对象上执行的数据库命令， 然后关闭该代理 connection 对象。 （事务结束后，回滚操作不会对已执行完毕的SQL操作命令起作用）</li>
+</ol>
+<p>其实@Transactional注解相当于一个标记，一个切点，容器启动时就知道了要在此进行代理，</p>
+<p>@Param</p>
+<pre><code>// 给编译器的指令 对于指定代码段的某些警告沉默不做处理
+@SuppressWarnings(&#123; &quot;unchecked&quot;, &quot;rawtypes&quot; &#125;)
+</code></pre>
+<p>HandlerMethod:访问请求方法的时候可以方便的访问到方法、方法参数、方法上的注解、所属类等并且对方法参数封装处理，也可以方便的访问到方法参数的注解等信息。</p>
+<p>@Bean</p>
+<p>@RequestBody 解析json为JavaBean</p>
+<p>@ResponseBody 将返回值写入Http的响应体中 “The <a href="https://gitee.com/link?target=https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html"><code>@ResponseBody</code></a> annotation tells Spring MVC not to render a model into a view but, rather, to write the returned object into the response body. ” ——<a href="https://gitee.com/link?target=https://spring.io/guides/gs/actuator-service/">https://spring.io/guides/gs/actuator-service/</a></p>
+<p>总结：</p>
+<p>注解其实就是一个标记，我们在别处会利用反射对这个标记进行判定，来决定进行什么操作。</p>
+<p>比如@Transactional注解，Spring会对有这个注解的方法或类进行事务的操作（这句话描述的可能不够规范暂时这么认为)。</p>
+<p>与此同时，我们的项目在启动的时候，类似@XXXScan这类直接会对有特定注解标识的类扫描，由此会产生许多其他的问题。</p>
+<h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><p>有点像一个工厂，（就称之为作坊模式吧</p>
+<p>一个枚举中可以有多个枚举项（指定好的实例），枚举是一个特殊类，后面再生成对象时其实是枚举项。</p>
+<ul>
+<li>int compareTo(E e)：比较两个枚举常量谁大谁小，其实比较的就是枚举常量在枚举类中声明的顺序，例如FRONT的下标为0，BEHIND下标为1，那么FRONT小于BEHIND；</li>
+<li>boolean equals(Object o)：比较两个枚举常量是否相等；</li>
+<li>int hashCode()：返回枚举常量的hashCode；</li>
+<li>String name()：返回枚举常量的名字；</li>
+<li>int ordinal()：返回枚举常量在枚举类中声明的序号，第一个枚举常量序号为0；</li>
+<li>String toString()：把枚举常量转换成字符串；</li>
+<li>static T valueOf(Class enumType, String name)：把字符串转换成枚举常量。</li>
+</ul>
+<p>特殊方法：</p>
+<p>static Class[] values()：返回本类所有枚举常量；</p>
+<p>static Class valueOf(String name)：通过枚举常量的名字返回Class(这个类）常量，注意，这个方法与Enum类中的valueOf()方法的参数个数不同。</p>
+<ul>
+<li>链接：<a href="https://gitee.com/link?target=https://www.jianshu.com/p/7d3e3f6695a5">https://www.jianshu.com/p/7d3e3f6695a5</a></li>
+</ul>
+<p>其余属性和构造方法同普通类</p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p>pom版本有可能在多个地方引入，版本不一致。</p>
+<p>多个地方都引入这个版本，注意修改。</p>
+<p>另外，build和rebuild不同，可以尝试用rebuild或maven run compile重新编译</p>
+<p>导入外部jar包:提供相对路径即可</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.aliyun.gts.utc&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-validation-starter&lt;/artifactId&gt;
+    &lt;version&gt;1.3-SNAPSHOT&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;$&#123;basedir&#125;/lib/cas-validation-starter-1.3-SNAPSHOT.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="SSO"><a href="#SSO" class="headerlink" title="SSO"></a>SSO</h3><p>token:如果生成：①用设备号mac地址②用sessionID</p>
+<p>cookie和session: 跟踪用户的整个会话。</p>
+<p>cookie在客户端，session在服务端</p>
+<p>JWT Json web token 一种token</p>
+<p>JWTBuilder</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAAAAACIM/FCAAACh0lEQVR4Ae3ch5W0OgyG4dt/mQJ2xgQPzJoM1m3AbALrxzrf28FzsoP0HykJEEAAAUQTBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEkKK0789+GK/I2ezfQB522PnS1qc8pGgXvr4tE4aY0XOUWlGImThWgyCk6DleixzE7qwBkg/MGiDPlVVAyp1VQGrPKiACDhFI6VkF5LmzCki+sg7IwDoglnVAil0IMkeG9CyUiwsxLFUVFzJJOQaKCjFCDN9RXMjIX7W6ztZXZDKKCyn8sWJvH+nca7WHDN9lROlAliPH9iRKCPI4cswFJQWxB46toLQgQ9jhn5QYZA9DOkoMUoQde5YapAxDWkoNYsOQR3KQd9CxUnIQF4S49CB9ENKlBxmDEKsFUgMCCCCAAHIrSF61f6153Ajy8nyiPr8L5MXnmm4CyT2fzN4DUvHZ+ntA2tOQBRBAAAEEEEAAAQQQ7ZBaC6TwSiDUaYHQ2yuB0MN+ft+43whyrs4rgVCjBUKTFshLC6TUAjGA3AxSaYFYLZBOC2RUAsk8h5qTg9QcbEoOsoQhQ2qQhsO5xCD5dgB5JQaZ+KBKGtKecvR81Ic0ZDjByKdDx0rSEDZ/djQbH+bkIdvfJFm98BfV8hD2zprfVdlu9PxVeyYAkciREohRAplJCaRSAplJCcQogTjSAdlyHRBvSAekJR0QRzogA+mADJkOiCPSAPEtqYBshlRAXC43hxix2QiOuEZkVERykGyNo9idIZKE0HO7XrG6OiMShlDWjstVzdPgXtUH9v0CEidAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQP4HgjZxTpdEii0AAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><p>bean的加载顺序：context-param—&gt;listener—&gt;filter—&gt;servlet—&gt;interceptor（拦截器本身在Servlet中</p>
+<p>从左到右分别是：初始化配置——监听request、session、application的初始化和变化——过滤请求</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAAAAACIM/FCAAACh0lEQVR4Ae3ch5W0OgyG4dt/mQJ2xgQPzJoM1m3AbALrxzrf28FzsoP0HykJEEAAAUQTBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEkKK0789+GK/I2ezfQB522PnS1qc8pGgXvr4tE4aY0XOUWlGImThWgyCk6DleixzE7qwBkg/MGiDPlVVAyp1VQGrPKiACDhFI6VkF5LmzCki+sg7IwDoglnVAil0IMkeG9CyUiwsxLFUVFzJJOQaKCjFCDN9RXMjIX7W6ztZXZDKKCyn8sWJvH+nca7WHDN9lROlAliPH9iRKCPI4cswFJQWxB46toLQgQ9jhn5QYZA9DOkoMUoQde5YapAxDWkoNYsOQR3KQd9CxUnIQF4S49CB9ENKlBxmDEKsFUgMCCCCAAHIrSF61f6153Ajy8nyiPr8L5MXnmm4CyT2fzN4DUvHZ+ntA2tOQBRBAAAEEEEAAAQQQ7ZBaC6TwSiDUaYHQ2yuB0MN+ft+43whyrs4rgVCjBUKTFshLC6TUAjGA3AxSaYFYLZBOC2RUAsk8h5qTg9QcbEoOsoQhQ2qQhsO5xCD5dgB5JQaZ+KBKGtKecvR81Ic0ZDjByKdDx0rSEDZ/djQbH+bkIdvfJFm98BfV8hD2zprfVdlu9PxVeyYAkciREohRAplJCaRSAplJCcQogTjSAdlyHRBvSAekJR0QRzogA+mADJkOiCPSAPEtqYBshlRAXC43hxix2QiOuEZkVERykGyNo9idIZKE0HO7XrG6OiMShlDWjstVzdPgXtUH9v0CEidAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQP4HgjZxTpdEii0AAAAASUVORK5CYII=" alt="img"></p>
+<p>拦截器无法注入bean的解决</p>
+<pre><code>public &lt;T&gt; T getBean(Class&lt;T&gt; clazz,HttpServletRequest request)&#123;
+    WebApplicationContext applicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+    return applicationContext.getBean(clazz);
+&#125;
+</code></pre>
+<p>如何让代码简练</p>
+<p>一个小模块中，轻与重的选择</p>
+<h3 id="业务-熟悉代码"><a href="#业务-熟悉代码" class="headerlink" title="业务-熟悉代码"></a>业务-熟悉代码</h3><p>熟悉代码，一切的前提都是读懂代码，不光是读懂代码是干什么的，还要知道为什么这样设计，哪些没有完善的地方。</p>
+<p>正如好的故事、剧本一样，好的代码也应该是严丝合缝，一个完整的结构，不能有闲笔。</p>
+<h4 id="单点登录："><a href="#单点登录：" class="headerlink" title="单点登录："></a>单点登录：</h4><p>不用登录但又登录了，只能登录一点点。其实就是拿了系统中存储的用户信息。</p>
+<p>传入的信息经由requestInfo传给ssoInfo，必要的时候可以在两者中增添属性，注意属性和传入的json（或者别的形式）的key要对应。然后通过校验，校验的形式和方法多样落脚点是返回去一个userCode放入到登录时的对象中做后续“真正登录”的判断。</p>
+<p>要明白这只是一种实现方式。要实现单点登录必须要同一个用户实体其在跳转前后的系统中要校验的信息一致。</p>
+<p><strong>cookie登录：</strong></p>
+<p>同步问题;</p>
+<p>双方系统中同一个用户但是标识（比如userid)两边历史数据可能不一致，新增的同步过来的用户数据应该是一样的。由于历史数据不同，但同时该标识又很重要与原始的业务数据可能也有关系，如果修改的话会修改大量数据，因此用一个字段（不用的）存取该历史数据的字段，与现有库中的字段映射。</p>
+<p>比如：王小明在那边的userid是110，我这边user_code（假设两者是对应的关系）是120，同时120这个id在许多表中已经存在，要修改肯定不现实，所以那边的历史数据的userid要存为一个别的字段作为和该字段的映射。</p>
+<p>许久不动的配置可能也会引起问题。</p>
+<p>同步的是什么 可能是什么 问清楚</p>
+<p>要注意双方的情况都是一致的，如果环境相同还有问题，那么我们除去落脚的数据库，中间的代码，只剩下入参的问题了。</p>
+<p>熟悉工具，依赖版本的问题</p>
+<p>要仔细理解自己的代码,<strong>数据就是土壤，数据总是能引起看似代码的问题</strong></p>
+<p>递归优化 –树形结构的遍历 通过栈对这次树形结构的部门信息进行存储，然后去深度遍历发现最终由于数据量太少只有一千多个并没有多大的时间上的提升。队列的话可以用来改变递归的广度遍历。</p>
+<p>for 循环抛出异常 终止</p>
+<p>如果在for循环外抛出异常，则整个for循环会终止，而在遍历内部抛出异常仅会影响到本次循环。</p>
+<p>另外这次for循环实际上调用了一个@Transcational注释的接口，一次遍历执行了一次事务。如果该循环本身注释了事务如果中间出现了异常，应该是会导致前面执行成功的那些sql操作回滚回去的。</p>
+<p>这个具体还要想下为什么。</p>
+<p><strong>日志问题</strong>：配置很重要，因为出问题的情况会很多，比如这次同步开始没问题的地方后面因为第三方接口地址内网访问不了出了错误但是因为之前没有考虑到日志但是还要再替换回去。</p>
+<p>掌握try{} catch{}的分布</p>
+<p><strong>编码问题</strong></p>
+<p>首先要搞清数据的流向，从哪里来的，到哪里去，中间又经过了什么处理，这样才能明白问题出现在哪。</p>
+<p>同时要熟悉自己过去写的代码——以及自己调用的别人的代码&#x3D;&#x3D;</p>
+<p>比如这次东阳，部门同步乱码。</p>
+<p>首先已知的是：</p>
+<p>请求，accept的是UTF-8，传入的其实是GBK，存入测试环境（windows）GBK不乱码，正式环境（Linux）UTF-8乱码。</p>
+<p>第一反应是Linux服务器的问题，于是想着去改全局的配置，虚拟机的配置等等。</p>
+<p>其次：</p>
+<p>就目前的理解看，目前涉及的程序仅是CRUD，程序的作用只有一个——操纵数据。</p>
+<p>因此，明白数据的源头，流向，经过了怎样的处理，最终的结果很重要。</p>
+<p>远端接口（GBK编码）——》发送请求请求头的content-type：applicaiton&#x2F;json——》定时任务程序（UTF-8）——》解密（*）——》乱码</p>
+<p>经过一系列的修改，发现没有起到任何作用。乱码该怎么乱还是怎么乱。问题的本质是因为对UTF-8编码和GBK编码的区别和转换不了解。最终发现，UTF-8和GBK并不会对英文字母和阿拉伯数字（包括加密里面的%)都不会产生乱码。</p>
+<p>因为GBK是两个字节一个汉字UTF-8是三个。但是对于数字和字母的表示位数是相同的。因此无论是请求方式还是接收的处理都没有问题，直到转换中文字符前的所有程序都不会有问题。</p>
+<p>问题就出在我们将这些杂乱的字符串如下：Qi3Ba6gjXjayZgwlaW0zMLFmYRrGDNPMIiL…… 很明显解密后才有汉字出现，然后就去解密方法中找，那边给出的意见没有用因为关键一步就是字母还原成汉字，GBK到UTF-8的转化是不可逆的。</p>
+<p>这里要注意一个问题URLEncoder.encode()和getBytes()作用是一致的都是将字符串转换成字节数组。</p>
+<p>不应该只取考虑编码来回倒腾的问题，应该先切入问题的点，问题的根源。<strong>熟悉代码</strong>，熟悉所调用的方法的多态形式。</p>
+<p>此次折腾可作为后面各种乱码和加解密的参考。</p>
+<hr>
+<p>从Java 源代码到得到正确的结果，要经过 “Java 源代码-&gt; Java 字节码-&gt; 虚拟机-&gt;操作系统-&gt;显示设备”的过程。在上述过程中的每一步骤，我们都必须正确地处理中文的编码，才能够使最终显示正确的结果。</p>
+<p>“Java 源代码-&gt; Java 字节码”：该阶段就是调用javac 进行编译的阶段，javac默认采用系统字符集，比如我们本地机器急就是GBK，如果想用其他的编码，比如UTF-8，可以加上 -encoding UTF-8</p>
+<p>“Java 字节码-&gt; 虚拟机-&gt;操作系统” ：该阶段首先需要JRE或者JDK支持多语言(下载JRE的时候会让你选择英文版还是多语言版)，然后就是虚拟机启动的时候使用什么字符集，默认也是采用 当前系统的字符集，如需要修改字符集，加上JAVA的启动参数,-Dfile.encoding&#x3D;GBK</p>
+<p>“操作系统-&gt;显示设备”：该阶段主要就是需要操作系统支持显示中文就可以，就是安装了中文字体。</p>
+<p>看到这里后重新看我们的乱码问题，我们在本地编译(Java 源代码-&gt; Java 字节码 阶段)默认采用了GBK字符集，而”Java 字节码-&gt; 虚拟机-&gt;操作系统” 阶段是在法国服务器上进行，也是采用了默认的字符集，但这里的默认字符集确实Cp1252，因字符集不一致，所以就会乱码。</p>
+<h4 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h4><p>思考下与直接利用注解有什么不同</p>
+<p>经过观察源码，发现其实是通过灵活给@Scheduler注解配置参数实现的(???)</p>
+<p>1.配置也是代码 数据的 一部分，要重视配置问题。</p>
+<p>2.对象 与 内存 地址 这之间的关系很重要，我们的实体类本质上说来就是个临时存储的作用，然后将这些信息持久化到数据库，或者在方法之间抛来抛去，而那些逻辑就是处理数据的（当然这是目前比较粗浅的理解）</p>
+<p>3.传参数，Map&lt;Obj,Obj&gt;——与json——其实还是通信问题</p>
+<p>4.万事万物都是相通的，计算机这种站在巨人的肩膀上不断去优化肩膀当然也是如此。方法既然允许重写那么类中的set get当然也可以重写。</p>
+<p>5.后端程序分层时各层各司职责且不需要关注其余层的实现仅需调用，网络分层当然也是这样。</p>
+<p>6.分层其实是一种系统功能分解</p>
+<p>“Any problem in computer science can be solved by anther layer of indirection.”</p>
+<ol>
+<li>美观问题</li>
+</ol>
+<p><strong>代码写的太乱太繁琐一定有问题</strong>，因为软件工程的发展包括Springboot或者如fastjson这些类库经过前人的不断开发迭代，以我当前的编程水平，不仅能实现需求同时还能够简化开发简洁代码。</p>
+<p>checkToken:false ——用户不存在，致使PtyContext中的username为空</p>
+<p>原来AuthInterceptor是继承自SpringMVC中的类，这个类拦截的是前端进入Controller的请求，因此我们的一些操作要放在这个类里实现，比如给线程变量存入一些u</p>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><p>在公司的产品中，实际上实体类的开发就用到了建造者模式，去new一个对象然后在后面链式调用一堆方法实现对对象属性的注入，</p>
+<p>当然这是目前浅显的理解。实际操作就是在实体类中创建一个static修饰的构造方法，然后再加上</p>
+<p>参考已加入微信读书书架的一本书</p>
+<h3 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h3><p>网络传输的数据必须是二进制数据。其实这也很好理解，计算机网络最底层物理层传的本就是比特。同时这块内容涉及到序列化和反序列化的问题。JSON的还原应该是在接收方先将0101这些还原为JSON后再还原成对象。其实进一步认为，所谓序列化可以看作按照某种规定去将数据进行了“加密”，只不过这种处理后的数据的格式是二进制的。</p>
+<p>RestTemplate 常用方法：</p>
+<p>与此同时，hutools还有一个HttpUtils可以参考使用，示例如下：(Post请求)</p>
+<pre><code>Map&lt;String, Object&gt; param = new HashMap&lt;&gt;();
+param.put(&quot;key&quot;, value);  // 需要传递的参数
+Map&lt;String, String&gt; header = new HashMap&lt;&gt;();
+header.put(&quot;http.protocol.content-charset&quot;, &quot;UTF-8&quot;);
+String responseXml = HttpUtil.createPost(ssoUri).addHeaders(header).form(param).execute().body();
+</code></pre>
+<p>仅针对GET</p>
+<table>
+<thead>
+<tr>
+<th>请求方法</th>
+<th>请求参数</th>
+<th>返回类型</th>
+<th>*<strong>注意事项*</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getForObject</td>
+<td>url，Class,可通过将多个参数放入map，传入可变参数</td>
+<td>Class，只返回http的body内容</td>
+<td>返回数据不多且不关心响应状态、请求头</td>
+</tr>
+<tr>
+<td>getForEntity</td>
+<td>同上</td>
+<td>返回一个ResponseEntity包含了headers、body、status等信息</td>
+<td>返回数据结构单一且关心响应状态或响应头信息</td>
+</tr>
+<tr>
+<td><strong>exchange</strong></td>
+<td>url,指定HttpMethod、HttpEntity</td>
+<td>Class或ResponseEntity</td>
+<td>返回数据结构复杂且关心……</td>
+</tr>
+</tbody></table>
+<p>指定的HttpEntity可以放入携带的参数和设置的请求类型(setAccept:application&#x2F;json)</p>
+<pre><code>HttpHeaders headers = new HttpHeaders();
+headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
+HttpEntity httpEntity = new HttpEntity(headers);
+// 发送请求获取加密的部门信息
+ResponseEntity&lt;JSONObject&gt; response = restTemplate.exchange(requestUrl, HttpMethod.GET, httpEntity, JSONObject.class);
+</code></pre>
+<p>查出缓存 该缓存是怎么来的 又是怎么去取的</p>
+<pre><code>List&lt;MadAcitemAssrelDO&gt; madAcitemAssrelDOList = new ArrayList&lt;&gt;();
+      List&lt;Map&lt;String, String&gt;&gt; madAcitemAssrelDOMap = new ArrayList&lt;&gt;();
+      HashMap&lt;Integer, StringBuffer&gt; promptMsgMap = new HashMap&lt;&gt;();
+      for (int i = 0;i&lt;excelData.size();i++) &#123;
+          Map&lt;String, String&gt; dataEnMap = new HashMap&lt;&gt;();
+          for (int j = 0;j&lt;acItemList.size();j++) &#123;
+//              for (Map.Entry&lt;String, String&gt; entry : acItemMap.entrySet()) &#123;
+              for (Map&lt;String, String&gt; entry : acItemMapList) &#123;
+                  for (Map.Entry&lt;String, String&gt; stringEntry : entry.entrySet()) &#123;
+                      List&lt;Map&lt;String, Object&gt;&gt; leafAtomList = leafAtomData.get(entry.get(ATOM_CODE));
+                      if (stringEntry.getKey().equals(acItemList.get(j))) &#123;
+                          String cellValue = excelData.get(i).get(j);
+                          String cellCodeValue = &quot;&quot;;
+                          String cellNameValue = &quot;&quot;;
+                          if (!StringUtils.isEmpty(cellValue)) &#123;
+                              String[] split = cellValue.split(SPLIT_CODE_NAME,2);
+                              if (split != null &amp;&amp; split.length == 2) &#123;
+                                  cellCodeValue = split[0];
+                                  cellNameValue = split[1];
+                              &#125;
+                          &#125;
+                          dataEnMap.put(stringEntry.getValue().toLowerCase() + CODE , cellCodeValue);
+                          dataEnMap.put(stringEntry.getValue().toLowerCase() + NAME , cellNameValue);
+                          String finalCellNameValue = cellNameValue;
+                          String finalCellCodeValue = cellCodeValue;
+                          boolean present = leafAtomList.stream().filter(a -&gt; a.get(&quot;name&quot;).equals(finalCellNameValue) &amp;&amp; a.get(&quot;code&quot;).equals(finalCellCodeValue)).findFirst().isPresent();
+                          if (!present) &#123;
+                              promptMsgMap.put(i + 1, promptMsgMap.containsKey(i + 1) ? promptMsgMap.get(i + 1).append(&quot;,&quot; + stringEntry.getKey()) : new StringBuffer(stringEntry.getKey()));
+                          &#125;
+                      &#125;
+                  &#125;
+              &#125;
+          &#125;
+</code></pre>
+<h3 id="408"><a href="#408" class="headerlink" title="408"></a>408</h3><h4 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h4><p>操作系统的设计，因此可以归结为三点：</p>
+<ul>
+<li>以多进程形式，允许多个任务同时运行；</li>
+<li>以多线程形式，允许单个任务分成不同的部分运行；</li>
+<li>提供协调机制，一方面防止进程之间和线程之间产生冲突，另一方面允许进程之间和线程之间共享资源。</li>
+</ul>
+<p>缺页其实有软硬两种，之前所了解到的缺页中断其实就是硬中断，即内存中确实没有这个页。软中断就是内存中有这个页，但是由于每个进程都有各自对应的页表，因此别的进程不知道其他进程页表的内容，内存中即使存在这个页但由于是其他进程调入的，不在正在执行的该进程的页表中因此也产生了中断，这种情况只需要改写页表就可以了无需再去调整内存。这就是多进程的操作系统会引起的问题，单核的不会出现这种情况。</p>
+<p>页表记录的其实就是进程分配到的虚拟内存对应的页嘛。</p>
+<p>为什么会产生这种东西，这种东西到底是干什么的</p>
+<p>运算器是无状态的；控制器配合一部分寄存器，但是寄存器数量很少，而且通常都很容易被修改；输入设备、输出设备只有接受指令的时候才动作。归根结底来说，整个计算机的运行状态几乎完全由存储器和少数几个寄存器控制。</p>
+<p>物理内存就是整个计算机状态的全部。——毕竟计算机说到底就是程序操作数据嘛…..数据程序都存在哪里呢？</p>
+<h4 id="Constitution-Principle-of-Computer"><a href="#Constitution-Principle-of-Computer" class="headerlink" title="Constitution Principle of Computer"></a>Constitution Principle of Computer</h4><p>存储器级别离处理器越远，速度越慢，容量越大。而越接近处理器，容量就越小，速度越快，每字节的成本也就越高。</p>
+<p>读写一致性其实是比较难搞的问题。</p>
+<h3 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h3><p>MongoDB</p>
+<p>MongoDB本就是一个基于分布式文件存储的开源数据库系统。</p>
+<p>文档存储（跟之前的elasticsearch对上了）类似json,存储的内容是文档型的。数据结构是kv键值对的。V可以包含其他文档数组中以及文档数组</p>
+<p>注意索引的概念，借助索引又可以实现类似关系型数据库的功能（总是要站在前人的肩膀上的嘛）</p>
+<p><strong>基本概念</strong></p>
+<p>文档：</p>
+<p>集合：</p>
+<p>数据库：</p>
+<p>与MySQL中主要概念的对应关系：</p>
+<table>
+<thead>
+<tr>
+<th>RDBMS</th>
+<th>MongoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据库</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>集合</td>
+</tr>
+<tr>
+<td>行</td>
+<td>文档</td>
+</tr>
+<tr>
+<td>列</td>
+<td>字段</td>
+</tr>
+<tr>
+<td>表联合</td>
+<td>嵌入文档</td>
+</tr>
+<tr>
+<td>主键</td>
+<td>主键 (MongoDB 提供了 key 为 _id )</td>
+</tr>
+</tbody></table>
+<p>由上和之前在elasticsearch中的实践可以看出，一个文档就是一个对象，字段其实还是属性。！！！</p>
+<ul>
+<li>区分类型和大小写</li>
+<li>k-v有序，其中的值可以是多样的，没什么限制但是文档的键不能重复（这其实很正常你好比一个一个类不能有俩一样的属性一张表俩字段不能重复。）</li>
+<li>键不可有空字符串，也有注意_开头和$</li>
+</ul>
+<p><strong>GridFS</strong></p>
+<p>GridFS是一种大型文件存储在MongoDB的文件规范，所有官方支持的驱动都实现了GridFS，GridFS是MongoDB中的一个内置功能。可以保存文件。</p>
+<p>应该多认真了解一些所用的类的源码，多态。比如说上次的JSON转化，比如这次的MongoClient的构造。</p>
+<p><strong>MinIO</strong></p>
+<p>应对的主要挑战是:无论数据位于何处，都使数据可用?</p>
+<p>Kubernetes，一个容器集群管理系统。docker一种容器技术，可以说是k8s内部的一种低级别组件。MinIO可由其管理。</p>
+<p>Drive:一个磁盘</p>
+<p>Set：一组Drive，一个对象存储在一个Set上，一个集群划分为多个Set.</p>
+<p>这里的对象似乎跟Java里的不一样，感觉很大的样子。</p>
+<p>Erasure Code：冗余编码</p>
+<p>将一个对象分成了若干个数据块和校验块，这样处理尽管导致了多出来一倍的存储量，但是不需要做多个备份，因此还是省了存储空间的。</p>
+<p>这么看来似乎如果需要备份的话这个更适合。</p>
+<p><strong>Erasure Code</strong> 和 <strong>Bit Rot Protection</strong>（位腐烂保护） 使得MinIO的数据可靠性很好。</p>
+<p>还有管理工具，这点比MongoDB借助别的工具实现界面管理要优越，不过bucket的命名并不支持下划线。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAAAAACIM/FCAAACh0lEQVR4Ae3ch5W0OgyG4dt/mQJ2xgQPzJoM1m3AbALrxzrf28FzsoP0HykJEEAAAUQTBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEkKK0789+GK/I2ezfQB522PnS1qc8pGgXvr4tE4aY0XOUWlGImThWgyCk6DleixzE7qwBkg/MGiDPlVVAyp1VQGrPKiACDhFI6VkF5LmzCki+sg7IwDoglnVAil0IMkeG9CyUiwsxLFUVFzJJOQaKCjFCDN9RXMjIX7W6ztZXZDKKCyn8sWJvH+nca7WHDN9lROlAliPH9iRKCPI4cswFJQWxB46toLQgQ9jhn5QYZA9DOkoMUoQde5YapAxDWkoNYsOQR3KQd9CxUnIQF4S49CB9ENKlBxmDEKsFUgMCCCCAAHIrSF61f6153Ajy8nyiPr8L5MXnmm4CyT2fzN4DUvHZ+ntA2tOQBRBAAAEEEEAAAQQQ7ZBaC6TwSiDUaYHQ2yuB0MN+ft+43whyrs4rgVCjBUKTFshLC6TUAjGA3AxSaYFYLZBOC2RUAsk8h5qTg9QcbEoOsoQhQ2qQhsO5xCD5dgB5JQaZ+KBKGtKecvR81Ic0ZDjByKdDx0rSEDZ/djQbH+bkIdvfJFm98BfV8hD2zprfVdlu9PxVeyYAkciREohRAplJCaRSAplJCcQogTjSAdlyHRBvSAekJR0QRzogA+mADJkOiCPSAPEtqYBshlRAXC43hxix2QiOuEZkVERykGyNo9idIZKE0HO7XrG6OiMShlDWjstVzdPgXtUH9v0CEidAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQP4HgjZxTpdEii0AAAAASUVORK5CYII=" alt="img"></p>
+<p>docker run -p 9000:9000 -p 9001:9001 –name minio -e &#x2F;home&#x2F;minio&#x2F;data:&#x2F;data -v &#x2F;home&#x2F;minio&#x2F;config:&#x2F;root&#x2F;.minio -d minio&#x2F;minio server &#x2F;data –console-address “:9001”</p>
+<p><a href="https://gitee.com/link?target=https://blog.csdn.net/weixin_45821811/article/details/119077809">https://blog.csdn.net/weixin_45821811&#x2F;article&#x2F;details&#x2F;119077809</a> 这里要把控制台界面的端口号单独设置下不能跟MinIO server的端口冲突。</p>
+<hr>
+<p>然后在启动的时候会遇到这个问题：</p>
+<p>docker: Error response from daemon: driver failed programming external connectivity on endpoint lamp3 (46b7917c940f7358948e55ec2df69a4dec2c6c7071b002bd374e8dbf0d40022c): (iptables failed: iptables –wait -t nat -A DOCKER -p tcp -d 0&#x2F;0 –dport 86 -j DNAT –to-destination 172.17.0.2:80 ! -i docker0: iptables: No chain&#x2F;target&#x2F;match by that name. 解决方法 docker服务启动时定义的自定义链DOCKER被清除 重启即可systemctl restart docker 这时会发现除了mysql和redis两个比较久的其余都被杀掉了，需要利用docker start xx把容器重启了</p>
+<hr>
+<p>从部署上来看，Linux中比MongoDB友好许多，直接pull 然后 run，界面提供的功能也不少。可以直接上传文件什么的。而且提供了预览功能。</p>
+<p>但是真正可用的空间只有实际的一半。存储位置是hash来的，这个哈希方式可能跟存储空间有关系因此确定后集群数不能修改。</p>
+<p>本次对MinIO进行探究的目的：实现替代MongoDB，即怎么将文件存进去，所以还是有必要对其JavaAPI进行了解的。</p>
+<p>即今后<strong>可以采用命令行的形式把文件存储到MinIO</strong>当中。首先要对其优越点进行了解。</p>
+<p>可以针对每个桶设置策略，比如readOnly ReadAndWirete，也可以针对每个用户设置，这个比较灵活</p>
+<p>TODO————————————————&gt;不过这怎么在Springboot中（Java API）结合呢？</p>
+<p><strong>Java API</strong></p>
+<p>桶的创建等工作开始前，一定要把时区设置好，不然后面有问题。</p>
+<p>！！！对生成桶的时区设置无法实现，很奇怪，但是上传文件的时区却是正常的。</p>
+<p>另外要注意的一个问题，就是控制台能够对bucket进行权限配置，有些API是要有权限才能调用成功的。这个后续如果要做的话要用日志输出记录一下。</p>
+<p>给定一个流上传成对象。以下API测试过程中要明白，所谓的对象其实就是指一个文件，对象名就是文件名不过以&#x2F;可以同时生成“文件夹”</p>
+<pre><code>        try &#123;
+            String filePath = &quot;D:\\bosssoft-demo\\sql.txt&quot;;
+            File file = new File(filePath);
+            InputStream inputStream = new FileInputStream(file);
+            long start = System.currentTimeMillis();
+            //这里object/前生成的是目录如下面生成了2021 12 两级目录
+            minioClient.putObject(
+                    PutObjectArgs.builder()
+                    .bucket(&quot;test&quot;)
+                    .object(&quot;2021/12/10&quot; + file.getName()).stream(inputStream, inputStream.available(), -1)
+                    .build()
+            );
+            inputStream.close();
+            log.info(&quot;upload successfully，cost &#123;&#125; seconds&quot;, System.currentTimeMillis()-start);
+            return &quot;上传成功&quot;;
+        &#125; catch (Exception ex) &#123;
+            log.error(&quot;上传异常：&#123;&#125;&quot;, ex);
+            return &quot;上传失败&quot;;
+        &#125;
+</code></pre>
+<p>OSS实际上是没有文件夹的，这里可以理解为将一个对象存储进另一个对象里。添加的Object大小不能超过<strong>5GB</strong>。上传时同名的Object会直接覆盖掉，注意*。</p>
+<p>关于minio中upload和put的区别暂时看不出来什么，应该上传磁盘文件才会看出吧。不过这也说明对文件还不够理解。put是将文件转成流放入，upload是直接将文件存进去。</p>
+<pre><code>minioClient.uploadObject(
+                    UploadObjectArgs.builder()
+                            .bucket(&quot;test&quot;)
+                            .object(&quot;2021/12/10sql2.txt&quot;)
+                            .filename(&quot;这里给的是文件的存储路径&quot;)
+                            .build()
+            );
+</code></pre>
+<p>提供的API很全面，都是采用建造者模式Builder().build()的形式构建。</p>
+<p>使用此方法，可以提供给不用登录进行图片浏览，第三方共享访问等。 我们还可以对返回 URL，根据业务做一些参数验签等控制。</p>
+<p>getPresignedObjectUrl() 会生成一个很长的连接，</p>
+<pre><code>String objectUrl = minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
+                    .bucket(&quot;test&quot;)
+                    .object(&quot;2021/12/10sql2.txt&quot;)
+                    .method(Method.GET)
+                    //.expiry(60) // 单位秒
+                    .expiry(130, TimeUnit.SECONDS)
+                    .build());
+            System.out.println(objectUrl);
+//http://8.140.23.86:9000/test/2021/12/10sql2.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=admin%2F20211210%2Fus-west-rack-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20211210T091327Z&amp;X-Amz-Expires=130&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9564b713e1b270c614b59cc3f4cfebc8bddd1fd04989dd86cf8c82df51546623
+</code></pre>
+<p>生成的这个连接可以直接去访问我们指定的某个文件，且是有时间限制的，这就很灵活。</p>
+<p>“可以提供给不用登录进行图片浏览，第三方共享访问等。 我们还可以对返回 URL，根据业务做一些参数验签等控制。”</p>
+<p>编译问题：</p>
+<p>静态常量，我们使用时一定要慎重。一旦有修改就需要将整个项目重新编译替换。</p>
+<p>版本号的对应问题！！！！！！！！！！！！！！！！</p>
+<p><a href="https://gitee.com/link?target=https://www.cnblogs.com/pxblog/p/12246248.html">https://www.cnblogs.com/pxblog/p/12246248.html</a> git回退到某次commit</p>
+<p>犯了极其严重的非技术性问题，少给了class导致一直出问题！！！</p>
+<p>应该注意怎么在一个环境里 说话 让别人 能听懂 不同的环境 有不同的 话语表达方式</p>
+<h3 id="浙政钉"><a href="#浙政钉" class="headerlink" title="浙政钉"></a>浙政钉</h3><p>程序逻辑：</p>
+<p>标准产品 pty-proxy</p>
+<p>首先，配置SystemParameterController，给前端开启扫码按钮。</p>
+<p>DingTalkController 提供二维码生成的网址 然后 调用IDingTalkService其实现类，dingtalkQrLogin() 通过IDingTalkService的DingTalkZJGovProxyService 的 getUserCodeByQr() 再去调用getUserFlagByQr(),去通过我们的pty-proxy将请求发给钉钉应用，获取accountId，前端返回后，会去校验一下根据钉钉code去看是否绑定了用户。</p>
+<p>为什么要说这么一套流程呢，因为无论是缺少睡眠也好，或者怎样也好。要清楚程序运行的一个完整逻辑，这样才能知道错误在哪，可能发生的问题在哪。</p>
+<p>然后由于公司的特殊性，版本的差异和远程调试的不同，会有各种各样的问题，这就需要去想，当然这前提是掌握更可能多的技能和意识。尤其是版本的问题，最容易造成不可预料的错误。</p>
+<p>另外结合之前做的人脸识别登录，</p>
+<h3 id="宁夏单点"><a href="#宁夏单点" class="headerlink" title="宁夏单点"></a>宁夏单点</h3><p>这一年要过去了，上半年品尝失败，下半年迷茫打工，总归有进步，但终归是不甘心。</p>
+<p>不甘心啊。</p>
+<h1 id="———————————2022—————————————"><a href="#———————————2022—————————————" class="headerlink" title="———————————2022—————————————"></a>———————————2022—————————————</h1><h3 id="I-O"><a href="#I-O" class="headerlink" title="I&#x2F;O"></a>I&#x2F;O</h3><p>InputStreamReader和OutputStreamWriter。这两个类的作用分别是把字节流转成字符流，把字符流转成字节流。</p>
+<p>Collection判空的问题：集合中有一个空元素那么该集合并不为空。</p>
+<p>我们可以把实体类对象理解为一个暂时存在的存储空间，而各种方法就是去改变这些存储空间内的东西，参数是方法间的通行者。</p>
+<p>this 和 static 这两个关键字</p>
+<pre><code>NmgdxSyncDeptJob.class
+    // 我们在这个类下 在创建bean的时候同时启动这个
+    @PostConstruct
+    public void init() &#123;
+    // 这些参数配置在了这些类中
+        NmgDbUtil.init(syncDbUrl, syncDbName, syncPwd);
+    &#125;
+
+然后我们去调用这个类的init()方法
+NmgDbUtil.class
+    @PostConstruct
+    public static void init(String jdbcUrl, String username, String password) &#123;
+        SYNC_DB_URL = jdbcUrl;   // 这些常量放在了这些类下
+        SYNC_DB_USERNAME = username;
+        SYNC_DB_PASSWORD = password;
+    &#125;
+
+可是为什么要这么做呢
+因为首先我们获取Connection的方法本身就是static的，所以说呢我们只能去在里面赋值一些常量。
+ 
+</code></pre>
+<p>MySql真的很烂，很烂。</p>
+<p>不清楚公司已有的数据源的bean,不清楚Conncetion是什么时候生成Statement怎么用</p>
+<p>约束和视图了解的也不够。</p>
+<p>视图比较安全不会去真的作用修改在组成该视图的表上</p>
+<p>尽可能的去利用官网</p>
+<p>如果系统出现了一种平常情况下没有遇到的异常，那可能是在此前就有别的地方不对，而不是去想办法适应试图修改这种异常。</p>
+<p>比如：我在新建的mapper里写sql语句，此时发现和往常有一点异常，就是报了库里没这个表，但这张本身就不在这个库里在另一个库里。我就去指定库名，暂时“蒙混”过去这个错误。这就导致后面我去调用这个mapper，然后事务指定这个库的管理器，结果事务不管是否成功都回滚。</p>
+<p>最终发现是不同的库给mapper指定了不同的注解，然后去扫描这些mapper，我新建的mapper指定了错误库的专用注解，这就是导致我去把A库的mapper注解标记到了我新建的mapper，然后指定b库的事务管理器去执行sql，这之中冲突了，而且肯定有异常产生。</p>
+<p>我之所以没有发现异常，是因为我将@Transactional注解删除后这种冲突随之也就不存在了。</p>
+<p>这个问题首先说明：</p>
+<p>1.对项目整体把握不行。</p>
+<p>2.个人的思考问题还是方向不明确，没有定位到真实问题存在。</p>
+<p>3.debug能力。</p>
+<p>*想当然的以为钉钉单点能直接用 谁知道域名都不一样 前端也是错的 整个业务逻辑追踪下来 好多地方都有问题 严重影响了调试</p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>反射和Spring 的 AOP结合也太奇妙了。</p>
+<pre><code> MethodInvocation
+</code></pre>
+<p>那么到底为什么Spring会大量的使用反射来去获取类的信息，这样有什么利弊</p>
+<p>反射似乎才是Java的精髓</p>
+<p>记忆力问题</p>
+<p>基础还是不行：对于连接池的作用不够了解 及Springboot的配置与其关联</p>
+<p>数据库连接的问题：自身的db相关配置与mysql本身的配置，以及连接池（HikariCP）的配置的关系。</p>
+<p>注意到，不同框架之间对于某些类的命名是相似的，比如Adapter，安卓和Spring MVC和其他框架都存在大量的Adapter</p>
+<p>那么什么是Adapter，适配的是什么，什么情况下需要这些，他们的功能是否有相似之处呢</p>
+<p>场景和目的</p>
+<p>宁夏 莫名超时 网络抓包 分析解决</p>
+<p>PC端：系统异常</p>
+<p>APP端：用户不存在或密码错误</p>
+<ol>
+<li>密码或者用户名为空 可能性不大</li>
+<li>用户名校验base64解密有问题 可能性不大</li>
+<li>出现了IllegalArgumentException Base64解密有问题 可能性不大</li>
+<li>错误次数 也不太可能</li>
+</ol>
+<p>好吧 现在只有admin能够登上 问题出现在区划上 但是前端又没传区划码</p>
+<p>需要看一下后端的代码</p>
+<p>用户是空的 ——最后和预先猜想的一样，是密码校验那里出了问题，其实一开始仔细看就能猜出来的因为前端传过来的是没有移位的而这种没有移位的密码只有一种可能登录上——就是数据库里本身存的密码也是原始的</p>
+<p>因此，admin之所以能够登录上和区划并没有什么关系，而是因为这是个初始用户密码当然和别人不一样，这点应该是能想到的，没想到还是因为没有根据猜想去仔细比较代码里的逻辑。</p>
+<p>为什么总是不愿意深入呢？</p>
+<p>一个列表 如何去通过一次遍历甚至不遍历 根据code去找出符合条件的对象将其id属性赋给另一个用户的</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>基础算法</p>
+        </div>
+    </a>
+    
+
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>java基础-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,基础,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/基础">基础</a></li>
+            
+            
+        </ul>
+        
+        <h1>java基础</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/基础/" target="_blank" >基础</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>严格区分大小写</p>
+<h3 id="2-快速入门"><a href="#2-快速入门" class="headerlink" title="2.快速入门"></a>2.快速入门</h3><p>外部引入</p>
+<p>abs.js</p>
+<script src = /#T@*#/abs.js #### 2.2基本语法入门 #### 2.3 数据类型 JS不区分小数和整数 只有Number类型 #### 比较运算符 = ==等于 类型不一样，值一样，也会判断为true ===绝对等于（类型一样，值一样）坚持不要使用==比较 须知： NaN === NaN 与所有数包括自身都不相等 浮点数问题： 如1-2/3与1/3. 尽量避免使用浮点数进行运算，存在精度问题 JS的数组中不需要对象类型都相同。数组越界会报Undefined（即未定义） 对象 var 对象是{}数组是[]。属性间使用逗号隔开，取对象的值同Java ### 3.数据类型 #### 3.1字符串 转义字符\，\' \n \t 多行字符串编写，字符串默认为一个类似数组的东西可以直接使用下标取出一部分内容。 #### 3.2数组 数组可以包含任意类型的数据，赋值数组大小就会发生变化，赋值过小元素就会丢失。 ```javascript console.log(arr) VM80:1 (6) [1, 2, 3, 4, 5, 6] undefined arr.length 6 arr[0]=0 0 console.log(arr) VM205:1 (6) [0, 2, 3, 4, 5, 6] undefined arr.length = 10; 10 console.log(arr) VM248:1 (10) [0, 2, 3, 4, 5, 6, empty × 4] undefined ``` 2.indexOf 通过元素获得下标索引 3.slice()截取Array的一部分，返回一个新数组 4.push pop（参见栈） 5.unshift() shift() 效果同上不过针对头部 #### 3.3对象 若干个键值对 ``` var 对象名 = { 属性名：属性值 属性名：属性值 } ``` ### 5.内部对象 #### 5.2json 任何Js支持的类型都可以用JSON表示 格式: 对象都用{} 数组都用[] 所有的键值对 都是用Key:value JSON字符串和JS对象的转化 ```javascript <script> var user = { name:"凡凡", age:3, sex:'男' } var juser = JSON.stringify(user); var obj = JSON.parse(juser); </script>
+
+<pre><code>#### 7.操作BOM对象！！！
+
+BOM:浏览器对象模型
+
+window代表 浏览器窗口
+
+navigator 封装了浏览器的信息
+
+screen 代表全屏幕属性
+
+location: 当前页面的URL信息
+
+document代表当前的页面
+
+getElementByxxx 选择器
+
+
+
+#### 8.操作DOM
+
+DOM：文档对象模型
+
+核心：浏览器网页就是一个Dom树形结构
+
+- 更新：更新DOM节点
+- 遍历DOM节点：得到DOM节点
+- 删除：删除一个Dom节点
+- 添加：添加一个新的节点
+
+要操作一个Dom节点，就必须要先获得这个Dom节点
+
+​```js
+&lt;script&gt;
+    var h1 = document.getElementsByTagName(&quot;h1&quot;);
+    var p1 = document.getElementById(&#39;p1&#39;);
+    var p2 = document.getElementsByClassName(&#39;p2&#39;);
+    var father = document.getElementById(&#39;father&#39;);
+    var childrens = father.children; //获取父节点下的所有子节点
+&lt;/script&gt;
+</code></pre>
+<pre><code>&lt;script&gt;
+    var one = document.getElementById(&quot;one&quot;);
+    one.innerText = &#39;abc&#39;;  
+&lt;/script&gt;
+</code></pre>
+<p><strong>更新节点</strong></p>
+<p>操作文本 id.innerText</p>
+<p>操作JS id.style.css</p>
+<p><strong>删除节点</strong></p>
+<p>先获取父节点，再通过父节点删除自己</p>
+<h4 id="9-操作表单（验证）"><a href="#9-操作表单（验证）" class="headerlink" title="9.操作表单（验证）"></a>9.操作表单（验证）</h4><h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h4 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h4><p>线程由CPU调度，不一定立即执行。</p>
+<p>继承Thread 重写run()</p>
+<p>Runable</p>
+<p>Combile</p>
+<h3 id="基础内容"><a href="#基础内容" class="headerlink" title="基础内容"></a>基础内容</h3><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>在字符串中插入字符最好还是：</p>
+<pre><code>StringBuilder sb = new StringBuilder(date);
+sb.insert(4, &quot;/&quot;);
+sb.insert(7, &quot;/&quot;);
+</code></pre>
+<p>不会多产生额外的对象。另外对于replace，要生成一个新的对象，直接去用原有对象replace是无效的。</p>
+<pre><code>String newDate = sb.toString().replace(&quot;/0&quot;, &quot;/&quot;);
+</code></pre>
+<p>今天处理了一个日期转星座的问题，用switch 12个case不知道会不会有更好方法，这样有点繁琐。</p>
+<p>TODO 为什么今天一开始用监听器的写法一直没反应呢？找不到监听器这个类。</p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>stream().filter 会根据条件过滤掉一些元素。 stream().map会将列表映射为含指定泛型如:List -&gt;List</p>
+<h4 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h4><p>装箱调用valueOf() 拆箱调用xxxvalue()；</p>
+<pre><code>public static void main(String[] args) &#123;
+        Integer i1 = 100;
+        Integer i2 = 100;
+        Integer i3 = 200;
+        Integer i4 = 200;
+
+        System.out.println(i1==i2);
+        System.out.println(i3==i4);
+
+    &#125;
+//Integer valueOf方法源码
+public static Integer valueOf(int i) &#123;
+        if(i &gt;= -128 &amp;&amp; i &lt;= IntegerCache.high)
+            return IntegerCache.cache[i + 128];
+        else
+            return new Integer(i);
+    &#125;
+</code></pre>
+<p>i1 &#x3D;&#x3D; i2输出true; i3 &#x3D;&#x3D; i4输出为false</p>
+<p><strong>解析：</strong>因为i1与i2尚未出界，分析源码可知直接从IntegerCache缓存中取出对象的引用。</p>
+<p>i3与i4出界，分别创建不同的对象</p>
+<p>浮点数（Double Float）的实现方法又与上述有所不同</p>
+<p>Integer i &#x3D; new Integer(xxx) 不会自动装箱</p>
+<p>Integer i &#x3D;xxx; 会自动装箱</p>
+<p>具体到牛客网本题：</p>
+<pre><code>        Integer i01=59; //返回的是IntegerCache中的对象的引用
+        int i02=59; //同上
+        Integer i03=Integer.valueOf(59); //装箱 同上
+        Integer i04=new Integer(59); //new  堆中新开辟了内存地址 
+</code></pre>
+<p>JVM中，new 一个对象存储在其堆中，而调用数据是通过栈。对象本身较消耗资源。而基本数据类型的变量不需要经过new创建，直接在栈中存储高效。</p>
+<p>与此同时，基本数据类型并非是面向对象的，如利用集合类时开发者无法将int double等类型放入。为了基本类型也具有对象的特征，就出现了包装类。</p>
+<p>Integer i &#x3D;10; &#x2F;&#x2F;自动装箱 int b&#x3D; i; &#x2F;&#x2F;自动拆箱</p>
+<p>int的自动装箱都是通过<code>Integer.valueOf()</code>方法来实现的，Integer的自动拆箱都是通过<code>integer.intValue</code></p>
+<h4 id="I-O与文件"><a href="#I-O与文件" class="headerlink" title="I&#x2F;O与文件"></a>I&#x2F;O与文件</h4><p>File类是对文件整体或者文件属性操作的类，例如创建文件、删除文件、查看文件是否存在等功能，不能操作文件内容；文件内容是用IO流操作的。</p>
+<p>Java中对于文本文件和二进制文件，都可以当作二进制文件进行操作。</p>
+<p>default不能修饰变量 abstract一般修饰方法和类</p>
+<p>Java将数据的输入输出抽象为流</p>
+<p>字节 字符</p>
+<p>InputStream&#x2F;OutputStream 字节 二进制</p>
+<p>Reader&#x2F;Writer 字符或字符串 图音视频建议用字节流</p>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><p>根据官方的JVM规范： <strong>如果try语句里有return，返回的是try语句块中变量值。</strong> 详细执行过程如下：</p>
+<ol>
+<li>如果有返回值，就把返回值保存到局部变量中；</li>
+<li>执行jsr指令跳到finally语句里执行；</li>
+<li>执行完finally语句后，返回之前保存在局部变量表里的值。</li>
+</ol>
+<p><strong>如果try，finally语句里均有return，忽略try的return，而使用finally的return.</strong></p>
+<pre><code>public class Test &#123; 
+    public static void main(String[] args) &#123; 
+        System.out.println(&quot;return value of getValue(): &quot; +
+        getValue()); 
+    &#125; 
+     public static int getValue() &#123; 
+         try &#123; 
+             return 0; 
+         &#125; finally &#123; 
+             return 1; 
+         &#125; 
+     &#125; 
+ &#125;
+</code></pre>
+<pre><code>public class NameList
+&#123;
+    private List names = new ArrayList();
+    public synchronized void add(String name)
+    &#123;
+        names.add(name);
+    &#125;
+    public synchronized void printAll()     &#123;
+        for (int i = 0; i &lt; names.size(); i++)
+        &#123;
+            System.out.print(names.get(i) + ””);
+        &#125;
+    &#125;
+
+    public static void main(String[]args)
+    &#123;
+        final NameList sl = new NameList();
+        for (int i = 0; i &lt; 2; i++)
+        &#123;
+            new Thread()
+            &#123;
+                public void run()
+                &#123;
+                    sl.add(“A”);
+                    sl.add(“B”);
+                    sl.add(“C”);
+                    sl.printAll();
+                &#125;
+            &#125; .start();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>HashMap解决哈希冲突：链地址法</p>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p>public</p>
+<p>private</p>
+<p>protected</p>
+<p>final{</p>
+<ul>
+<li>修饰类 –不会被继承。 final中方法也是final方法</li>
+<li>修饰方法 –子类无法覆盖该方法 注意：类的private方法会被隐式地指定为final方法</li>
+<li>修饰变量 –基本数据类型无法再改变，但是修饰的引用类型不能再指向别的对象可以改变其中的内容</li>
+</ul>
+<p>}</p>
+<p>大体可以认为不可修改</p>
+<p>abstract：而abstract要求去实现重写，因此与上者不可共存。</p>
+<p>static:该关键字修饰的方法属于类而非属于实例。只需要类名.方法名就可调用了。</p>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><p>栈:主要用来存放局部变量, 传递参数, 存放函数的返回地址。.esp 始终指向栈顶, 栈中的数据越多, esp的值越小</p>
+<p>堆:用于存放动态分配的对象, 当你使用 malloc和new 等进行分配时,所得到的空间就在堆中。动态分配得到的内存区域附带有分配信息, 所以你　 能够 free和delete它们。</p>
+<p>数据区:</p>
+<p>无效等价类是指对于软件规格说明而言，没有意义的、不合理的输入数据集合</p>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>索引，类比目录。提高检索速度（但是不是索引越多越好呢？）。每次查询仅用到一个索引。我们现在常用的引擎是InnoDB,支持事务外键回滚支持行级锁（并发性更强） JavaScript</p>
+<p>严格区分大小写</p>
+<h3 id="2-快速入门-1"><a href="#2-快速入门-1" class="headerlink" title="2.快速入门"></a>2.快速入门</h3><p>外部引入</p>
+<p>abs.js</p>
+<script src = /#T@*#/abs.js #### 2.2基本语法入门 #### 2.3 数据类型 JS不区分小数和整数 只有Number类型 #### 比较运算符 = ==等于 类型不一样，值一样，也会判断为true ===绝对等于（类型一样，值一样）坚持不要使用==比较 须知： NaN === NaN 与所有数包括自身都不相等 浮点数问题： 如1-2/3与1/3. 尽量避免使用浮点数进行运算，存在精度问题 JS的数组中不需要对象类型都相同。数组越界会报Undefined（即未定义） 对象 var 对象是{}数组是[]。属性间使用逗号隔开，取对象的值同Java ### 3.数据类型 #### 3.1字符串 转义字符\，\' \n \t 多行字符串编写，字符串默认为一个类似数组的东西可以直接使用下标取出一部分内容。 #### 3.2数组 数组可以包含任意类型的数据，赋值数组大小就会发生变化，赋值过小元素就会丢失。 ```javascript console.log(arr) VM80:1 (6) [1, 2, 3, 4, 5, 6] undefined arr.length 6 arr[0]=0 0 console.log(arr) VM205:1 (6) [0, 2, 3, 4, 5, 6] undefined arr.length = 10; 10 console.log(arr) VM248:1 (10) [0, 2, 3, 4, 5, 6, empty × 4] undefined ``` 2.indexOf 通过元素获得下标索引 3.slice()截取Array的一部分，返回一个新数组 4.push pop（参见栈） 5.unshift() shift() 效果同上不过针对头部 #### 3.3对象 若干个键值对 ``` var 对象名 = { 属性名：属性值 属性名：属性值 } ``` ### 5.内部对象 #### 5.2json 任何Js支持的类型都可以用JSON表示 格式: 对象都用{} 数组都用[] 所有的键值对 都是用Key:value JSON字符串和JS对象的转化 ```javascript <script> var user = { name:"凡凡", age:3, sex:'男' } var juser = JSON.stringify(user); var obj = JSON.parse(juser); </script>
+
+<pre><code>#### 7.操作BOM对象！！！
+
+BOM:浏览器对象模型
+
+window代表 浏览器窗口
+
+navigator 封装了浏览器的信息
+
+screen 代表全屏幕属性
+
+location: 当前页面的URL信息
+
+document代表当前的页面
+
+getElementByxxx 选择器
+
+
+
+#### 8.操作DOM
+
+DOM：文档对象模型
+
+核心：浏览器网页就是一个Dom树形结构
+
+- 更新：更新DOM节点
+- 遍历DOM节点：得到DOM节点
+- 删除：删除一个Dom节点
+- 添加：添加一个新的节点
+
+要操作一个Dom节点，就必须要先获得这个Dom节点
+
+​```js
+&lt;script&gt;
+    var h1 = document.getElementsByTagName(&quot;h1&quot;);
+    var p1 = document.getElementById(&#39;p1&#39;);
+    var p2 = document.getElementsByClassName(&#39;p2&#39;);
+    var father = document.getElementById(&#39;father&#39;);
+    var childrens = father.children; //获取父节点下的所有子节点
+&lt;/script&gt;
+</code></pre>
+<pre><code>&lt;script&gt;
+    var one = document.getElementById(&quot;one&quot;);
+    one.innerText = &#39;abc&#39;;  
+&lt;/script&gt;
+</code></pre>
+<p><strong>更新节点</strong></p>
+<p>操作文本 id.innerText</p>
+<p>操作JS id.style.css</p>
+<p><strong>删除节点</strong></p>
+<p>先获取父节点，再通过父节点删除自己</p>
+<h4 id="9-操作表单（验证）-1"><a href="#9-操作表单（验证）-1" class="headerlink" title="9.操作表单（验证）"></a>9.操作表单（验证）</h4><h2 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h2><h4 id="多线程-1"><a href="#多线程-1" class="headerlink" title="多线程"></a>多线程</h4><p>线程由CPU调度，不一定立即执行。</p>
+<p>继承Thread 重写run()</p>
+<p>Runable</p>
+<p>Combile</p>
+<h3 id="基础内容-1"><a href="#基础内容-1" class="headerlink" title="基础内容"></a>基础内容</h3><h4 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h4><p>在字符串中插入字符最好还是：</p>
+<pre><code>StringBuilder sb = new StringBuilder(date);
+sb.insert(4, &quot;/&quot;);
+sb.insert(7, &quot;/&quot;);
+</code></pre>
+<p>不会多产生额外的对象。另外对于replace，要生成一个新的对象，直接去用原有对象replace是无效的。</p>
+<pre><code>String newDate = sb.toString().replace(&quot;/0&quot;, &quot;/&quot;);
+</code></pre>
+<p>今天处理了一个日期转星座的问题，用switch 12个case不知道会不会有更好方法，这样有点繁琐。</p>
+<p>TODO 为什么今天一开始用监听器的写法一直没反应呢？找不到监听器这个类。</p>
+<h4 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h4><p>stream().filter 会根据条件过滤掉一些元素。 stream().map会将列表映射为含指定泛型如:List -&gt;List</p>
+<h4 id="装箱与拆箱-1"><a href="#装箱与拆箱-1" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h4><p>装箱调用valueOf() 拆箱调用xxxvalue()；</p>
+<pre><code>public static void main(String[] args) &#123;
+        Integer i1 = 100;
+        Integer i2 = 100;
+        Integer i3 = 200;
+        Integer i4 = 200;
+
+        System.out.println(i1==i2);
+        System.out.println(i3==i4);
+
+    &#125;
+//Integer valueOf方法源码
+public static Integer valueOf(int i) &#123;
+        if(i &gt;= -128 &amp;&amp; i &lt;= IntegerCache.high)
+            return IntegerCache.cache[i + 128];
+        else
+            return new Integer(i);
+    &#125;
+</code></pre>
+<p>i1 &#x3D;&#x3D; i2输出true; i3 &#x3D;&#x3D; i4输出为false</p>
+<p><strong>解析：</strong>因为i1与i2尚未出界，分析源码可知直接从IntegerCache缓存中取出对象的引用。</p>
+<p>i3与i4出界，分别创建不同的对象</p>
+<p>浮点数（Double Float）的实现方法又与上述有所不同</p>
+<p>Integer i &#x3D; new Integer(xxx) 不会自动装箱</p>
+<p>Integer i &#x3D;xxx; 会自动装箱</p>
+<p>具体到牛客网本题：</p>
+<pre><code>        Integer i01=59; //返回的是IntegerCache中的对象的引用
+        int i02=59; //同上
+        Integer i03=Integer.valueOf(59); //装箱 同上
+        Integer i04=new Integer(59); //new  堆中新开辟了内存地址 
+</code></pre>
+<p>JVM中，new 一个对象存储在其堆中，而调用数据是通过栈。对象本身较消耗资源。而基本数据类型的变量不需要经过new创建，直接在栈中存储高效。</p>
+<p>与此同时，基本数据类型并非是面向对象的，如利用集合类时开发者无法将int double等类型放入。为了基本类型也具有对象的特征，就出现了包装类。</p>
+<p>Integer i &#x3D;10; &#x2F;&#x2F;自动装箱 int b&#x3D; i; &#x2F;&#x2F;自动拆箱</p>
+<p>int的自动装箱都是通过<code>Integer.valueOf()</code>方法来实现的，Integer的自动拆箱都是通过<code>integer.intValue</code></p>
+<h4 id="I-O与文件-1"><a href="#I-O与文件-1" class="headerlink" title="I&#x2F;O与文件"></a>I&#x2F;O与文件</h4><p>File类是对文件整体或者文件属性操作的类，例如创建文件、删除文件、查看文件是否存在等功能，不能操作文件内容；文件内容是用IO流操作的。</p>
+<p>Java中对于文本文件和二进制文件，都可以当作二进制文件进行操作。</p>
+<p>default不能修饰变量 abstract一般修饰方法和类</p>
+<p>Java将数据的输入输出抽象为流</p>
+<p>字节 字符</p>
+<p>InputStream&#x2F;OutputStream 字节 二进制</p>
+<p>Reader&#x2F;Writer 字符或字符串 图音视频建议用字节流</p>
+<h4 id="异常-1"><a href="#异常-1" class="headerlink" title="异常"></a>异常</h4><p>根据官方的JVM规范： <strong>如果try语句里有return，返回的是try语句块中变量值。</strong> 详细执行过程如下：</p>
+<ol>
+<li>如果有返回值，就把返回值保存到局部变量中；</li>
+<li>执行jsr指令跳到finally语句里执行；</li>
+<li>执行完finally语句后，返回之前保存在局部变量表里的值。</li>
+</ol>
+<p><strong>如果try，finally语句里均有return，忽略try的return，而使用finally的return.</strong></p>
+<pre><code>public class Test &#123; 
+    public static void main(String[] args) &#123; 
+        System.out.println(&quot;return value of getValue(): &quot; +
+        getValue()); 
+    &#125; 
+     public static int getValue() &#123; 
+         try &#123; 
+             return 0; 
+         &#125; finally &#123; 
+             return 1; 
+         &#125; 
+     &#125; 
+ &#125;
+</code></pre>
+<pre><code>public class NameList
+&#123;
+    private List names = new ArrayList();
+    public synchronized void add(String name)
+    &#123;
+        names.add(name);
+    &#125;
+    public synchronized void printAll()     &#123;
+        for (int i = 0; i &lt; names.size(); i++)
+        &#123;
+            System.out.print(names.get(i) + ””);
+        &#125;
+    &#125;
+
+    public static void main(String[]args)
+    &#123;
+        final NameList sl = new NameList();
+        for (int i = 0; i &lt; 2; i++)
+        &#123;
+            new Thread()
+            &#123;
+                public void run()
+                &#123;
+                    sl.add(“A”);
+                    sl.add(“B”);
+                    sl.add(“C”);
+                    sl.printAll();
+                &#125;
+            &#125; .start();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>HashMap解决哈希冲突：链地址法</p>
+<h4 id="关键字-1"><a href="#关键字-1" class="headerlink" title="关键字"></a>关键字</h4><p>public</p>
+<p>private</p>
+<p>protected</p>
+<p>final{</p>
+<ul>
+<li>修饰类 –不会被继承。 final中方法也是final方法</li>
+<li>修饰方法 –子类无法覆盖该方法 注意：类的private方法会被隐式地指定为final方法</li>
+<li>修饰变量 –基本数据类型无法再改变，但是修饰的引用类型不能再指向别的对象可以改变其中的内容</li>
+</ul>
+<p>}</p>
+<p>大体可以认为不可修改</p>
+<p>abstract：而abstract要求去实现重写，因此与上者不可共存。</p>
+<p>static:该关键字修饰的方法属于类而非属于实例。只需要类名.方法名就可调用了。</p>
+<h4 id="垃圾回收-1"><a href="#垃圾回收-1" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><p>栈:主要用来存放局部变量, 传递参数, 存放函数的返回地址。.esp 始终指向栈顶, 栈中的数据越多, esp的值越小</p>
+<p>堆:用于存放动态分配的对象, 当你使用 malloc和new 等进行分配时,所得到的空间就在堆中。动态分配得到的内存区域附带有分配信息, 所以你　 能够 free和delete它们。</p>
+<p>数据区:</p>
+<p>无效等价类是指对于软件规格说明而言，没有意义的、不合理的输入数据集合</p>
+<h2 id="MySQL-1"><a href="#MySQL-1" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h3><p>索引，类比目录。提高检索速度（但是不是索引越多越好呢？）。每次查询仅用到一个索引。我们现在常用的引擎是InnoDB,支持事务外键回滚支持行级锁（并发性更强）</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/%E5%86%99%E4%BD%9C/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>写作技巧</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>基础算法</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

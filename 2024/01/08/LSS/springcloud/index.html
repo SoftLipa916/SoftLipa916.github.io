@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>Spring Cloud-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,Spring,Spring Cloud,">
+<meta name="description" content="Spring Cloud学习过程">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/Spring">Spring</a></li>
+            
+            <li><a href="/tags/Spring Cloud">Spring Cloud</a></li>
+            
+            
+        </ul>
+        
+        <h1>Spring Cloud</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/java/" target="_blank" >java</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h2 id="SpringCloud-H版"><a href="#SpringCloud-H版" class="headerlink" title="SpringCloud-H版"></a>SpringCloud-H版</h2><p>Springcloud的版本和Springboot要严格依照官方来。</p>
+<p>服务注册中心 服务调用 服务降级 服务网关 服务配置</p>
+<h3 id="初始配置"><a href="#初始配置" class="headerlink" title="初始配置"></a>初始配置</h3><p>手动开启注解支持， Java编译版本，File Types过滤（过滤掉没啥用但还是显示了的玩意儿）</p>
+<p>父工程pom版本号管理</p>
+<p>与</p>
+<p>前者放在父项目中，锁定版本+子模块不用写groupId和version,但只规范不引入。</p>
+<p>后者是真的引入。</p>
+<p>注意@Mapper注解 @Resource</p>
+<p>序列化的问题</p>
+<p>基本的依赖</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--监控--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--mysql-connector-java--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--jdbc--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!--热部署--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h3 id="消费者模块"><a href="#消费者模块" class="headerlink" title="消费者模块"></a>消费者模块</h3><p><strong>RestTemplate</strong> ：由 Spring 提供的一个 HTTP 请求工具,提供了常见的REST请求方案的模版，例如 GET 请求、POST 请求、PUT 请求、DELETE 请求以及一些通用的请求执行方法</p>
+<p>进行配置</p>
+<pre><code>@Configuration
+public class ApplicationContextConfig &#123;
+    @Bean
+    public RestTemplate getRestTemplate() &#123;
+        return new RestTemplate();
+    &#125;
+&#125;
+</code></pre>
+<p>Controller层是与前端的联系，是请求的转发。在这里是客户端，写个Controller不就完事儿了 何必写业务类访问数据库等</p>
+<pre><code>@RestController
+@Slf4j
+@RequestMapping(&quot;/consumer&quot;)
+public class OrderController &#123;
+    public static final String PAYMENT_URL=&quot;http://localhost:8001&quot;;
+    @Resource
+    private RestTemplate restTemplate;
+    @GetMapping(&quot;/payment/create&quot;)
+    public CommonResult&lt;Payment&gt; create(Payment payment) &#123;
+        return restTemplate.postForObject(PAYMENT_URL +&quot;/payment/create&quot;, payment, CommonResult.class);
+    &#125;
+
+    @GetMapping(&quot;/payment/get/&#123;id&#125;&quot;)
+    public CommonResult&lt;Payment&gt; getPayment(@PathVariable(&quot;id&quot;)Long id) &#123;
+        return restTemplate.getForObject(PAYMENT_URL+ &quot;/payment/get/&quot; + id, CommonResult.class);
+    &#125;
+
+&#125;
+</code></pre>
+<p>浏览器对post请求的支持不是很好，因此引出postman 文档接口测试 post请求</p>
+<p><img src="/" alt="image-20210708102530746"></p>
+<ul>
+<li>热部 署devtools： <em>未配置成功</em> 尽管上面显示了</li>
+</ul>
+<p>80端口也是有讲究的，是访问服务的默认端口，所以连接中直接localhost就可以了。</p>
+<p>rundashboard已经改叫services了</p>
+<p>测试：</p>
+<h3 id="建立通用接口"><a href="#建立通用接口" class="headerlink" title="建立通用接口"></a>建立通用接口</h3><p>建立新模块 cloud-api-common</p>
+<p>提取了实体类，引入了hutool，可以方便的使用许多工具类</p>
+<p>注入依赖</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;!--热部署--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+        &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+        &lt;version&gt;5.1.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>com.fan.entities包</p>
+<p>CommonResult （与前端交互的json串）</p>
+<pre><code>@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommonResult&lt;T&gt; &#123;
+    private Integer code;
+    private String message;
+    private T data;
+    public CommonResult(Integer code, String message) &#123;
+        this(code, message, null);
+    &#125;
+&#125;
+</code></pre>
+<p>Payment（实际要操作的POJO)</p>
+<pre><code>@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Payment implements Serializable &#123;
+    private Long id;
+    private String serial;
+&#125;
+</code></pre>
+<p>建立完成，使用maven的clean 然后Install发布</p>
+<p>注意此时的pom文件，</p>
+<pre><code>&lt;parent&gt;
+    &lt;artifactId&gt;com.fan.springcloud&lt;/artifactId&gt;
+    &lt;groupId&gt;org.example&lt;/groupId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre>
+<p>在打包完成后注入到其他模块的pom中时要注意一致的问题，不能理解为这是项目名或者包名</p>
+<pre><code>&lt;!--        通用包 实体类--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.example&lt;/groupId&gt;
+            &lt;artifactId&gt;cloud-api-commons&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+            &lt;scope&gt;compile&lt;/scope&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<hr>
+<h3 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h3><p>作用类似于zookeeper，不过有两个组件，一个是server 一个是client</p>
+<h4 id="注册中心"><a href="#注册中心" class="headerlink" title="注册中心"></a>注册中心</h4><p>模块名：cloud-eureka-server7001</p>
+<p>注册中心依赖注入</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>在主启动类中增加一个注解</p>
+<pre><code>@SpringBootApplication
+@EnableEurekaServer  //表示这是一个服务注册中心
+public class EurekaMain7001 &#123;
+    public static void main(String[] args) &#123;
+        SpringApplication.run(EurekaMain7001.class, args);
+    &#125;
+&#125;
+</code></pre>
+<p>yaml文件的配置</p>
+<pre><code>server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: localhost #eureka服务端的实例名称
+  client:
+    #false表示不向注册中心注册
+    register-with-eureka: false
+    #flase表示自己就是注册中心，功能是维护服务实例而不需要去检索服务
+    fetch-registry: false
+    service-url:
+      #设置与eureka server交互的地址查询服务和注册服务 都需要依赖这个地址
+      defaultZone: http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/
+</code></pre>
+<h4 id="服务注入"><a href="#服务注入" class="headerlink" title="服务注入"></a>服务注入</h4><p>即之前已写好的cloud-provider-payment8001和cloud-consumer-order80</p>
+<p>client依赖注入</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>改yaml</p>
+<pre><code>spring:
+  application:
+    name: cloud-order-service
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+</code></pre>
+<p>在要注册进入的服务模块，主启动类上增添一注解</p>
+<pre><code>@EnableEurekaClient
+</code></pre>
+<p>重启服务后在localhost:7001端口可以看到</p>
+<p><img src="/" alt="image-20210708144133138"></p>
+<p>服务注册：将服务信息注册进注册中心</p>
+<p>服务发现：从注册中心中获取服务信息</p>
+<p><strong>实质</strong>： 存key服务名，取value调用地址</p>
+<p>微服务RPC远程服务调用 最核心的是：高可用</p>
+<h4 id="Eureka集群"><a href="#Eureka集群" class="headerlink" title="Eureka集群"></a>Eureka集群</h4><p>为了防止单节点的故障导致整个系统的不可用，因此需要搭建集群来实现容错故障和负载均衡。</p>
+<p><strong>原理</strong>：互相注册，互相守望。</p>
+<h5 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h5><p>修改etc下的host文件 （\Windows\System32\drivers\etc</p>
+<p>修改yml :以7001端口为例</p>
+<pre><code>server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com #eureka服务端的实例名称
+  client:
+    #false表示不向注册中心注册
+    register-with-eureka: false
+    #flase表示自己就是注册中心，功能是维护服务实例而不需要去检索服务
+    fetch-registry: false
+    service-url:
+      #设置与eureka server交互的地址查询服务和注册服务 都需要依赖这个地址
+      defaultZone: http://eureka7002.com:7002/eureka/
+</code></pre>
+<p>修改hosts文件时注意，利用Sublime Text修改后从该工具上看生效了但是打开记事本后发现没有生效，建议将etc整个文件夹复制粘贴至桌面，从桌面上用记事本修改Hosts文件再将整个文件夹粘贴回原drivers文件夹</p>
+<h5 id="服务注册入集群中"><a href="#服务注册入集群中" class="headerlink" title="服务注册入集群中"></a>服务注册入集群中</h5><p>仅修改yml文件中的defaultZone(注意此处容易出现误写)即可</p>
+<pre><code>defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+</code></pre>
+<p><img src="/" alt="image-20210708160723399"></p>
+<h5 id="微服务集群配置"><a href="#微服务集群配置" class="headerlink" title="微服务集群配置"></a>微服务集群配置</h5><p>以支付服务为例</p>
+<p>yml文件中配置 保持原有spring服务名即可</p>
+<p>使用@Value 测试</p>
+<pre><code>@Value(&quot;$&#123;server.port&#125;&quot;) //获取配置文件中的内容
+</code></pre>
+<p>获取当前运行服务的端口号</p>
+<p>重新启动所有服务，在Eureka注册中心中可以看到服务配置完成</p>
+<p><img src="/" alt="image-20210708170412957"></p>
+<p>由于在原服务消费者的Controller中已经设置了</p>
+<pre><code>public static final String PAYMENT_URL=&quot;http://localhost:8001&quot;;
+</code></pre>
+<p>因此尽管设置了微服务集群，但是依然只会调用这一个端口</p>
+<p>把原有localhost修改为Eureka服务的zone，不过如此直接给微服务地址但是并不能识别在<strong>该地址下的机器</strong>，因此会造成错误。所以需要开启负载均衡功能。</p>
+<pre><code>@Configuration
+public class ApplicationContextConfig &#123;
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate() &#123;
+        return new RestTemplate();
+    &#125;
+&#125;
+</code></pre>
+<p>使得restTemplate可以识别微服务地址下的机器。如下</p>
+<p><img src="/" alt="image-20210708171803786"></p>
+<p><img src="/" alt="image-20210708171825525"></p>
+<p>此后，微服务对外暴露的不再是地址和端口，而是微服务的地址。</p>
+<h4 id="配置完善微服务信息"><a href="#配置完善微服务信息" class="headerlink" title="配置完善微服务信息"></a>配置完善微服务信息</h4><p>actuator</p>
+<p>不能够显示对应IP，不使其显示主机名称</p>
+<p>修改服务名</p>
+<pre><code>instance:
+    instance-id: payment8001  #命名服务名
+    prefer-ip-address: true   #显示ip
+</code></pre>
+<p><img src="/" alt="image-20210709091901519"></p>
+<h5 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h5><p>获取微服务的一些信息 port host uri</p>
+<pre><code>@Resource
+private DiscoveryClient discoveryClient;  //Spring下的包
+
+@GetMapping(&quot;/discovery&quot;)
+    public Object discovery() &#123;
+        List&lt;String&gt; services = discoveryClient.getServices();
+        for (String element : services) &#123;
+            log.info(&quot;====element:&quot; + element);
+        &#125;
+        List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(&quot;CLOUD-PAYMENT-SERVICE&quot;);
+        for (ServiceInstance instance:instances) &#123;
+            log.info(instance.getServiceId() + &quot;\t&quot; + instance.getHost() + &quot;\t&quot; + instance.getPort()
+                    +&quot;\t&quot;+instance.getUri());
+        &#125;
+        return this.discoveryClient;
+
+    &#125;
+</code></pre>
+<p><img src="/" alt="image-20210709110046985"></p>
+<h4 id="自我保护"><a href="#自我保护" class="headerlink" title="自我保护"></a>自我保护</h4><p>在保护模式下不会删除任何微服务。</p>
+<p>是为了防止这样一种情况：EurekaClient正常运行，但是与EurekaServer网络不通，EurekaServer不会立刻将EurekaClient服务除去。默认情况下，EurekaServer在一定时间内没有接收到某个微服务实例的心跳，Eureka会注销该实例（默认是90秒）但是当网络分区故障时，为了防止出现前面提到的情况使EurekaServer节点短时间丢失过多客户端会启动该模式。</p>
+<p>尽可能的保留健康的微服务（保留所有无论健康与否</p>
+<p><strong>关闭</strong></p>
+<p>Eureka服务配置</p>
+<pre><code>eureka:
+  server:
+    enable-self-preservation: false     #关闭自我保护机制，保证不可用服务被及时剔除
+    eviction-interval-timer-in-ms: 2000
+</code></pre>
+<p>客户端配置</p>
+<pre><code>lease-renewal-interval-in-seconds: 1 #Eureka客户端向服务端发送心跳的时间间隔，单位为秒
+lease-expiration-duration-in-seconds: 2 #Eureka服务端收到最后一次心跳后等待时间上限，单位为秒  
+</code></pre>
+<hr>
+<h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3><p>是临时节点</p>
+<hr>
+<h3 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h3><p>下载<a href="https://gitee.com/link?target=https://releases.hashicorp.com/consul/">https://releases.hashicorp.com/consul/</a></p>
+<p>下载解压后发现只有一个.exe文件，点击</p>
+<p>在命令行中使用 consul –version可以测试一下 查看一下版本，使用consul agent -dev可以启动</p>
+<p>然后登陆localhost:8500</p>
+<p><img src="/" alt="image-20210709115859777"></p>
+<p>依赖引入：</p>
+<pre><code>&lt;!--        consul配置--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>服务提供者 yaml配置</p>
+<pre><code>spring:
+  application:
+    name: consul-provider-payment
+  #consul注册中心地址
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: $&#123;spring.application.name&#125;
+</code></pre>
+<p>其余与之前eureka基本相通</p>
+<p><img src="/" alt="image-20210709172957200"></p>
+<p>三者的对比：CAP原则</p>
+<hr>
+<h3 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h3><p>从gitee上下载：<a target="_blank" rel="noopener" href="https://gitee.com/java_architect/nacos">https://gitee.com/java_architect/nacos</a></p>
+<p>单机模式：</p>
+<p>在解压目录下的distribution&#x2F;bin下执行命令 cmd startup.cmd -m standalone 闪退</p>
+<p>注：windows下的启动脚本有一点问题，直接执行会出现问题，所以需要修改启动脚本</p>
+<p>打开startup.cmd按照下图修改（将nacos-server.jar 修改为nacos-address.jar）</p>
+<h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>what?</p>
+<p>LB(负载均衡)将用户的请求平摊的分配到多个服务上，从而达到服务的HA（高可用）</p>
+<p>常见的有Nginx,LVS</p>
+<p>Ribbon是本地负载均衡客户端</p>
+<p>客户端侧</p>
+<p>依赖包含在Eureka中</p>
+<p>工作步骤：</p>
+<p>第一步：先选择EurekaServer,优先选择同一个区域内 负载较少 的 Server</p>
+<p>第二步 根据用户指定策略（比如轮训、随机和根据响应时间加权）， 从server取到的服务注册列表中选择一个地址。</p>
+<h4 id="负载均衡规则"><a href="#负载均衡规则" class="headerlink" title="负载均衡规则"></a>负载均衡规则</h4><p>轮训、随机、加权</p>
+<p>主启动类中的@SpringbootApplication注解下有一@ComponentScan会扫描与其同包和这些包的子包的注解。</p>
+<p>由此，自定义的用来替换Ribbon默认负载均衡策略的配置类不能放在和主启动类的同包,不然会被所有的Ribbon客户端共享，没有办法特殊定制。 IRule：根据特定算法</p>
+<pre><code>@Configuration
+public class MySelfRule &#123;
+    @Bean
+    public IRule myRule() &#123;
+        //随机
+        return new RandomRule();
+    &#125;
+&#125;
+</code></pre>
+<p>主启动类添加新的注解 指明其用的服务和规则配置</p>
+<pre><code>@RibbonClient(name=&quot;CLOUD-PAYMENT-SERVICE&quot;,configuration = MySelfRule.class)
+</code></pre>
+<p>轮询的逻辑：第x次请求%服务器集群总数量&#x3D;实际调用服务器的下标、</p>
+<p>手写轮训算法</p>
+<hr>
+<h3 id="RestTemplate"><a href="#RestTemplate" class="headerlink" title="RestTemplate"></a>RestTemplate</h3><p>GetForObject:</p>
+<p>GetForEntity:</p>
+<hr>
+<h3 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h3><h4 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h4><p><strong>服务雪崩：</strong></p>
+<p>微服务A和B调用C,C又调用…..这样称为扇出效应，在该效应链路上如果出现某一微服务失效，则对微服务A的调用会占用越来越多的资源，进而引起系统崩溃，即“雪崩效应”。 –级联故障</p>
+<p><strong>what</strong></p>
+<p>Hystrix是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多依赖不可避免的会调用失败，比如超时、异常等，Hystrix能够保证在一个依赖出问题的情况下，不会导致整体服务失败，避免级联故障，以提高分布式系统的弹性。</p>
+<p>“断路器”本身是一种开关装置，当某个服务单元发生故障后，通过断路器的故障监控(类似熔断保险丝),向调用方返回一个符合预期的、<strong>可处理</strong>的备选响应（Fallback)，而不是长时间的等待或者抛出调用方无法处理的异常。</p>
+<p>这就保证了服务调用方的线程不会被长时间、不必要地占用，从而避免了故障在分布式系统中的蔓延，乃至后来雪崩。</p>
+<h4 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h4><p>服务降级：返回提示 –会出现服务降级的几种情况：</p>
+<ol>
+<li>程序运行异常</li>
+<li>超时</li>
+<li>服务熔断触发</li>
+<li>线程池&#x2F;信号量打满也会导致服务降级</li>
+</ol>
+<p>服务限流：一秒n个，有序进行</p>
+<p>服务熔断：拒绝访问，调用访问降级</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>基本的搭建</p>
+<p>依赖引入</p>
+<pre><code>&lt;!--        hystrix--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>其余是些基本的业务逻辑，@RestController+return字符串</p>
+<p>Jmeter 高并发模拟</p>
+<h4 id="问题和解决"><a href="#问题和解决" class="headerlink" title="问题和解决"></a>问题和解决</h4><p>一般服务降级都是做在客户端</p>
+<p>超时，服务器变慢 –服务降级</p>
+<p>出错（宕机或程序运行出错 –服务降级</p>
+<p>服务端没问题，客户端出错或不满足自我要求（如等待时间超过要求时间） –客户端自己处理降级</p>
+<h4 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h4><p>8001先从自身出发：设置自身调用超时时间的峰值，峰值内可以正常运行。</p>
+<p>超时</p>
+<p>超过需有兜底方法处理，做服务降级fallback</p>
+<pre><code>/*
+调用注解的服务方法失败并抛出错误信息后会自动调用
+@HystrixCommand标注好的method类中的指定方法 就是方法名
+ */
+@HystrixCommand(fallbackMethod = &quot;paymentInfo_TimeoutHandler&quot;)
+//设置线程超时时间超过了就调用处理方法
+@HystrixCommand(fallbackMethod = &quot;paymentInfo_TimeoutHandler&quot;, commandProperties =&#123;@HystrixProperty(name=&quot;execution.isolation.thread.timeoutInMilliseconds&quot;, value = &quot;3000&quot;)&#125;)
+    
+</code></pre>
+<p>2.在主启动类中添加注解@EnableCircuitBreaker</p>
+<p><strong>异常</strong></p>
+<pre><code>int age=10/0; 
+</code></pre>
+<p>当前服务不可用，做服务降级同上。</p>
+<h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p>yaml修改配置</p>
+<pre><code>#开启
+feign:
+  hystrix:
+    enabled: true
+</code></pre>
+<p>主启动类注册：</p>
+<pre><code>@EnableHystrix
+</code></pre>
+<p>调试消费提供者端正常，在客户端设置错误，依然按照指定步骤返回错误信息。</p>
+<p>综上，尽管上述操作满足了在加载超时时返回给用户指定错误信息，但是每个微服务中的每个方法都要设置一个“兜底”的，太冗余了。而且和正常的业务逻辑混杂在了一起。</p>
+<p>可以除了特殊业务外指定一个统一的方法</p>
+<pre><code>@DefaultProperties(defaultFallback = &quot;payment_Global_FallbackMethod&quot;)
+/...../
+    //全局超时fallback方法
+    public String payment_Global_FallbackMethod() &#123;
+        return &quot;全局处理方法&quot;;
+    &#125;
+</code></pre>
+<p>优先级低于直接在方法上指定的HystrixCommand</p>
+<h4 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h4><p>达到最大服务访问后，直接拒绝访问，然后调用服务降级的方法并返回友好提示。但是后面要<strong>恢复调用链路</strong>。</p>
+<pre><code>@HystrixCommand(fallbackMethod = &quot;paymentCircuitBreaker_fallback&quot;, commandProperties = &#123;
+        @HystrixProperty(name=&quot;circuitBreaker.enabled&quot;,value = &quot;true&quot;),  //开启断路器
+        @HystrixProperty(name=&quot;circuitBreaker.requestVolumeThreshold&quot;, value = &quot;10&quot;),//请求容量
+        @HystrixProperty(name=&quot;circuitBreaker.sleepWindowInMilliseconds&quot;, value = &quot;10000&quot;),  
+        @HystrixProperty(name=&quot;circuitBreaker.errorThresholdPercentage&quot;, value = &quot;60&quot;)//错误百分比设置
+&#125;)
+</code></pre>
+<p>启动服务，经测试，在累计一定错误数量后，由于错误率限制，输入正确的id依旧是返回错误提示。</p>
+<p>熔断类型：</p>
+<ul>
+<li>熔断打开：请求不再进行调用当前服务，内部设置时钟一般设置为MTTR，当打开时长达到所设时钟则进入半熔断状态</li>
+<li>熔断关闭：熔断关闭不会对服务进行熔断</li>
+<li>熔断半开：部分请求根据规则调用当前服务，如果请求成功且符合规则则认为此时服务器恢复正常，关闭熔断。</li>
+</ul>
+<p><img src="/" alt="image-20210715105613708"></p>
+<h4 id="Hystrix工作流程"><a href="#Hystrix工作流程" class="headerlink" title="Hystrix工作流程"></a>Hystrix工作流程</h4><hr>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p>服务网关：微服务的入口</p>
+<p><img src="/" alt="image-20210715115240519"></p>
+<p>Gateway基于<strong>异步非阻塞</strong>模型开发，<strong>特性</strong>如下：</p>
+<p>动态路由：能够匹配任何请求属性</p>
+<p>可以对路由指定Predicate和Filter</p>
+<p>继承Hystrix的CircuitBreaker功能</p>
+<p>继承SpringCloud服务发现功能</p>
+<p>易于编写的Predicate和Filter 请求限流 支持路径重写</p>
+<h4 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h4><p>路由：构建网关的基本模块，由ID，目标URI，一系列断言和过滤器组成。</p>
+<p>断言：开发人员可以匹配HTTP请求中的所有内容（如请求头或请求参数）如果请求与断言相匹配则进行路由</p>
+<p>过滤：指Spring框架中GatewayFilter实例，使用过滤器，可在请求被路由前或之后对请求进行修改。</p>
+<p><strong>核心逻辑</strong>：路由转发+执行过滤链</p>
+<h4 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h4><p>与此同时不需要web和actuator依赖，毕竟做的是网关</p>
+<pre><code>&lt;!--新增gateway--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>yaml （其余部分同普通的服务）</p>
+<pre><code> cloud:
+    gateway:
+      routes:
+        - id: payment_routh #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/payment/get/**   #断言,路径相匹配的进行路由
+
+        - id: payment_routh2
+          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/payment/lb/**   #断言,路径相匹配的进行路由
+</code></pre>
+<p>只需要添加一个主启动类，启动后可以发现，将原8001端口下的服务请求链接，修改为9527其余保持不变依然可以请求成功。</p>
+<p>另外一种方式：也可以在类中注入Bean，但是很繁琐。</p>
+<p>尝试自己写一个 - id: test uri:<a href="https://gitee.com/link?target=http://www.bilibili.com(http://%E5%BF%85%E4%B8%8D%E5%8F%AF%E5%B0%91)">http://www.bilibili.com(http:&#x2F;&#x2F;必不可少)</a> 在-Path后跟一个合理的参数即可跳转到站点下的网址</p>
+<p>配置动态路由 集群环境下</p>
+<p><img src="/" alt="image-20210716112648127"></p>
+<p>利用网关实现负载均衡</p>
+<p>yaml配置</p>
+<pre><code>discovery:
+        locator:
+          enabled: true  #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+</code></pre>
+<p>原有的方式，一个功能可能是多个微服务提供的，比如payment8001和payment8002，可以让对应的uri从localhost:xxx更改为服务名，</p>
+<pre><code>uri: lb://cloud-payment-service
+</code></pre>
+<p>lb表示uri使用的协议，表示启用Gateway的负载均衡功能（LoadBalncer的缩写）根据测试结果——返回端口号8001和8002交替出现，推测此处负载均衡默认应该是轮询</p>
+<hr>
+<h3 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h3><h4 id="1-找不到主类"><a href="#1-找不到主类" class="headerlink" title="1.找不到主类"></a>1.找不到主类</h4><p>启动消费者的主类时显示找不到主类，结果在配置中发现启动时去了服务提供者模块寻找该主类，因此当然找不到。</p>
+<p>至于为什么会去另一个模块中寻找该类，原因暂不明。不知是否本人操作不当，另：第一次启动时未显示主类找不到重启IDEA后才如此。</p>
+<h4 id="2-POM文件"><a href="#2-POM文件" class="headerlink" title="2.POM文件"></a>2.POM文件</h4><p>在服务消费者模块的pom.xml中引入了jdbc、mybatis、mysql-connector相关，启动时显示DataSource错误。</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="关于POST与GET的一些理解："><a href="#关于POST与GET的一些理解：" class="headerlink" title="关于POST与GET的一些理解："></a>关于POST与GET的一些理解：</h4><p>获取资源与创建资源</p>
+<p>本质上都是TCP的链接不过由于http的规范和浏览器的限制，二者在应用过程中体现出一些不同。GET获取参数是从url中，POST是从请求的RequestBody中</p>
+<p>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）； 产生一个TCP数据包</p>
+<p>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。 产生两个TCP数据包</p>
+<p>进一步分析，尽管看似POST方式多了一个包，但是网络环境良好时这点差距可以忽略，网络环境不好时两个数据包对于数据的完整性验证上有优势。 （不过既然是TCP下的，这和TCP的稳定是否冲突呢？</p>
+<h4 id="日志保存问题"><a href="#日志保存问题" class="headerlink" title="日志保存问题"></a>日志保存问题</h4><h4 id="一些注解"><a href="#一些注解" class="headerlink" title="@一些注解"></a>@一些注解</h4><pre><code>再理解@ResponseBody 与 @RequestBody
+   用于读取 Request 请求（可能是 POST,PUT,DELETE,GET 请求）的 body 部分并且**Content-Type 为 application/json** 格式的数据，接收到数据之后会自动将数据绑定到 Java 对象上去。系统会使用`HttpMessageConverter`或者自定义的`HttpMessageConverter`将请求的 body 中的 json 字符串转换为 java 对象。
+注：一个请求，只有一个RequestBody；一个请求，可以有多个RequestParam。
+
+
+`@PathVariable`用于获取路径参数，`@RequestParam`用于获取查询参数。
+</code></pre>
+<p>hutool工具包</p>
+<p>JUC编程</p>
+<p>主要是先理解自旋锁的问题，回来手写Ribbon的负载均衡算法</p>
+<h4 id="技术选型的问题"><a href="#技术选型的问题" class="headerlink" title="技术选型的问题"></a>技术选型的问题</h4>
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/springboot/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Springboot</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/tools/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>工具</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

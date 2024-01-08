@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>Springboot-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,Spring,Springboot,">
+<meta name="description" content="Springboot学习过程">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/Spring">Spring</a></li>
+            
+            <li><a href="/tags/Springboot">Springboot</a></li>
+            
+            
+        </ul>
+        
+        <h1>Springboot</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/java/" target="_blank" >java</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><p>只探究API是固步自封，要有探究源码的习惯。——写在前面</p>
+<h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><h3 id="回顾Spring"><a href="#回顾Spring" class="headerlink" title="回顾Spring"></a>回顾Spring</h3><p><strong>Spring是如何简化Java开发的？</strong></p>
+<p>4个 关键策略：</p>
+<ol>
+<li>基于POJO的轻量级和最小侵入性编程，所有东西都是bean。</li>
+<li>通过IOC，依赖注入（DI）和面向接口实现松耦合</li>
+<li>基于切面（AOP）和惯例（？？？ 进行声明式编程</li>
+<li>通过切面和模板减少样式代码，如RedisTemplate,xxTemplate</li>
+</ol>
+<p><strong>Springboot:约定大于配置</strong></p>
+<ul>
+<li><p>开箱即用,提供各种默认配置简化项目配置</p>
+</li>
+<li><p>内嵌式容器简化web项目</p>
+</li>
+<li><p>没有冗余代码生成和XML配置的要求</p>
+<p>注：从Spring到Springboot的巨大飞跃就是省了许多.xml的配置，那么这些.xml除了化为yaml中的配置以外还变成了什么呢？感觉大部分是移交给了Springboot的自动装配+yaml</p>
+</li>
+</ul>
+<p>打包时跳过测试用例：</p>
+<pre><code>&lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+                &lt;configuration&gt;
+&lt;!--                    跳过项目测试用例--&gt;
+                    &lt;skipTests&gt;true&lt;/skipTests&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+</code></pre>
+<h3 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h3><h4 id="父依赖："><a href="#父依赖：" class="headerlink" title="父依赖："></a>父依赖：</h4><p>依赖一个父项目，主要是管理项目的资源过滤以及插件。</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.5.1&lt;/version&gt;
+    &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+&lt;/parent&gt;
+</code></pre>
+<p>进入以后依然有一个父依赖：</p>
+<pre><code>&lt;parent&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+  &lt;version&gt;2.5.1&lt;/version&gt;
+&lt;/parent&gt;
+</code></pre>
+<p>其管理Springboot应用中所有依赖版本，版本控制中心</p>
+<p>以后导入依赖默认是不需写版本的，如果导入的包没有在依赖中管理则需要手动配置版本。</p>
+<h4 id="启动器-spring-boot-starter"><a href="#启动器-spring-boot-starter" class="headerlink" title="启动器 spring-boot-starter"></a>启动器 spring-boot-starter</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>spring-boot-strater-xxx:spring-boot的场景启动器</p>
+<p>spring-boot-starter-web:导入了web模块正常运行所依赖的组件</p>
+<p>Springboot抽取出所有功能场景，做成一个个starter，只需在项目中引入这些starter即可，所有相关依赖都会导入。</p>
+<p>什么功能，导入什么场景启动器，也可以自己定义启动器。</p>
+<h4 id="3-主启动类"><a href="#3-主启动类" class="headerlink" title="3.主启动类"></a>3.主启动类</h4><h5 id="3-1默认主启动类："><a href="#3-1默认主启动类：" class="headerlink" title="3.1默认主启动类："></a>3.1默认主启动类：</h5><pre><code>@SpringBootApplication  //标注一个主程序类  说明这是一个springboot应用
+public class Springboot03WebApplication &#123;
+
+    public static void main(String[] args) &#123;
+        SpringApplication.run(Springboot03WebApplication.class, args);
+    &#125;
+
+&#125;
+</code></pre>
+<p>该类中各个注解的作用：</p>
+<h5 id="3-2-SpringBootApplication"><a href="#3-2-SpringBootApplication" class="headerlink" title="3.2@SpringBootApplication"></a><strong>3.2@SpringBootApplication</strong></h5><p>作用：标注在某个类上说明该类是SpringBoot的主配置类，SpringBoot就应该运行该类的main方法来启动SpringBoot应用</p>
+<p>进入该注解，其中也用到了多个注解，主要是：</p>
+<pre><code>@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(
+    excludeFilters = &#123;@Filter(
+    type = FilterType.CUSTOM,
+    classes = &#123;TypeExcludeFilter.class&#125;
+), @Filter(
+    type = FilterType.CUSTOM,
+    classes = &#123;AutoConfigurationExcludeFilter.class&#125;
+)&#125;
+</code></pre>
+<p><strong>@ComponentScan</strong></p>
+<p> 该注解在Spring中很重要，对应XML配置中的元素</p>
+<p> 作用：自动扫描并加载符合条件的组件或bean，将该bean定义加载到容器中。</p>
+<p> <strong>@SpringBootConfiguration</strong></p>
+<p> 作用：SpringBoot的配置类，标注该类上表明这是一个SpringBoot的配置类</p>
+<p> 进入该注解查看：</p>
+<p> 在原版本中是**@Configuration<strong>和</strong>@Component**两个注解，如今点进去后仅有@Configuration</p>
+<p> 而在Configuration.class中应用了**@Component**注解</p>
+<p>启动类本身就是一个组件，负责启动应用，也是个配置类（对应Spring中的xml配置文件）</p>
+<p><strong>@EnableAutoConfiguration</strong></p>
+<p> 开启自动配置功能</p>
+<p> 之前SSM中需要自己配置的东西，现在SpringBoot可以自动帮助配置。</p>
+<p> @EnableAutoConfiguration告诉SpringBoot开启自动配置功能</p>
+<p><strong>@AutoConfigurationPackage: 自动配置包</strong></p>
+<pre><code>@Import(&#123;Registrar.class&#125;)
+public @interface AutoConfigurationPackage &#123;
+&#125;
+</code></pre>
+<ul>
+<li>@import： Spring底层注解@import,给容器中导入一个组件</li>
+<li>Registrar.class作用：自动配置包注册，将主启动类的所在包及包下面所有子包中的组件扫描到Spring容器</li>
+</ul>
+<p><strong>@import({AutoConfigurationImportSelector.class})：给容器导入组件</strong></p>
+<p>AutoConfigurationImportSelector:自动配置导入<strong>选择器</strong>，</p>
+<p>….源码探究后续补充</p>
+<p>最终发现一个多次出现的spring.properties文件</p>
+<h5 id="3-3spring-factories"><a href="#3-3spring-factories" class="headerlink" title="3.3spring.factories"></a>3.3spring.factories</h5><p>进入后看到了许多自动配置文件</p>
+<p><img src="/" alt="img"></p>
+<p>随意点进去一个比如WebMvcAutoConfiguration</p>
+<p>其中有许多的JavaConfig配置类，且都注入了一些Bean</p>
+<p>所以，自动配置真正实现是从classpath中搜寻所有的META-INF&#x2F;spring.factories配置文件，并将其中对应的<code>org.springframework.boot.autoconfigure</code>. 包下的配置项，通过<strong>反射</strong>实例化为对应标注了@Configuration的JavaConfig形式的IoC容器配置类，然后汇总成为一个实例并加载IoC容器中。</p>
+<h4 id="4-结论"><a href="#4-结论" class="headerlink" title="4.结论"></a>4.结论</h4><ol>
+<li>Springboot在启动的时候从类路径下的META-INF&#x2F;spring.factories中获取EnableAutoConfiguration指定的值</li>
+<li>将这些值作为自动配置类导入容器，自动配置类就生效，然后就可以自动配置</li>
+<li>以前需要手动配置的内容交由Springboot</li>
+<li>整合JavaEE,整体解决方案和自动配置的东西都在Springboot-autoconfigure的jar包中。</li>
+<li>其会将所有需要导入的组件以类名的形式返回，这些组件会被添加到容器中。</li>
+<li>Springboot会给容器中导入非常多的自动配置类，（XxxxAutoConfiguration)，就是给容器中导入这个场景需要的所有组件并自动配置,@Configuration(javaConfig)</li>
+<li>有了自动配置类，省去了手动编写配置注入功能组件等的工作。</li>
+</ol>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><h4 id="1不简单的方法"><a href="#1不简单的方法" class="headerlink" title="1不简单的方法"></a>1不简单的方法</h4><p>看似只是运行了一个main方法，结果实际上是开启了一个服务。</p>
+<pre><code>@SpringBootApplication
+public class Springboot10ZookeeperApplication &#123;
+    public static void main(String[] args) &#123;
+        //该方法返回一个ConfigurableApplicationContext对象
+        //参数一：应用入口的类 参数二命令行参数
+        SpringApplication.run(Springboot10ZookeeperApplication.class, args);
+    &#125;
+
+&#125;
+</code></pre>
+<p>SpringApplication.run分析：</p>
+<ul>
+<li>一是SpringApplication的实例化</li>
+<li>二是run方法的执行</li>
+</ul>
+<h4 id="2-SpringApplication"><a href="#2-SpringApplication" class="headerlink" title="2.SpringApplication"></a>2.SpringApplication</h4><p>该类的任务：</p>
+<ol>
+<li>推断应用的类型是普通的项目还是Web项目</li>
+<li>查找并加载所有可用初始化器，设置到initializers属性中</li>
+<li>找出所有的应用程序监听器，设置到listeners属性中</li>
+<li>推断并设置main方法的定义类，找到运行的主类（也就是说不能再像之前在其他方法中设置main了？）</li>
+</ol>
+<p><strong>构造器</strong></p>
+<pre><code>public SpringApplication(ResourceLoader resourceLoader, Class&lt;?&gt;... primarySources) &#123;
+    //.....
+    this.webApplicationType = WebApplicationType.deduceFromClasspath();
+    this.bootstrapRegistryInitializers = this.getBootstrapRegistryInitializersFromSpringFactories(); this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
+    this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
+    this.mainApplicationClass = this.deduceMainApplicationClass();
+&#125;
+</code></pre>
+<h4 id="3-run方法流程分析"><a href="#3-run方法流程分析" class="headerlink" title="3.run方法流程分析"></a>3.run方法流程分析</h4><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy91SkRBVUtyR0M3TDF2RlFNbmFSSUpTbWVaNThUMmVaaWNqYWZpYXdRTHA5dTh3YzRpYzFNank2T3lmaWJ6ZmpWb2ZlTDVwblMxTlNGS1ZqbElnNm5lSTl5U2cvNjQw?x-oss-process=image/format,png" alt="img"></p>
+<h4 id="Springboot的理解"><a href="#Springboot的理解" class="headerlink" title="Springboot的理解"></a>Springboot的理解</h4><ul>
+<li>自动装配</li>
+<li>run()</li>
+<li>全面接管SpringMVC的配置</li>
+</ul>
+<hr>
+<h3 id="yaml语法学习"><a href="#yaml语法学习" class="headerlink" title="yaml语法学习"></a>yaml语法学习</h3><h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>Springboot使用一个全局的配置文件，配置文件名称是固定的。</p>
+<ul>
+<li>applicationlproperties –对应语法结构：key&#x3D;value</li>
+<li>application.yaml – 语法结构: key: value (一定要注意 空格 和缩进)</li>
+<li>必须注意缩进，缩进是控制层级关系的！！！左侧对齐的一列数据都是同一层级</li>
+</ul>
+<p><strong>配置文件的作用：</strong> **修改Springboot自动配置的默认值，因为许多东西Springboot在底层就自动配置好了。</p>
+<p>比如修改Tomcat默认启动的端口号。</p>
+<pre><code>server:
+  port: 8081
+</code></pre>
+<h4 id="Yaml"><a href="#Yaml" class="headerlink" title="Yaml"></a>Yaml</h4><p>概述：以数据为中心</p>
+<p>语句： 不可省 注意缩进–层级 大小写敏感</p>
+<p>双引号不会转义特殊字符 但是单引号会，如下：</p>
+<ul>
+<li>name: “kuang \n shen” 输出 ：kuang 换行 shen</li>
+<li>name: ‘kuang \n shen’ 输出 ：kuang \n shen</li>
+</ul>
+<p>用Map表示一个对象：</p>
+<pre><code>student:
+    name: qinjiang
+    age: 3
+</code></pre>
+<p>行内写法：</p>
+<pre><code>student: &#123;name: qinjiang,age: 3&#125;
+</code></pre>
+<p>数组(List, set)</p>
+<p>-值 表示组中的一个元素‘</p>
+<pre><code>pets:
+ - cat
+ - dog
+ - pig
+</code></pre>
+<p>行内写法：pets: [cat,dog,pig]</p>
+<p>切换端口</p>
+<pre><code>server:
+  port: 8084
+</code></pre>
+<h4 id="yaml注入配置文件"><a href="#yaml注入配置文件" class="headerlink" title="yaml注入配置文件"></a>yaml注入配置文件</h4><p>yaml文件有其独特的优势。它可以给实体类直接注入匹配值。</p>
+<h5 id="yaml注入配置文件-1"><a href="#yaml注入配置文件-1" class="headerlink" title="yaml注入配置文件"></a>yaml注入配置文件</h5><ol>
+<li>resource中新建一个application.yaml</li>
+<li>编写实体类Dog</li>
+</ol>
+<pre><code>@Component
+@Data
+public class Dog &#123;
+    @Value(&quot;阿黄&quot;)
+    private String name;
+    @Value(&quot;19&quot;)
+    private Integer age;
+&#125;
+</code></pre>
+<p>给Bean注入属性值，先使用@value</p>
+<p>测试输出成功。</p>
+<p>另外再编写一个类：Person</p>
+<pre><code>@Data
+@Component
+@ConfigurationProperties(prefix = &quot;person&quot;)
+public class Person &#123;
+    private String name;
+    private Integer age;
+    private Boolean happy;
+    private Date birth;
+    private Map&lt;String, Object&gt; maps;
+    private List&lt;Object&gt; list;
+    private Dog dog;
+&#125;
+</code></pre>
+<p>通过yaml进行注入</p>
+<pre><code>person:
+  name: liyifan
+  age: 20
+  happy: false
+  birth: 2020/07/07
+  maps: &#123;student: no, employee: yes&#125;
+  list:
+    - code
+    - money
+    - dream?
+  dog:
+    name: wxt
+    age: 2
+</code></pre>
+<p>报错</p>
+<p><img src="/" alt="image-20210707102942134"></p>
+<p>open Decumentation进入官网 ，根据提示添加依赖</p>
+<h5 id="加载指定的配置文件"><a href="#加载指定的配置文件" class="headerlink" title="加载指定的配置文件"></a>加载指定的配置文件</h5><ul>
+<li>**@PropertySource:**加载指定的配置文件</li>
+<li><strong>@ConfigurationProperties</strong>:默认从全局配置文件中获取值</li>
+</ul>
+<ol>
+<li><p>然后在我们的代码中指定加载person.properties文件</p>
+<pre><code>@PropertySource(value = &quot;classpath:person.properties&quot;)
+@Component //注册bean
+public class Person &#123;
+
+    @Value(&quot;$&#123;name&#125;&quot;)
+    private String name;
+
+    ......  
+&#125;
+</code></pre>
+</li>
+</ol>
+<h5 id="配置文件占位符"><a href="#配置文件占位符" class="headerlink" title="配置文件占位符"></a>配置文件占位符</h5><p>可以直接生成随机数</p>
+<pre><code>person:
+  name: qinjiang$&#123;random.uuid&#125;
+  age: $&#123;random.int&#125;
+  happy: false
+  birth: 2020/07/13
+  maps: &#123;k1: v1,k2: v2&#125;
+  lists:
+    - code
+    - music
+    - girl
+  dog:
+    name: $&#123;person.hell:hello&#125;_旺财
+    age: 3
+</code></pre>
+<h4 id="回顾properties配置"><a href="#回顾properties配置" class="headerlink" title="回顾properties配置"></a>回顾properties配置</h4><p>yaml方法是最简单的方式，开发中最常用，也是Springboot所推荐。</p>
+<p><code>properties</code>配置文件在写中文的时候，会有乱码 ， 我们需要去IDEA中设置编码格式为UTF-8；settings–&gt;FileEncodings 中配置；</p>
+<h4 id="ConfigurationProperties-与-Value对比"><a href="#ConfigurationProperties-与-Value对比" class="headerlink" title="@ConfigurationProperties 与 @Value对比"></a>@ConfigurationProperties 与 @Value对比</h4><ol>
+<li><code>@ConfigurationProperties</code>只需要写一次即可 ， @Value则需要每个字段都添加</li>
+<li>松散绑定：这个什么意思呢? 比如我的yml中写的last-name，这个和lastName是一样的， - 后面跟着的字母默认是大写的。这就是松散绑定。可以测试一下</li>
+<li>JSR303数据校验 ， 这个就是我们可以在字段是增加一层过滤器验证 ， 可以保证数据的合法性</li>
+<li>复杂类型封装，yml中可以封装对象 ， 使用value就不支持</li>
+</ol>
+<p>因此，如果仅需要获取某个值时可以使用@Value</p>
+<p>如果编写了一个<strong>JavaBean来和配置文件进行一一映射</strong>，就直接**@configurationProperties**</p>
+<hr>
+<h3 id="JSR303数据校验"><a href="#JSR303数据校验" class="headerlink" title="JSR303数据校验"></a>JSR303数据校验</h3><p>Springboot可以用**@validated**来校验数据，数据异常会统一抛出。</p>
+<h4 id="示例：使name只能使用email格式"><a href="#示例：使name只能使用email格式" class="headerlink" title="示例：使name只能使用email格式"></a>示例：使name只能使用email格式</h4><p>1.添加依赖</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>2.指定注解</p>
+<pre><code>@Component //注册bean
+@ConfigurationProperties(prefix = &quot;person&quot;)
+@Validated  //数据校验
+public class Person &#123;
+    @Email(message=&quot;邮箱格式错误&quot;) //name必须是邮箱格式
+    private String name;
+&#125;
+</code></pre>
+<p>运行结果</p>
+<p><img src="https://gitee.com/lzh_gitee/SpringBoot/raw/master/SpringBoot%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/SpringBoot04%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2.assets/1595480159290.png" alt="1595480159290"></p>
+<p><strong>使用数据校验，可以保证数据的正确性；</strong></p>
+<h4 id="常见参数"><a href="#常见参数" class="headerlink" title="常见参数"></a>常见参数</h4><pre><code>@NotNull(message=&quot;名字不能为空&quot;)
+private String userName;
+@Max(value=120,message=&quot;年龄最大不能查过120&quot;)
+private int age;
+@Email(message=&quot;邮箱格式错误&quot;)
+private String email;
+
+空检查
+@Null       验证对象是否为null
+@NotNull    验证对象是否不为null, 无法查检长度为0的字符串
+@NotBlank   检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格.
+@NotEmpty   检查约束元素是否为NULL或者是EMPTY.
+    
+Booelan检查
+@AssertTrue     验证 Boolean 对象是否为 true  
+@AssertFalse    验证 Boolean 对象是否为 false  
+    
+长度检查
+@Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内  
+@Length(min=, max=) string is between min and max included.
+
+日期检查
+@Past       验证 Date 和 Calendar 对象是否在当前时间之前  
+@Future     验证 Date 和 Calendar 对象是否在当前时间之后  
+@Pattern    验证 String 对象是否符合正则表达式的规则
+
+.......等等
+除此以外，我们还可以自定义一些数据校验规则
+</code></pre>
+<p><img src="https://gitee.com/lzh_gitee/SpringBoot/raw/master/SpringBoot%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/SpringBoot04%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2.assets/1595480813196.png" alt="1595480813196"></p>
+<h3 id="多环境切换"><a href="#多环境切换" class="headerlink" title="多环境切换"></a>多环境切换</h3><p>profile是Spring对不同环境提供不同配置功能的支持，可以通过激活不同的环境版本快速切换环境。</p>
+<p>可以通过编写不同名的主配置文件来指定多个环境版本</p>
+<p>比如：application-test.properties 测试环境 -dev 开发环境配置</p>
+<p>还需要配置选择激活的环境</p>
+<pre><code>#比如在配置文件中指定使用dev环境，我们可以通过设置不同的端口号进行测试；
+#我们启动SpringBoot，就可以看到已经切换到dev下的配置了；
+spring.profiles.active=dev
+</code></pre>
+<h4 id="使用yaml配置"><a href="#使用yaml配置" class="headerlink" title="使用yaml配置"></a>使用yaml配置</h4><pre><code>server:
+  port: 8081
+#选择要激活那个环境块
+spring:
+  profiles:
+    active: test
+
+---
+server:
+  port: 8083
+spring:
+  profiles: dev #配置环境的名称
+---
+server:
+  port: 8084
+spring:
+  profiles: test 
+</code></pre>
+<p>如果Yaml和Properties都配置了端口，没有激活其他环境，默认会使用properties</p>
+<h4 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h4><p>配置文件可以放在多个位置。如下：</p>
+<p><img src="https://gitee.com/lzh_gitee/SpringBoot/raw/master/SpringBoot%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/SpringBoot04%EF%BC%9AJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2.assets/1595482583892.png" alt="1595482583892"></p>
+<p>优先级：项目路径下的config &lt; 项目路径下配置文件 &lt; 资源路径下的config文件夹配置文件 &lt; 资源路径下配置文件</p>
+<p>配置可以互补</p>
+<h3 id="自动装配原理"><a href="#自动装配原理" class="headerlink" title="自动装配原理"></a>自动装配原理</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ol>
+<li><p>Springboot启动的时候加载主配置类，开启了自动配置功能@EnableAutoConfiguration</p>
+</li>
+<li><p>@EnableAutoConfiguration作用</p>
+<ul>
+<li><p>利用EnableAutoConfigurationImportSelector q给容器中导入一些组件</p>
+</li>
+<li><p>selectImports()方法返回了一个autoConfigurationEnty,来自</p>
+<pre><code>this.getAutoConfigurationEntry(autoConfigurationMetadata,annotationMetadata)
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>在该方法中：</p>
+<pre><code>List&lt;String&gt; configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
+</code></pre>
+<p>翻译过来为获取候选配置</p>
+<pre><code>protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) &#123;
+    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());
+ Assert.notEmpty(configurations, &quot;No auto configuration classes found in META-INF/spring.factories. ……&quot;);
+    return configurations;
+&#125;
+</code></pre>
+<ul>
+<li>扫描所有jar包类路径下META-INF&#x2F;spring.properties</li>
+<li>扫描到的文件的内容包装成properties对象</li>
+<li>从properties中获取到EnableAutoConfiguration.class类对应的值，然后将他们添加在容器中。</li>
+</ul>
+<p>以下为@HttpEncodingAutoConfiguration部分源码分析</p>
+<pre><code>//表明这是一个配置类，类比以前编写的配置文件
+@Configuration(
+        proxyBeanMethods = false
+)
+//启动指定类的ConfigurationProperties功能   --Enablexxxx基本就干这个的
+@EnableConfigurationProperties(&#123;ServerProperties.class&#125;)
+//Spring底层注解@Conditional注解，根据不同条件判断，满足则整个配置类中的配置就生效
+//是否是web应用，是就生效
+@ConditionalOnWebApplication(
+        type = ConditionalOnWebApplication.Type.SERVLET
+)
+//当前项目中有没有下面这个类 ——就是之前SpringMVC中进行乱码解决的过滤器
+@ConditionalOnClass(&#123;CharacterEncodingFilter.class&#125;)
+//判断配置文件中是否存在某个配置 拼接的server.servlet.encoding.enabled 该配置默认生效
+@ConditionalOnProperty(
+        prefix = &quot;server.servlet.encoding&quot;,
+        value = &#123;&quot;enabled&quot;&#125;,
+        matchIfMissing = true
+)
+public class HttpEncodingAutoConfiguration &#123;
+    //和Springboot的配置文件已映射
+    private final Encoding properties;
+
+    public HttpEncodingAutoConfiguration(ServerProperties properties) &#123;
+        this.properties = properties.getServlet().getEncoding();
+    &#125;
+
+    @Bean //给容器添加一个组件，组件的部分值从properties获取
+    @ConditionalOnMissingBean //判断容器没有该组件 保证了这个bean仅有一个
+    public CharacterEncodingFilter characterEncodingFilter() &#123;
+        CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+        filter.setEncoding(this.properties.getCharset().name());
+        filter.setForceRequestEncoding(this.properties.shouldForce(org.springframework.boot.web.servlet.server.Encoding.Type.REQUEST));
+        filter.setForceResponseEncoding(this.properties.shouldForce(org.springframework.boot.web.servlet.server.Encoding.Type.RESPONSE));
+        return filter;
+    &#125;
+</code></pre>
+<p><strong>一句话总结 ：根据当前不同的条件判断，决定这个配置类是否生效！</strong></p>
+<ul>
+<li>一但这个配置类生效；这个配置类就会给容器中添加各种组件；</li>
+<li>这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的；</li>
+<li>所有在配置文件中能配置的属性都是在xxxxProperties类中封装着；</li>
+<li>配置文件能配置什么就可以参照某个功能对应的这个属性类</li>
+</ul>
+<p>自动配置类生效必须在一定条件下。</p>
+<table>
+<thead>
+<tr>
+<th>@Conditional扩展注解</th>
+<th>作用(判断是否满足当前指定条件)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@ConditionalOnJava</td>
+<td>系统的java版本是否符合要求</td>
+</tr>
+<tr>
+<td>@ConditionalOnBean</td>
+<td>容器中存在指定Bean ;</td>
+</tr>
+<tr>
+<td>@ConditionalOnMissingBean</td>
+<td>容器中不存在指定Bean ;</td>
+</tr>
+<tr>
+<td>@ConditionalOnExpression</td>
+<td>满足SpEL表达式指定</td>
+</tr>
+<tr>
+<td>@ConditionalOnClass</td>
+<td>系统中有指定的类</td>
+</tr>
+<tr>
+<td>@ConditionalOnMissingClass</td>
+<td>系统中没有指定的类</td>
+</tr>
+<tr>
+<td>@ConditionalOnSingleCandidate</td>
+<td>容器中只有一个指定的Bean ,或者这个Bean是首选Bean</td>
+</tr>
+<tr>
+<td>@ConditionalOnProperty</td>
+<td>系统中指定的属性是否有指定的值</td>
+</tr>
+<tr>
+<td>@ConditionalOnResource</td>
+<td>类路径下是否存在指定资源文件</td>
+</tr>
+<tr>
+<td>@ConditionalOnWebApplication</td>
+<td>当前是web环境</td>
+</tr>
+<tr>
+<td>@ConditionalOnNotWebApplication</td>
+<td>当前不是web环境</td>
+</tr>
+<tr>
+<td>@ConditionalOnJndi</td>
+<td>JNDI存在指定项</td>
+</tr>
+</tbody></table>
+<p>通过在yaml中设置dubug&#x3D;true可以通过打印知道哪些自动配置类生效。</p>
+<p>首页配置：注意，所有的静态资源都是由thymeleaf引擎接管; @{} #{}…..</p>
+<p>国际化配置：</p>
+<ol>
+<li>需要配置i18n文件</li>
+<li>如果需要在项目中进行按钮自动切换，需要自定义一个组件LocaleResolver</li>
+<li>记得将自己写的组件配置到Spring容器中</li>
+</ol>
+<p>把l看成了1</p>
+<p>复习HttpServletRequest</p>
+<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><h4 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h4><ul>
+<li>前端–前端控制层、视图层</li>
+<li>伪造后端数据，json，不需要后端前端整个项目依旧可以跑</li>
+<li>后端– 控制层、服务层、数据访问层</li>
+<li>前后端通过API进行交互，相对独立且松耦合</li>
+</ul>
+<p>由此产生了新的问题：前后端集成联调，无法做到“及时协商，尽早解决”</p>
+<p>解决方案：</p>
+<ol>
+<li><p>定义schema，并实时跟踪最新的API，降低集成风险</p>
+</li>
+<li><p>前后端分离：</p>
+<ul>
+<li>前端测试后端接口：postman</li>
+<li>后端提供接口：实时更新最新的消息及改动</li>
+</ul>
+<p>Restful API文档在线自动生成器 &#x3D;&gt; API文档与API定义同步更新</p>
+</li>
+</ol>
+<hr>
+<h3 id="员工管理系统"><a href="#员工管理系统" class="headerlink" title="员工管理系统"></a>员工管理系统</h3><p>PathVariable</p>
+<p>前端中隐藏域的格式：hidden？？ 为什么增加了隐藏域就可以正常修改了而不是</p>
+<p>如果静态导入包，会违反Spring的一个原理</p>
+<h3 id="微服务入门"><a href="#微服务入门" class="headerlink" title="微服务入门"></a>微服务入门</h3><p>what ？ 分布式系统</p>
+<p>分布式系统是若干独立计算机的集合，这些计算机对于用户来说如同单个相关的系统。</p>
+<p>是由一组通过网络进行<strong>通信</strong>，为了<strong>完成共同的任务</strong>而协同工作的计算机节点组成的系统。理所当然地，是建立在网络上的。</p>
+<p><strong>目的</strong>是利用更多的机器，处理更多的数据。</p>
+<p>要明确的是，纵观计算机发展史，解决旧的问题的同时一定会引入新的问题。</p>
+<p>因此只有：</p>
+<ul>
+<li>当原单节点处理能力无法满足日益增长的计算、存储任务</li>
+<li>且同时硬件成本过高</li>
+<li>应用程序无法再优化</li>
+</ul>
+<p>才需要考虑分布式系统。 因为分布式系统多节点，是通过网络通信的拓扑结构。网络并不可靠。</p>
+<h4 id="Dubbo文档"><a href="#Dubbo文档" class="headerlink" title="Dubbo文档"></a>Dubbo文档</h4><p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/dubbo-architecture-roadmap.jpg" alt="img"></p>
+<p>在分布式服务架构中，用于提高业务复用以及整合的<strong>分布式服务框架（RPC）</strong>是关键</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20200801133710784.png" alt="image-20200801133710784"></p>
+<p>what?RPC</p>
+<p>指远程过程调用，是一种进程间通信方式，也是一种技术的思想，而不是规范。</p>
+<p>它允许程序调用另一地址空间（通常是共享网络上的）的过程或函数，而不是程序员显式编码该远程调用的细节。即不管是调用本地还是调用远程，本质上编写的代码基本相同。（如后面要使用到的TicketService接口）</p>
+<p><strong>RPC要解决的两个问题：</strong></p>
+<ol>
+<li>解决分布式系统中，服务之间的调用问题。</li>
+<li>远程调用时，要能够像本地调用一样方便，让调用者感知不到远程调用的逻辑。</li>
+</ol>
+<p>RPC两个核心模块：通讯，序列化。</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20200801134657756.png" alt="image-20200801134657756"></p>
+<hr>
+<p>测试环境搭建</p>
+<p>Dubbo提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/architecture.png" alt="img"></p>
+<p>Provider:暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
+<p>Consumer：调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消费者从提供者地址列表中基于软负载均衡算法，选一台提供者进行调用，如果调用失败再选另一台调用。</p>
+<p>Registry:注册中心，返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</p>
+<p>Monitor:服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</p>
+<p>调用关系说明：</p>
+<ul>
+<li>服务容器负责启动，加载，运行服务提供者。</li>
+<li>服务提供者在启动时，向注册中心注册自己提供的服务。</li>
+<li>服务消费者在启动时，向注册中心订阅自己所需的服务。</li>
+<li>注册中心返回</li>
+<li>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</li>
+</ul>
+<h4 id="Dubbo环境搭建"><a href="#Dubbo环境搭建" class="headerlink" title="Dubbo环境搭建"></a>Dubbo环境搭建</h4><p>dubbo推荐使用zookeeper注册中心</p>
+<p>Zookeeper下载：<a href="https://gitee.com/link?target=http://archive.apache.org/dist/zookeeper/zookeeper-3.6.1/">http://archive.apache.org/dist/zookeeper/zookeeper-3.6.1/</a> 太慢</p>
+<p><a href="https://gitee.com/link?target=https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/">https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/</a></p>
+<ol>
+<li>而后解压，运行zkServer.cmd(开启zookeeper服务)</li>
+<li>可能会闪退： –解决：编辑zkServer.cmd文件末尾在倒数第二行添加pause，出错就不会退出而会提示出错信息。</li>
+<li>修改zoo.cfg配合文件：</li>
+</ol>
+<ul>
+<li>开始没有这个东西要复制zoo_sample.cfg改名</li>
+<li>注意几个位置：</li>
+</ul>
+<p>dataDir &#x3D; .&#x2F;临时数据存储的目录（可写相对路径）</p>
+<p>clientPort&#x3D;2181 zookeeper的端口号</p>
+<ul>
+<li>修改后再次启动zookeeper</li>
+</ul>
+<p>遇到了几个问题， 其中Zookeeper如果报了Zookeeper audit is disabled可去conf文件夹下将其配置文件zoo.cfg添加一行audit.enable&#x3D;true即可。</p>
+<p>4.使用zkCli.cmd测试:</p>
+<p>ls &#x2F; 列出zookeeper根下保存的所有节点</p>
+<p>create-e &#x2F;fan 123 :创建一个&#x2F;fan节点 值为123</p>
+<p>get &#x2F;fan 获取&#x2F;fan节点的值</p>
+<h4 id="安装dubbo-admin"><a href="#安装dubbo-admin" class="headerlink" title="安装dubbo-admin"></a>安装dubbo-admin</h4><p>dubbo本身并不是一个服务软件。而是一个jar包，可以帮助java程序连接到zookeeper,并利用zookeeper消费、提供服务。</p>
+<p>dubbo-admin是一个可视化的监控程序，能够管理监控众多的dubbo服务。</p>
+<p>1.<strong>下载</strong></p>
+<p>地址 ：<a href="https://gitee.com/link?target=https://github.com/apache/dubbo-admin/tree/master">https://github.com/apache/dubbo-admin/tree/master</a></p>
+<p>2.<strong>解压进入目录</strong></p>
+<p>修改dubbo-admin 的application.properties 指定zookeeper地址：</p>
+<pre><code>server.port=7001
+spring.velocity.cache=false
+spring.velocity.charset=UTF-8
+spring.velocity.layout-url=/templates/default.vm
+spring.messages.fallback-to-system-locale=false
+spring.messages.basename=i18n/message
+spring.root.password=root
+spring.guest.password=guest
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+</code></pre>
+<p>3.在项目目录下打包dubbo-admin</p>
+<pre><code>mvn clean package -Dmaven.test.skip=true
+</code></pre>
+<p>运行该命令时显示mvn找不到,原因是没有在环境变量中配置maven，在系统变量中配置Path，新加一条</p>
+<p>再添加一条MAVEN_HOME:D:\IntelliJ IDEA 2019.3.5\plugins\maven\lib\maven3\bin</p>
+<p>就是maven的地址。</p>
+<p>4.执行dubbo-admin\target下的dubbo-admin-0.0.1-SNAPSHOT.jar</p>
+<pre><code>java -jar dubbo-admin-0.0.1-SNAPSHOT.jar
+</code></pre>
+<p>此过程中zookeeper的服务一定要打开</p>
+<p>执行完毕后去访问localhost:7001,默认账号和密码都是root</p>
+<p><strong>总结：</strong></p>
+<ul>
+<li>zookeeper注册中心</li>
+<li>dubbo-admin:是一个监控管理后台，查看注册了哪些服务，哪些服务被消费了。</li>
+<li>dubbo:jar包</li>
+</ul>
+<h4 id="整合Springboot"><a href="#整合Springboot" class="headerlink" title="整合Springboot"></a>整合Springboot</h4><p>注意导包问题，尤其是同类名 同注解名</p>
+<p><strong>框架搭建：</strong></p>
+<ol>
+<li>启动zookeeper</li>
+<li>IDEA创建一个项目</li>
+<li>创建一个模块：provider-server 选择web依赖即可</li>
+<li>写一个服务</li>
+</ol>
+<hr>
+<p>编写接口</p>
+<pre><code>package com.fan.service;
+public interface TicketService &#123;
+    public String getTicket();
+&#125;
+</code></pre>
+<p>编写实现类</p>
+<pre><code>package com.fan.service;
+
+public class TicketServiceImpl implements TicketService &#123;
+    @Override
+    public String getTicket() &#123;
+        return &quot;买到今天的票了&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>5.创建一个模块，实现consumer-server</p>
+<p>6.项目创建完毕，写一个服务。</p>
+<p>需要去注册中心中拿服务。</p>
+<h5 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h5><p>1.将服务提供者注册至注册中心，导包。 dubbo的依赖</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;
+    &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;2.7.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>zookeeper的包在maven仓库下载 zkclient</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.github.sgroschupf&lt;/groupId&gt;
+    &lt;artifactId&gt;zkclient&lt;/artifactId&gt;
+    &lt;version&gt;0.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>该依赖与日志存在依赖冲突，需要除去</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;
+    &lt;version&gt;2.12.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+    &lt;version&gt;2.12.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+    &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+    &lt;version&gt;3.4.14&lt;/version&gt;
+    &lt;!--排除这个slf4j-log4j12 解决日志冲突--&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+            &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>2.在springboot配置文件中配置dubbo相关属性</p>
+<pre><code>server.port=8081
+#当前应用名字
+dubbo.application.name=provider-server-demo
+#注册中心地址 -- 在zookeeper配置文件中可以找到
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+#扫描指定包下服务
+dubbo.scan.base-packages=com.fan.service
+</code></pre>
+<p>3.在service的实现类中配置服务注解，发布服务。**!!!!注意导包问题**</p>
+<pre><code>package com.fan.service;
+
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
+@Service   //可以被扫描到，在项目一启动就自动注册到注册中心
+@Component   //使用Dubbo后尽量不要用@Service注解
+public class TicketServiceImpl implements TicketService &#123;
+    @Override
+    public String getTicket() &#123;
+        return &quot;买到今天的票了&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>应用启动，dubbo就会扫描指定的包下带有@Component注解的服务，将其发布到指定的注册中心</p>
+<p>启动后在dubbo的注册中心 localhost:7701中可以看到</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20200801205620564.png" alt="image-20200801205620564"></p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20200801205708690.png" alt="image-20200801205708690"></p>
+<h5 id="服务消费者"><a href="#服务消费者" class="headerlink" title="服务消费者"></a>服务消费者</h5><p>1.导入依赖</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;!--dubbo--&gt;
+    &lt;!-- Dubbo Spring Boot Starter --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;
+        &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;2.7.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!--zookeeper--&gt;
+    &lt;!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.github.sgroschupf&lt;/groupId&gt;
+        &lt;artifactId&gt;zkclient&lt;/artifactId&gt;
+        &lt;version&gt;0.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- 引入zookeeper --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+        &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;
+        &lt;version&gt;2.12.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+        &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+        &lt;version&gt;2.12.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+        &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+        &lt;version&gt;3.4.14&lt;/version&gt;
+        &lt;!--排除这个slf4j-log4j12--&gt;
+        &lt;exclusions&gt;
+            &lt;exclusion&gt;
+                &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+                &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+            &lt;/exclusion&gt;
+        &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.fan&lt;/groupId&gt;
+        &lt;artifactId&gt;provider-server-demo&lt;/artifactId&gt;
+        &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+        &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>2.配置applicaiton.properties</p>
+<pre><code>server.port=8002
+#当前应用名字
+dubbo.application.name=consumer-server-demo
+#注册中心地址
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+</code></pre>
+<p>3.正常步骤需要将服务提供者的接口打包，然后用pom文件导入，此处利用同名包保证路径正确直接用。就是在服务消费者模块下创建一个和服务提供者相同的TicketService接口。</p>
+<p>4.完善消费者的服务类</p>
+<pre><code>package com.fan.service;
+
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Service;
+@Service  //注入Spring容器中
+public class UserService &#123;
+    //去注册中心获取服务   如此才可拿到provider-server提供的票
+    @Reference
+    TicketService ticketService;
+    public void bugTicket() &#123;
+        String ticket = ticketService.getTicket();
+        System.out.println(&quot;在注册中心买到&quot; + ticket);
+    &#125;
+
+&#125;
+</code></pre>
+<p>5.测试类编写</p>
+<pre><code>@SpringBootTest(classes = &#123;ConsumerServerDemoApplication.class&#125;)
+class ConsumerServerDemoApplicationTests &#123;
+    @Autowired
+    UserService userService;
+
+    @Test
+    void contextLoads() &#123;
+        userService.bugTicket();
+    &#125;
+
+&#125;
+</code></pre>
+<p>在此处运用控制台报错找到了“多个主启动类”因此在@SpringbBootTest注解后制定了一下classes</p>
+<p>启动测试：</p>
+<ol>
+<li>开启zookeeper</li>
+<li>打开dubbo-admin监控（可省去</li>
+<li>开启服务者</li>
+<li>消费者消费测试</li>
+</ol>
+<p>控制台显示：在注册中心买到买到今天的票了</p>
+<p><img src="/" alt="image-20210704125640858"></p>
+<p>同时，监控中心会记录到：</p>
+<p><img src="https://gitee.com/lzh_gitee/springboot_image/raw/master/img/image-20200801222026747.png" alt="image-20200801222026747"></p>
+<p>问题记录：</p>
+<p>在配置springboot-dubbo-zookeeper中，Service中**注意导包问题 ** 包括后来的Reference</p>
+<p>使用dubbo就尽量不要用@Service注解容易混淆，同时Controller层注入对应Service时不要用@Autowired而是用@Reference</p>
+<pre><code>@SpringBootTest(classes = &#123;ConsumerServerDemoApplication.class&#125;) //给测试类指定主启动类
+</code></pre>
+<hr>
+<h3 id="注解们"><a href="#注解们" class="headerlink" title="注解们"></a>注解们</h3><p><strong>基础注解</strong></p>
+<p><code>@ConditionalOnBean</code>是依赖,<code>@ConditionalOnMissBean</code>是排斥,<code>@Conditional</code>为条件</p>
+<p>@Configuration 就是配置文件的作用，注意配置类下组件默认是单实例对象</p>
+<p>@Configuration(proxyBean&#x3D;true)代理对象调用方法。Springboot会检查该组件是不是在容器中，总是使其是单实例的。</p>
+<p>Full模式和Lite模式</p>
+<p>@Import 给容器中导入组件，默认组件名就是全类名</p>
+<p><strong>Web</strong></p>
+<ul>
+<li>@RequestAttribute注解的参数在项目里是自己解析出来的，并不是前端传递的。具体一点，在项目里的拦截器里会对<strong>Token信息进行解析，解析出来的参数重新放在请求里</strong>（用httpServletRequest.setAttribute(name, value)），后边接口接收参数时就用这个注解。</li>
+<li>@RequestParam注解则表示这个参数是通过前端传递过来的，如果请求里没有这个参数，则会报错400 Bad Request。这个注解用来<strong>解析请求路径里</strong>的参数（get请求）或者post请求中form表单格式的请求参数；</li>
+<li>@RequestBody注解用来接收POST请求BODY里的参数，格式为JSON格式。</li>
+<li>@ResponseBody</li>
+</ul>
+<p>一定要注意随着技术的增长，会<strong>存在同名的注解</strong>，就如同同名的类一样，这些同名的注解来自不同的包会对程序造成很大的影响！！！</p>
+<hr>
+<h2 id="中间件和高级特性"><a href="#中间件和高级特性" class="headerlink" title="中间件和高级特性"></a>中间件和高级特性</h2><h3 id="Springboot-缓存"><a href="#Springboot-缓存" class="headerlink" title="Springboot-缓存"></a>Springboot-缓存</h3><p>配置：</p>
+<pre><code>mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    # 控制台打印Sql判断缓存了没有
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+</code></pre>
+<h4 id="基础："><a href="#基础：" class="headerlink" title="基础："></a>基础：</h4><p>缓存作用： 将方法的运行结果进行缓存以后需要相同的数据时直接从缓存中拿 所谓运行结果 当然就是return xxx</p>
+<p>CacheProvider：对CacheManager的创建、配置、管理与控制。一个应用在运行期间可以访问多个这玩意儿，但是这玩意儿和-Manager是一一对应的。</p>
+<p>CacheManager：对Cache的作用相对于CacheProvider对其的作用。只能对应一个-Provider。</p>
+<p>Cache:类似Map的数据结构。</p>
+<p>Entry：类比map，一个缓存实体</p>
+<p>Expiry：每个存储的条目的有效期。</p>
+<p>Spring提供了Cache接口，规范定义缓存组件，包括缓存的各种操作。统一不同Cache技术，如RedisCache、EhCacheCache、ConcurrentMapCache.</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/20181215152657263.png" alt="在这里插入图片描述"></p>
+<p>关注点：</p>
+<p>1.确定方法需要被缓存以及其缓存策略。</p>
+<p>2.从缓存中读取之前缓存存储的数据。</p>
+<table>
+<thead>
+<tr>
+<th>概念&#x2F;注解</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CacheManager</td>
+<td>缓存管理器，管理各种缓存(Cache)组件</td>
+</tr>
+<tr>
+<td>缓存接口，定义缓存操作</td>
+<td>实现有：RedisCache、EhCacheCache、ConcurrentMapCache等</td>
+</tr>
+<tr>
+<td>@Cacheable</td>
+<td>针对方法配置，根据方法的请求参数对结果缓存</td>
+</tr>
+<tr>
+<td>@CacheEvict</td>
+<td>清空缓存</td>
+</tr>
+<tr>
+<td>@CachePut</td>
+<td>保证方法被调用，又希望结果被缓存（与able的不同在于able注解的方法有缓存就不去调用这个方法了）常用于缓存更新</td>
+</tr>
+<tr>
+<td>@EnableCaching</td>
+<td>开启基于注解的缓存</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Cache 缓存接口，定义缓存操作。实现有：RedisCache、EhCacheCache、ConcurrentMapCache等 CacheManager 缓存管理器，管理各种缓存(Cache)组件 @Cacheable 主要针对方法配置，能够根据方法的请求参数对其结果进行缓存 @CacheEvict 清空缓存 @CachePut <strong>保证</strong>方法被调用，又希望结果被缓存。如果是Cacheable那么发现已经有缓存就不执行这个方法了。因此这里说的是，保证。 @EnableCaching 开启基于注解的缓存</p>
+<p>keyGenerator 缓存数据时key生成策略 serialize 缓存数据时value序列化策略</p>
+<p> @Cacheable注解的属性：</p>
+<p>属性名 描述 cacheNames&#x2F;value 指定缓存的名字，缓存使用CacheManager管理多个缓存组件Cache，这些Cache组件就是根据这个名字进行区分的。对缓存的真正CRUD操作在Cache中定义，每个缓存组件Cache都有自己唯一的名字，通过cacheNames或者value属性指定，相当于是将缓存的键值对进行分组。</p>
+<p>缓存的名字是一个数组，也就是说可以将一个缓存键值对分到多个组里面 key 缓存数据时的key的值，默认是使用<strong>方法参数</strong>的值，可以使用SpEL表达式计算key的值 keyGenerator 缓存的生成策略，和key二选一，都是生成键的，keyGenerator可自定义 cacheManager 指定缓存管理器(如ConcurrentHashMap、Redis等) cacheResolver 和cacheManager功能一样，和cacheManager二选一 condition 指定缓存的条件(满足什么条件时才缓存)，可用SpEL表达式(如#id&gt;0，表示当入参id大于0时才缓存) unless 否定缓存，即满足unless指定的条件时，方法的结果不进行缓存，使用unless时可以在调用的方法获取到结果之后再进行判断(如#result&#x3D;&#x3D;null，表示如果结果为null时不缓存) sync 是否使用异步模式进行缓存。</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/image-20211125142516875.png" alt="image-20211125142516875"></p>
+<p>注意区分cacheNames(value)和key 两个的区别，虽然都是标识，但是二者的级别不同。</p>
+<p>使用Spring缓存抽象时我们需要关注以下两点； 1、确定方法需要被缓存以及他们的缓存策略 2、从缓存中读取之前缓存存储的数据</p>
+<p>demo： 指定cache的名字，设定key , 第一个参数大于1才缓存</p>
+<pre><code>@Cacheable(cacheNames = &quot;emp&quot;, key = &quot;#root.methodName+&#39;[&#39;+#id+&#39;]&#39;&quot;, condition = &quot;#a0&gt;1&quot;)
+public Employee getEmp(Integer id) &#123;
+    log.info(&quot;查询&#123;&#125;号员工&quot;, id);
+    return employeeMapper.getEmpById(id);
+&#125;
+</code></pre>
+<h4 id="Cacheable"><a href="#Cacheable" class="headerlink" title="@Cacheable"></a>@Cacheable</h4><p>第一次执行时去查对应的cacheNames和key是否为空，不是则放入如果是就直接拿，而不去执行方法。默认加载的CacheManager是SimpleCacheConfiguration，进入该类中发现是创建了一个ConcurrentMapCacheManager，该类中生成了一个ConcurrentMap作为Cache的存储。</p>
+<pre><code>private final ConcurrentMap&lt;String, Cache&gt; cacheMap = new ConcurrentHashMap&lt;&gt;(16);
+@Override
+@Nullable
+public Cache getCache(String name) &#123;
+   Cache cache = this.cacheMap.get(name);
+   if (cache == null &amp;&amp; this.dynamic) &#123;
+      synchronized (this.cacheMap) &#123;
+         cache = this.cacheMap.get(name);
+         if (cache == null) &#123;
+            cache = createConcurrentMapCache(name);
+            this.cacheMap.put(name, cache);
+         &#125;
+      &#125;
+   &#125;
+   return cache;
+&#125;
+</code></pre>
+<p>KeyGenerator</p>
+<pre><code>@Configuration
+public class MyCacheConfig &#123;
+    @Bean(&quot;myKeyGenerator&quot;)
+    public KeyGenerator generator() &#123;
+        return (target, method, params) -&gt; method.getName() + &quot;[&quot;+ Arrays.asList(params).toString() +&quot;]&quot;;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="CachePut"><a href="#CachePut" class="headerlink" title="@CachePut"></a>@CachePut</h4><p>上面的@Cacheable是在方法调用前会去缓存中根据指定的value查看是否存在，而put是先调用方法，在方法执行后将<strong>执行结果</strong>放回缓存。既调用了方法同时又更新了缓存，比如我们做update的时候。</p>
+<p>在利用缓存</p>
+<p><strong>注意key对于更新</strong>缓存内容的作用，如果想要针对同一个缓存做不同的操作一定要保证key是相同的。</p>
+<p>如果我们操作的对于数据库来说是同一条数据，但是因为key不同会造成不是同一块缓存。</p>
+<p>这点要格外注意，另外还有@Cacheable与@CachePut的执行时机问题。</p>
+<p>一个疑问：缓存是不是应该加锁，不然两个用户一个去查一个去改那么是会出问题的呀。秒杀？</p>
+<pre><code>@CachePut(value = &quot;emp&quot;, key = &quot;#employee.id&quot;)
+public Integer updateEmp(Employee employee) &#123;
+    log.info(&quot;更新&#123;&#125;号员工的信息为&#123;&#125;&quot;, employee.getId(), employee.toString());
+    return employeeMapper.updateEmp(employee);
+
+&#125;
+</code></pre>
+<p>在将方法返回值设置为Integer时遇到了报错，因为返回对象是要存入缓存的，显然同一个Entry存入的对象类型要相同。</p>
+<h4 id="CacheEvict"><a href="#CacheEvict" class="headerlink" title="@CacheEvict"></a>@CacheEvict</h4><p>这里只是删除缓存中的信息 指定缓存 指定Entry 清空该缓存所有Entry 在方法调用前就清空缓存（默认是false</p>
+<pre><code>@CacheEvict(value = &quot;emp&quot;, key=&quot;#id&quot; allEntries = true, beforeInvocation = true)
+public void deleteEmp(Integer id) &#123;
+    log.info(&quot;删除缓存中的员工&#123;&#125;信息&quot;, id);
+    //employeeMapper.deleteEmpById(id);
+&#125;
+</code></pre>
+<h4 id="Caching"><a href="#Caching" class="headerlink" title="@Caching"></a>@Caching</h4><p>制定复杂规则——组合拳</p>
+<pre><code>@Caching(cacheable = &#123;
+        @Cacheable(key = &quot;#lastName&quot;)
+&#125;, put = &#123;
+        @CachePut(key = &quot;#result.id&quot;),
+        @CachePut(key = &quot;#result.email&quot;)
+&#125;)
+public Employee getEmpByLastName(String lastName) &#123;
+    return employeeMapper.selectEmpByLastName(lastName);
+&#125;
+</code></pre>
+<p>@CacheConfig -可以为一个类指定统一的cacheNames(没有value了) cacheManager</p>
+<h4 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h4><p>Caffine+Redis</p>
+<p><img src="/" alt="图片"></p>
+<p>仅从该图上看，其实读取多级缓存和读取单级缓存的区别就是多了一级从二级缓存写入一级缓存，那么是否每种情况都是如此呢，这样子的操作多了一次写入。</p>
+<p>另外考虑到LRU排序等，是否两级缓存之间都可以用同一种排序方式呢？</p>
+<p>利用最原始的，自定义Cache块，去操作</p>
+<p>配置：</p>
+<pre><code>@Configuration
+public class CaffeineConfig &#123;
+    @Bean
+    public Cache&lt;String, Object&gt; getCaffeineCache() &#123;
+        return Caffeine.newBuilder()
+                .initialCapacity(128)
+                .maximumSize(1024)
+                .expireAfterWrite(60, TimeUnit.SECONDS)
+                .build();
+    &#125;
+&#125;
+</code></pre>
+<p>查询：</p>
+<pre><code>public JaOrder getOrderById(String id) &#123;
+    String key = Constants.ORDER_COSTANT + id;
+    JaOrder jaOrder = (JaOrder) cache.get(key, k -&gt; &#123;
+        // 先查询redis
+        Object obj = redisTemplate.opsForValue().get(k);
+        if (ObjectUtil.isNotEmpty(obj)) &#123;
+            log.info(&quot;Get data from redis&quot;);
+            return obj;
+
+        &#125;
+        log.info(&quot;--------------------------&gt;Get data from database&lt;----------------------------&quot;);
+        JaOrder dbJaOrder = orderDao.selectOrder(id);
+        redisTemplate.opsForValue().set(k, dbJaOrder, 120, TimeUnit.SECONDS);
+        return dbJaOrder;
+
+    &#125;);
+    return jaOrder;
+&#125;
+</code></pre>
+<p>这种就是将redis的缓存和caffeine的缓存处理都交由开发人员，比较麻烦。——这里引申出一个概念：对代码的入侵，是对业务代码的入侵吧，这些缓存公共的东西还是应该尽可能的与业务代码剥离开。</p>
+<p>基于注解@Cachexxx （将本地缓存托管给Springboot）</p>
+<pre><code>@Cacheable(value = &quot;order&quot;, key = &quot;#id&quot;)
+public JaOrder getOrderById(String id) &#123;
+    String key = Constants.ORDER_COSTANT + id;
+    Object obj = redisTemplate.opsForValue().get(k);
+    if (ObjectUtil.isNotEmpty(obj)) &#123;
+        log.info(&quot;Get data from redis&quot;);
+        return (JaOrder) obj;
+    &#125;
+    // 先查询redis
+    log.info(&quot;--------------------------&gt;Get data from database&lt;----------------------------&quot;);
+    JaOrder dbJaOrder = orderDao.selectOrder(id);
+    redisTemplate.opsForValue().set(k, dbJaOrder, 120, TimeUnit.SECONDS);
+    return dbJaOrder;
+
+&#125;
+</code></pre>
+<p>自定义注解与切面，进一步减少对业务代码的入侵(这里没有对Cache进行隔离)。</p>
+<p>一点思想—— 解决入侵：业务的归业务的，通用的归通用的，两者不要耦合在一起。</p>
+<p>自定义注解：</p>
+<pre><code>@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface DoubleCache &#123;
+    String cacheName();
+    String key();
+    long timeOut() default 120;
+    CacheType type() default CacheType.FULL;
+&#125;
+</code></pre>
+<p>自定义切面</p>
+<pre><code>@Slf4j
+@Component
+@Aspect
+public class CacheAspect &#123;
+
+    @Autowired
+    private Cache cache;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+
+    /**
+     * 指定切点
+     */
+    @Pointcut(&quot;@annotation(com.fan.common.anno.DoubleCache)&quot;)
+    public void cacheAspect()&#123;
+
+    &#125;
+
+    @Around(&quot;cacheAspect()&quot;)
+    public Object doArount(ProceedingJoinPoint point) throws Throwable &#123;
+        MethodSignature signature = (MethodSignature) point.getSignature();
+        Method method = signature.getMethod();
+        // 拼接解析SpringEl表达式的map
+        String[] paramNames = signature.getParameterNames();
+        // 看起来两行都是参数 一行是实际上的参数 一行是对应的参数值
+        Object[] args = point.getArgs();
+        TreeMap&lt;String, Object&gt; treeMap = new TreeMap&lt;&gt;();
+        for (int i = 0; i &lt; paramNames.length; i++) &#123;
+            treeMap.put(paramNames[i], args[i]);
+        &#125;
+
+        DoubleCache cacheAnno = method.getAnnotation(DoubleCache.class);
+        String elResult = ELParser.parse(cacheAnno.key(), treeMap);
+        String realKey = cacheAnno.cacheName() + Constants.COLON + elResult;
+
+        // 强制更新
+        if (cacheAnno.type() == CacheType.PUT) &#123;
+            Object object = point.proceed();
+            redisTemplate.opsForValue().set(realKey, object, cacheAnno.timeOut(), TimeUnit.SECONDS);
+            cache.put(realKey, object);
+            return object;
+
+        &#125; else if (cacheAnno.type() == CacheType.DELETE) &#123;
+            redisTemplate.delete(realKey);
+            cache.invalidate(realKey);
+            return point.proceed();
+        &#125;
+        Object caffeineCache = cache.getIfPresent(realKey);
+        if (Objects.nonNull(caffeineCache)) &#123;
+            log.info(&quot;get data from caffeine&quot;);
+            return  caffeineCache;
+        &#125;
+        Object redisCache = redisTemplate.opsForValue().get(realKey);
+        if (Objects.nonNull(redisCache)) &#123;
+            log.info(&quot;get data from redis&quot;);
+            cache.put(realKey, redisCache);
+            return redisCache;
+        &#125;
+        log.info(&quot;get data from database&quot;);
+        Object object = point.proceed();
+        if (Objects.nonNull(object)) &#123;
+            // 写入redis
+            redisTemplate.opsForValue().set(realKey, object, cacheAnno.timeOut(), TimeUnit.SECONDS);
+            cache.put(realKey, object);
+        &#125;
+        return object;
+
+    &#125;
+    
+&#125;
+</code></pre>
+<h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p><strong>异步处理</strong></p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2NDQxOA==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<p><strong>应用解耦<img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2NDQxOA==,size_16,color_FFFFFF,t_70-16378923797595.png" alt="在这里插入图片描述"></strong></p>
+<p><strong>流量削峰</strong></p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/20191106170829599.png" alt="在这里插入图片描述"></p>
+<p><strong>重要概念</strong>：</p>
+<p>消息代理 和 目的地 所谓RabbitMQ就是消息代理的一种规范</p>
+<p>消息发送者发送消息后由消息代理接管，消息代理保证消息发送到 指定 目的地</p>
+<p>其中目的地主要是两种形式：</p>
+<p>队列：点对点消息通信. 发送-放入队列 接收者读取后移出 一条消息发送者和接收者是唯一的，但是并不代表接收方只能有一个。 队列就是消息的容器也是终点， 交换器决定消息发往哪里。 由交换器发送到队列。</p>
+<p>主题：发布&#x2F;订阅消息通信</p>
+<hr>
+<p><strong>RabbitMQ</strong></p>
+<hr>
+<p>概念：关联关系见图12</p>
+<p>Message: 消息不具名，由消息头和消息体组成，消息体不透明，而消息头则由一系列可选属性组成。</p>
+<p>消息头组成：路由键 ，优先权， 传送模式（消息是否需要持久性存储</p>
+<p><strong>Publisher</strong>:生产者，也是向交换器发布消息的客户端应用程序。</p>
+<p>**Consumer:**消息的消费者，表示从一个消息队列中取得消息的客户端程序。</p>
+<p><strong>Exchange</strong>：交换器，来接收生产者发送的消息并将这些消息<strong>路由</strong>给服务器中的队列。type:direct(default type) fanout、topic、headers，不同类型的Exchange转发消息的策略有所区别</p>
+<p><strong>Queue</strong>:消息队列，保存消息直到发送给消费者，容器、终点。可放入一或多个队列。与Exchange是多对多的关系。</p>
+<p>**Binding:**消息队列和交换器之间的关联。 即：基于路由键将交换器和消息队列的绑定起来的规则。</p>
+<p>因此交换器又可以说成是由绑定构成的路由表。</p>
+<p><strong>Connection：</strong>网络连接，比如一个TCP连接</p>
+<p><strong>Channel：</strong>信道,多路复用连接使用。建立在Connection内的虚拟连接（这里回顾下计算机网络），实际上AMQP命令都是通过信道发出的，发布消息、订阅队列和接收消息都是通过信道完成。</p>
+<p>对于OS来说，建立和销毁TCP连接都是非常昂贵的开销，因此引入了信道概念以达到复用TCP连接的目的。</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2NDQxOA==,size_16,color_FFFFFF,t_70-16378958071427.png" alt="在这里插入图片描述"></p>
+<p> 图12</p>
+<p><strong>Broker</strong>：消息服务器实体。</p>
+<p><strong>Virtual</strong> <strong>Host</strong>：一批交换器、消息队列和相关对象。（暂且理解为将这些对象“封装”了起来</p>
+<p>JMS：Java消息服务 AMQP：高级消息队列协议：发送时消息类型是byte[]，复杂的消息可以序列化后发送</p>
+<p>协议。运行原理见图13</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzY2NDQxOA==,size_16,color_FFFFFF,t_70-16379082459579.png" alt="在这里插入图片描述"></p>
+<p> 图13</p>
+<p>测试：</p>
+<p>先在docker中部署： 8.140.23.86:5672</p>
+<p>在15672端口下是其web 管理页面，不需要另外去启动。先建立几个交换器和队列如下，交换器指定类型。</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/image-20211129095107180.png" alt="image-20211129095107180"></p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/image-20211129095245524.png" alt="image-20211129095245524"></p>
+<p>然后在交换器中建立几个绑定关系，指定路由键。（在队列和交换器中可以清楚看到该交换器绑定了哪些队列，该队列被哪些交换器绑定了。都是基于路由键来的）</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/image-20211129095526029.png" alt="image-20211129095526029"></p>
+<h4 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h4><ul>
+<li>自动配置</li>
+<li>1、RabbitAutoConfiguration</li>
+<li>2、有自动配置了连接工厂ConnectionFactory；</li>
+<li>3、RabbitProperties 封装了 RabbitMQ的配置</li>
+<li>4、 RabbitTemplate ：给RabbitMQ发送和接受消息；</li>
+<li>5、 AmqpAdmin ： RabbitMQ系统管理功能组件;</li>
+<li>AmqpAdmin：创建和删除 Queue，Exchange，Binding</li>
+<li>6、@EnableRabbit + @RabbitListener 监听消息队列的内容</li>
+</ul>
+<p>测试过程中很奇怪，与教程相比没有指定编码格式也可以正常接收中文字符。推测是1.0到2.0的改进吧。</p>
+<pre><code>@Autowired
+RabbitTemplate rabbitTemplate;
+
+@Test
+void contextLoads() &#123;
+    /**
+     * 1.单播（点对点
+     * Message需要自己构造一个，定义消息内容和消息头
+     */
+    //rabbitTemplate.send(exchange, routeKey, message);
+    /**
+     *  object默认作为消息体，只需要传入要发送的对象，自动序列化发送给rabbitMQ
+     */
+    //rabbitTemplate.convertAndSend(exchange, routeKey, object);
+    Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;msg&quot;, &quot;我恁爹&quot;);
+    map.put(&quot;data&quot;, Arrays.asList(&quot;HelloWorld&quot;, 123, true));
+    rabbitTemplate.convertAndSend(&quot;test.direct&quot;, &quot;chuzhongtian.test&quot;, map);
+
+&#125;
+
+@Test
+public void receieve() &#123;
+    Object obj = rabbitTemplate.receiveAndConvert(&quot;chuzhongtian.test&quot;);
+    System.out.println(obj.getClass().toString());
+&#125;
+</code></pre>
+<p><strong>监听</strong></p>
+<p>@EnableRabbit 放在主启动类上</p>
+<p>@RabbitListener 与上面的配合监听消息队列</p>
+<pre><code>@RabbitListener(queues = &quot;chuzhongtian.test&quot;)
+public void receive(Map&lt;String, String&gt; message) &#123;
+    System.out.println(&quot;收到消息&quot; + message);
+&#125;
+</code></pre>
+<p>@RabbitListener这个注解所在的方法接收参数的类型要和消息类型一致。</p>
+<p><strong>AmqpAdmin管理组件的使用</strong></p>
+<pre><code>@Autowired
+    AmqpAdmin admin;
+
+@Test
+public void createExchange() &#123;
+    admin.declareExchange(new DirectExchange(&quot;admin.test&quot;));  //指定类型 命名
+    admin.declareQueue(new Queue(&quot;admque.test&quot;, true));  //命名并制定为持久化
+    admin.declareBinding(new Binding(&quot;admque.test&quot;, Binding.DestinationType.QUEUE,
+                &quot;admin.test&quot;, &quot;admin.test&quot;, null)); //在两个对象间建立联系
+    System.out.println(&quot;创建成功&quot;);
+&#125;
+</code></pre>
+<h3 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h3><p>前置：这个东西docker里安装比较麻烦，还需要指定下内存</p>
+<p>不然默认1个GB启动就关了。而且不知道为什么不指定版本就会有用5.几，下载7.多还必须要有JDK，</p>
+<pre><code>docker run -e ES_JAVA_OPTS=&quot;-Xms128m -Xmx128m&quot; -d -p 9200:9200 -p 9300:9300 --name elasticsearch xxx 
+</code></pre>
+<p>然后还需要利用下面这个命令去查到底哪出错了，总之pull一个镜像并成功启动并不总是顺利，中间在使用docker ps 时尽管能查到elasticsearch启动了然而其实还是没有启动成功，因为浏览器无法访问到。</p>
+<pre><code>docker logs -f xxx
+</code></pre>
+<hr>
+<p><strong>面向文档</strong></p>
+<p>对象往往是复杂的，（这点起因和redis那时类似）你不可能利用表格存储这个对象内部数据的复杂关系。</p>
+<p>但是ElasticSearch由于是面向文档（类比json)的，可以存下整个对象或文档因此没有关系。这里利用的是索引。索引对于elasticsearch有两种含义，动词义类似insert的作用就是存储一个文档到索引中。</p>
+<p>查行列与查文档的不同。</p>
+<p><img src="https://gitee.com/Hs_Leo/notes/raw/develop/SpringBoot.assets/20190817152545368.png" alt="img"></p>
+<p>ElasticSearch比较好的一点是可以直接利用postman发送一个put请求就会添加一个索引，比如：<a href="https://gitee.com/link?target=http://8.140.23.86:9200/megacorp/employee/1">http://8.140.23.86:9200/megacorp/employee/1</a> 端口号后的表示一个节点名称，也就是索引。如果系统中没有会自动创建一个，employee表示文档名（对象名）。1是这条数据的标识。</p>
+<p>不过发送请求后发现一直没有响应，响应后报的是一个 SERVICE_UNAVAILABLE&#x2F;1&#x2F;state not recovered &#x2F;initialized的错误，去修改配置文件elasticsearch.yml，增添node.name: node-1后发现可以了。这个配置文件不知道为什么只有短短两行。</p>
+<pre><code>// request
+&#123;
+    &quot;first_name&quot; : &quot;John&quot;,
+    &quot;last_name&quot; :  &quot;Smith&quot;,
+    &quot;age&quot; :        25,
+    &quot;about&quot; :      &quot;I love to go rock climbing&quot;,
+    &quot;interests&quot;: [ &quot;sports&quot;, &quot;music&quot; ]
+&#125;
+
+// response
+&#123;
+  &quot;_index&quot;: &quot;megacorp&quot;,
+  &quot;_type&quot;: &quot;employee&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: &#123;
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 1,
+    &quot;failed&quot;: 0
+  &#125;,
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1
+&#125;
+</code></pre>
+<p>再添加几个数据，只要修改后面的标识就可以了，一个标识下应该只能存储一个数据。</p>
+<p>检索，请求uri不变方式修改为GET即可。_source中就是存入的数据内容。还有表示索引名称、文档名、表示等等的响应头，found表示这个请求的结果。这里的type说明这个id下的数据被修改过。</p>
+<pre><code>&#123;
+  &quot;_index&quot;: &quot;megacorp&quot;,
+  &quot;_type&quot;: &quot;employee&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 2,
+  &quot;_seq_no&quot;: 2,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: &#123;
+    &quot;first_name&quot;: &quot;Douglas&quot;,
+    &quot;last_name&quot;: &quot;Fir&quot;,
+    &quot;age&quot;: 35,
+    &quot;about&quot;: &quot;I like to build cabinets&quot;,
+    &quot;interests&quot;: [
+      &quot;forestry&quot;
+    ]
+  &#125;
+&#125;
+</code></pre>
+<p>删除直接切换为DELETE请求就可以了，返回的found中查看是false。</p>
+<p>HEAD请求 检查一下无响应头返回</p>
+<p>对数据进行修改，依然使用PUT请求，不改变标识。识别为update，并执行成功。</p>
+<pre><code>&#123;
+  &quot;_index&quot;: &quot;megacorp&quot;,
+  &quot;_type&quot;: &quot;employee&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 2,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: &#123;
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 1,
+    &quot;failed&quot;: 0
+  &#125;,
+  &quot;_seq_no&quot;: 6,
+  &quot;_primary_term&quot;: 1
+&#125;
+</code></pre>
+<p>这就是REST风格》》》》》？</p>
+<p>发送查询请求:<a href="https://gitee.com/link?target=http://8.140.23.86:9200/megacorp/employee/_search?q=last_name:smith">http://8.140.23.86:9200/megacorp/employee/_search?q&#x3D;last_name:smith</a> 若查询所有则去掉？后的参数。</p>
+<p>这种也是有查询规则的，根据一路学来Linux的正则表达式、缓存中的匹配规则等等似乎这种辅助的开发工具总会自带一些“小套路”编写识别。– 这是一种什么趋势呢？</p>
+<p>比如我们发一个POST请求的查询，因为要带上下面这个请求体作为请求的规则。这里表示要找last_name是smith的且Filter年龄大于25的（不要把Filter理解为过滤掉符合条件而是过滤剩下符合条件的</p>
+<pre><code>&#123;
+    &quot;query&quot; : &#123;
+        &quot;bool&quot;: &#123;
+            &quot;must&quot;: &#123;
+                &quot;match&quot; : &#123;
+                    &quot;last_name&quot; : &quot;smith&quot; 
+                &#125;
+            &#125;,
+            &quot;filter&quot;: &#123;
+                &quot;range&quot; : &#123;
+                    &quot;age&quot; : &#123; &quot;gt&quot; : 25 &#125; 
+                &#125;&#125;&#125;&#125;&#125;
+</code></pre>
+<p>还可以提供模糊查询，比如只给出对应的字段about只要其中含有rock climbing就可以</p>
+<pre><code>&#123;
+    &quot;query&quot; : &#123;
+        &quot;match_phrase&quot; : &#123;
+            &quot;about&quot; : &quot;rock climbing&quot;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>综上看来尽管是一种存储文档的工具，但是实际上还是借鉴了关系型数据库的一些东西。（都是站在巨人的肩膀上嘛</p>
+<p>注意版本适配的问题，任何中间件都是这样。Spring Springboot自带装箱的中间件之间的版本应该不是问题主要是要和所连接的工具的版本。</p>
+<h4 id="整合-1"><a href="#整合-1" class="headerlink" title="整合"></a>整合</h4><p>有两种方式，一种Jest（看源码和教程说的版本差的多，所以暂不记录）这里只说下SpringData</p>
+<pre><code>spring:
+  data:
+    elasticsearch:
+      cluster-name: xxxx    #见连接的elasticsearch.yaml
+      cluster-nodes: ip:9300  #这里配置的port是9300，是节点间通信用的地址,注释掉该行发现                                #没什么影响，就是集群间用的
+      repositories:
+        enabled: true
+  elasticsearch:
+    rest:
+      uris: http://ip:9200  #这里要配置对外的端口9200
+</code></pre>
+<p>准备一个实体类（和我们事先put入elasticsearch的属性对应）@Document这个注解有点奇怪，除了indexName其余属性都过时了。</p>
+<pre><code>@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Document(indexName = &quot;china&quot;, indexStoreType = &quot;book&quot;)
+public class Book &#123;
+    private String bookName;
+
+    private String author;
+
+    private Integer id;
+&#125;
+</code></pre>
+<p>查询的方法：</p>
+<pre><code>public interface BookRepository extends ElasticsearchRepository&lt;Book, Integer&gt; &#123;
+    /**
+     *  之前尝试的操作这个Repository中都有（其实就是mapper）比如增删、计数现在写一个自定义方      * 法进行模糊查询
+     */
+    List&lt;Book&gt; findByBookNameLike(String bookName);
+&#125;
+</code></pre>
+<p>测试：</p>
+<pre><code>@Test
+void contextLoads() &#123;
+    List&lt;Book&gt; list = bookRepository.findByBookNameLike(&quot;游&quot;);
+    for (Book book : list) &#123;
+        System.out.println(book);
+    &#125;
+
+&#125;
+// 查询出的结果：Book(bookName=西游记, author=吴承恩, id=1)
+</code></pre>
+<h3 id="EasyExcel"><a href="#EasyExcel" class="headerlink" title="EasyExcel"></a>EasyExcel</h3><p>一开始参照官方文档，整了一个监听器写法，但是一直调用不了监听器中的方法，结果搜到一个更好用的。</p>
+<p>这里的<code>@ExcelProperty</code>与表格标题对照</p>
+<pre><code>@ExcelProperty(&quot;学号&quot;)
+private String number;
+@ExcelProperty(&quot;出生日期&quot;)
+private Date date;
+</code></pre>
+<p>利用EasyExcel将类的属性和Excel中的标题对应好，可以直接得到一个List，后面的操作就方便了。这里sheet默认读取的是sheet1</p>
+<p><strong>读表</strong></p>
+<pre><code>String fileName = &quot;C:\\xxx\\xxxx\\studentpart.xls&quot;;
+List&lt;Student&gt; studentList = EasyExcel.read(fileName).head(Student.class).sheet().doReadSync();
+</code></pre>
+<p><strong>写表</strong></p>
+<pre><code>Set&lt;String&gt; writeColumns = new HashSet&lt;&gt;();
+writeColumns.add(&quot;number&quot;);
+// 这里可以指定写入对象的哪些属性，属性按顺序和Excel标题对应。  同时还可以利用excluidexxx指定排除
+EasyExcel.write(newTable, Student.class).includeColumnFiledNames(writeColumns).sheet().doWrite(studentList);
+</code></pre>
+<p><strong>TODO遗留的问题</strong>：能不能直接指定写入某一列而不是每次都把表覆盖了？</p>
+<p>读取不到监听器的方法是不是因为没有将其注入Spring容器中？</p>
+<h3 id="Bean相关"><a href="#Bean相关" class="headerlink" title="Bean相关"></a>Bean相关</h3><p>Springboot拦截器bean无法注入</p>
+<p>拦截器的执行在bean初始化前。</p>
+<p>这次错误的发现说明了解工具其背后原理很重要。</p>
+<h3 id="自定义starter"><a href="#自定义starter" class="headerlink" title="自定义starter"></a>自定义starter</h3><pre><code>@Configuration
+@ConditionalOnMissingBean
+@EnableConfigurationProperties (xxxx.class)
+@ConfigurationProperties 与上者相伴相生，上面的注解作用就是为了使被该注解注解的类能够生效，使该注解作用的类没有@Component或等效注解依然能够注入IoC容器中。该类可以使*.yaml(*.properties)中设定的值与JavaBean绑定。
+</code></pre>
+<p>自定义starter，就是创建三个模块</p>
+<p>一个test模块 —— 去调用</p>
+<p>一个starter模块 ——实际上是起了一个桥梁的作用，没有什么具体的逻辑，只是把我们项目所需的多个子模块的依赖引入其中。</p>
+<p>一个autoconfigsomething模块 ——真正的实现逻辑</p>
+<p>首先，将autoconfigsomething模块注入进starter模块中，我们能够通过starter去启动这个模块，然后将starter模块注入到test模块中</p>
+<p>测试：</p>
+<pre><code>@RestController
+public class HelloController &#123;
+
+    @Autowired
+    private HelloService helloService;
+
+    @GetMapping(&quot;/hello&quot;)
+    public String sayHello() &#123;
+        String test = helloService.sayHello(&quot;凡&quot;);
+        return test;
+    &#125;
+&#125;
+</code></pre>
+<p>该test模块下的controller中去调用sayHello，与此同时对应的application.yaml配置好了suffix</p>
+<p>autoconfig模块</p>
+<pre><code>public class HelloService &#123;
+    // 暂时先不放在容器中
+    @Autowired
+    HelloProperties helloProperties;
+    public String sayHello(String name) &#123;
+        return helloProperties.getPrefix()+name+helloProperties.getSuffix();
+    &#125;
+&#125;
+</code></pre>
+<p>helloService注入到对应的controller中，helloProperties注入在其中。如下所示，helloProperties用@ConfigurationProperties注解和yaml配置文件绑定了，但是该模块下并不存在yaml最终依然成功输出那么显然我们的自定义starter是生效了的</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;fan.hello&quot;)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class HelloProperties &#123;
+    private String prefix;
+    private String suffix;
+
+&#125;
+</code></pre>
+<p>注意到，上面的@HelloService没有@Service注解但是依然不影响注入是因为在autoconfig模块下的资源文件夹中设置了：</p>
+<pre><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.fan.auto.HelloServiceAutoConfig
+</code></pre>
+<p>每次启动都会自动装配一个HelloServiceAutoConfig的类，如下：</p>
+<pre><code>@Configuration
+@ConditionalOnMissingBean(HelloService.class)    //如果没有HelloService类该autoconfig就生效（显然如果我们在HelloSerivce上加一个@Service或等效的注解那么这个配置类就没用了
+@EnableConfigurationProperties(HelloProperties.class)  // 默认将这个类放在容器中
+public class HelloServiceAutoConfig &#123;
+
+    @Bean //这个注解上面说过
+    public HelloService helloService() &#123;
+        return new HelloService();
+    &#125;
+&#125;
+</code></pre>
+<p>上面是根据程序逻辑倒推的思路，具体设计不是如此，再重温理解。</p>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>Springboot提供了@EnableSchduling和 @Scheduled注解。</p>
+<p>但是这种并不方便用户自定义。</p>
+<p>比较一下和pty-scheduler有什么不同。</p>
+<p>另外这种@EnableXX特别常见，这个注解除了启用某个功能以外暂时看不出来有什么别的用处，这么处理是因为启动的时候尽可能使程序轻量化吗？</p>
+<p>分别点进去@EnableAutoConfiguration @EnableCaching @EnableSwagger 发现在这些注解的源码上都有Import(XXXXSelector.class) 。Spring会把selectImport<strong>方法的返回值对应的Bean注入</strong>到Spring容器</p>
+<p>然而实际上并不都是这样。比如@EnableScheduling import的是配置类，会将<strong>指定的Bean注入</strong>Spring容器中。</p>
+<p>这种@EnableXX本质上说来是激活了Springboot的某些管理功能。</p>
+<p>JVM毕竟是架设在程序和OS间的，当然可以获得系统参数（这点在解决乱码问题时应该可以想到了）</p>
+<p>根据对公司的定时任务的探究，进一步明白了<strong>源码的重要性</strong>。如果对源码不了解，很难做出原创性的业务。比如定时任务，定时任务的生成，时间参数的配置。。。</p>
+<h3 id="Springboot-Actuator"><a href="#Springboot-Actuator" class="headerlink" title="Springboot Actuator"></a>Springboot Actuator</h3><p>what?:一个监控系统数据的框架</p>
+<p>yaml配置：</p>
+<pre><code># actuaotor监控设置
+management:
+  # server:
+    # port: 8001
+  endpoints:
+    # enabled-by-default: 控制是否都默认开启
+    web:  # 这里配置jmx就是另外一种了，我们这是针对
+      exposure:
+        # 默认值访问health,info端点，用*可以包含全部端点，这个不设置的话只设置enabled还是看不到这些指标
+        include: &quot;*&quot;
+        # 修改访问路径
+      base-path: /actuator
+  endpoint:
+    shutdown:   # shutdown caches beans 等算是id。除了shutdown其余的都是默认开启的，
+      enabled: true
+    health:
+      show-details: ALWAYS # 获得健康检查中所有指标的详细信息
+    loggers:
+      enabled: true
+    beans:
+      enabled: true
+      cache:
+        time-to-live: 10s   # 配置该endpoint 缓存时间
+</code></pre>
+<p>如果（跨域请求时）Origin指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含Access-Control-Allow-Origin字段（详见下文），就知道出错了，从而抛出一个错误，被XMLHttpRequest的onerror回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/spring/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Spring</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/springcloud/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Spring Cloud</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

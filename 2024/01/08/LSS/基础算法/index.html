@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>基础算法-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,基础,算法,">
+<meta name="description" content="java实现一些基础算法">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/基础">基础</a></li>
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            
+        </ul>
+        
+        <h1>基础算法</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/基础/" target="_blank" >基础</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h3 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h3><p>稳定 与 不稳定</p>
+<p>那么这种区别为什么会叫做稳定呢？ 有什么特殊的意义？</p>
+<h4 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h4><p>使用前提：数组中元素是顺序排列的，并且没有重复元素。</p>
+<p>所谓区间，就是指不变量。这里对于区间的定义，就是右侧区间（right &#x3D; nums.length还是num.lenth-1)是开还是闭会影响到对二分查找的比较。因为会出现最终left&#x3D;right的情况。 另外注意赋值left right的时候直接-1即可了</p>
+<pre><code>public int search(int[] nums, int target) &#123;
+    int left = 0;
+    int right = nums.length;
+    while (left &lt; right) &#123;
+        int mid = left + ((right - left) &gt;&gt; 1);
+        if (nums[mid] == target) &#123;
+            return mid;
+        &#125; else if (nums[mid] &lt;= target) &#123;
+            left = mid + 1;
+        &#125; else if (nums[mid] &gt;= target) &#123;
+            right = mid - 1;
+        &#125;
+
+    &#125;
+    return -1;
+
+&#125;
+</code></pre>
+<h4 id="冒泡排序-❌"><a href="#冒泡排序-❌" class="headerlink" title="冒泡排序 ❌"></a>冒泡排序 ❌</h4><p>时间复杂度： O(n²)</p>
+<pre><code>public void bubleSort(int[] nums) &#123;
+    int temp;
+    for (int i = 0; i &lt; nums.length-1; i++) &#123;
+        for (int j = 0; j &lt; nums.length-1; j++) &#123;
+            if (nums[j] &gt; nums[j+1]) &#123;
+                temp = nums[j];
+                nums[j] = numsj[j+1];
+                nums[j+1] = temp;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>时间复杂度 O(n²)</p>
+<p>二分的思想 最近写递归总是会导致栈溢出，说明对这种处理方式还是不够理解，不能够很好地去设置递归终止条件。</p>
+<p>快速排序实际上是对冒泡排序的一种改进，也算是一种交换排序。在最不乐观的情况下，其性能和冒泡排序一样因为做了相同的操作两两交换位置。但是实际上由于其只交换符合条件的元素，并不是相邻就交换其效率要高得多。某种意义上算是比较好的一种排序。</p>
+<p>假设要求按从小到大排序那么归结起来就是：</p>
+<p>找基准，从尾开始找小的从头开始找大的，然后交换位置。左右相逢，基准交换。递归完事儿。</p>
+<pre><code>public static void quickSort(int[] nums, int start, int end) &#123;
+        int temp;
+        // 说明数组长度为1了。递归终止
+        if (start &gt; end) &#123;
+            return;
+        &#125;
+        int left = start;
+        int right = end;
+        int pivot = nums[start];
+        while (left &lt; right) &#123;
+            while (left &lt; right &amp;&amp; nums[right] &gt;= pivot) &#123;
+                right--;
+
+            &#125;
+            while (left &lt; right &amp;&amp; nums[left] &lt;= pivot) &#123;
+                left++;
+            &#125;
+            if (left &lt; right) &#123;
+                temp = nums[right];
+                nums[right] = nums[left];
+                nums[left] = temp;
+            &#125;
+
+        &#125;
+        // 基准与最后位置交换
+        temp = nums[left];
+        nums[left] = pivot;
+        nums[start] = temp;
+        quickSort(nums, start, left-1);
+        quickSort(nums, right+1, end);
+
+    &#125;
+</code></pre>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>同样也是基于分治法， O(nlogn) 但是比较耗费空间需要创建一个存储中间结果的数组。 利用递归的方式。</p>
+<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>直接插入排序数据量大时的优化</p>
+<h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序*"></a>堆排序*</h4><h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><p>数量大且数大</p>
+<p><img src="/" alt="img"></p>
+<h3 id="初级算法"><a href="#初级算法" class="headerlink" title="初级算法"></a>初级算法</h3><h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><h5 id="Day1-双指针问题"><a href="#Day1-双指针问题" class="headerlink" title="Day1 双指针问题"></a>Day1 双指针问题</h5><p>删除<strong>排序</strong>数组中的重复项：</p>
+<hr>
+<p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，<strong>返回移除后数组的新长度。</strong></p>
+<p>不要使用额外的数组空间，你必须在 <strong>原地 修改</strong>输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<hr>
+<pre><code>        /*设定双指针，此处仅用一个for循环即可，注意数组是有序的
+        最后返回数组长度时由于从0开始需要返回的是i+1
+        */
+        int i = 0;
+        for (int j = 1; j &lt; nums.length; j++) &#123;
+            if (nums[i] != nums[j]) &#123;
+                nums[i + 1] = nums[j];
+                i++;
+            &#125;
+        &#125;
+        return i+1;
+</code></pre>
+<h5 id="Day2-动态规划问题"><a href="#Day2-动态规划问题" class="headerlink" title="Day2 动态规划问题"></a>Day2 动态规划问题</h5><p>买卖股票的最佳时机 II</p>
+<p>给定一个数组，它的<strong>第 i 个元素是一支给定股票第 i 天的价格。</strong></p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<pre><code>public int maxProfit(int[] prices) &#123;
+        /*prices[]数组中代表了每天股票的价格,由于手中仅能持有一支股票
+        因此每天仅有两种状态，手中持有股票或者没有股票，从而根据前一天的交易情况计算利润
+        从上述推断中，显然可知若要保持最大利润，最终的状态一定手中不能持有股票
+         */
+        int n = prices.length;
+        int dp[][] = new int[n][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i &lt; n; i++)&#123;
+            //根据股票的两种状态判断今天的收益
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]+prices[i]);
+            dp[i][1] = Math.max(dp[i-1][1], dp[i-1][0]-prices[i]);
+        &#125;
+        return dp[n-1][0];
+    
+    &#125;
+</code></pre>
+<p><strong>空间复杂度优化</strong>：上述方案中，用到了二维数组，我们通过观察论证发现实际上每日的收益情况最终只跟前一天的状态有关，没有必要利用一个二维数组。</p>
+<h5 id="Day3-旋转数组"><a href="#Day3-旋转数组" class="headerlink" title="Day3 旋转数组"></a>Day3 旋转数组</h5><p>给定一个数组，将数组中的元素向右移动 <code>k</code> 个位置，其中 <code>k</code> 是非负数。</p>
+<p>方法一：直接暴力 <strong>–one step one time</strong></p>
+<pre><code>//数组元素交换问题，先将元素向右旋转一位，旋转k次完成任务
+public void rotate(int[] nums, int k) &#123;
+        int previous,temp;
+        int n = nums.length;
+        for (int i = 0; i &lt; k; i++) &#123;
+            //将末尾元素赋值给previous 后续交换
+            previous = nums[n-1];
+            for (int j = 0; j &lt; n; j++) &#123;
+                temp = nums[j];
+                nums[j] = previous;
+                previous = temp;
+            &#125;
+        &#125;
+
+    &#125;
+</code></pre>
+<p>方法二： 分割翻转</p>
+<p><strong>观察最终输出数组，实际上先整体翻转然后再从k位分割，再左右两侧翻转</strong></p>
+<pre><code>//利用两个方法，再翻转方法中利用双指针
+    public void rotate(int[] nums, int k) &#123;
+        k %= nums.length;
+        swap(nums, 0, nums.length-1);
+        swap(nums, 0, k-1);
+        swap(nums, k, nums.length-1);
+
+    &#125;
+   //!!!容易忽视，否则需要写多个for循环
+    public void swap(int[] nums, int start, int end) &#123;
+        while (start &lt; end) &#123;
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        &#125;
+
+    &#125;
+</code></pre>
+<h5 id="Day4-哈希表"><a href="#Day4-哈希表" class="headerlink" title="Day4 哈希表"></a>Day4 哈希表</h5><p>存在重复元素：</p>
+<p>给定一个整数数组，判断是否存在重复元素。</p>
+<p>如果存在一值在数组中出现至少两次，函数返回 <code>true</code> 。如果数组中每个元素都不相同，则返回 <code>false</code> 。</p>
+<p>方法一：排序</p>
+<pre><code>public boolean solve(int[] nums) &#123;
+        Arrays.sort(nums);
+        for (int i = 0; i &lt; nums.length-1; i++) &#123;
+            if (nums[i] == nums[i+1]) &#123;
+                return true;
+            &#125;
+        &#125;
+        return false;
+
+    &#125;
+</code></pre>
+<p>方法二：<strong>哈希表</strong></p>
+<p>利用Set集合的特性</p>
+<pre><code>public boolean containsDuplicate(int[] nums) &#123;
+        Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;();
+        //遍历nums
+        for (int x:nums) &#123;
+            if(!set.add(x)) return true;
+        &#125;
+        return false;
+    &#125;
+</code></pre>
+<h5 id="位运算（节省空间）"><a href="#位运算（节省空间）" class="headerlink" title="位运算（节省空间）"></a>位运算（节省空间）</h5><p>只出现一次的数字</p>
+<p>给定一个<strong>非空</strong>整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。（算法应该具有线性时间复杂度。）</p>
+<pre><code>/*
+异或运算：任何数和0做异或运算，结果仍然是原来的数
+        任何数和其自身做异或运算，结果是0
+        异或运算满足交换律和结合律 a⊕b⊕a=b⊕a⊕a=b⊕(a⊕a)=b⊕0=b。
+
+*/
+public int singleNumber(int[] nums) &#123;
+        int single = 0;
+        //遍历nums数组，取出每一个元素
+        for (int num:nums) &#123;
+            single ^= num;
+        &#125;
+        return single;
+    &#125;
+</code></pre>
+<h5 id="Day5-两个数组的交集-Ⅱ"><a href="#Day5-两个数组的交集-Ⅱ" class="headerlink" title="Day5 两个数组的交集 Ⅱ"></a>Day5 两个数组的交集 Ⅱ</h5><p>给定两个数组，编写一个函数来计算它们的交集。</p>
+<p>要求：</p>
+<p>返回结果中每个元素出现的次数，应与元素在两个数组中都出现的次数一致（如果出现次数不一致，则考虑取较小值）</p>
+<p>**copyOfRange() ** 双指针</p>
+<h6 id="方法一：先排序-类似于暴力解决，双指针遍历-三指针-——那么这种思路可以解决哪类问题呢？"><a href="#方法一：先排序-类似于暴力解决，双指针遍历-三指针-——那么这种思路可以解决哪类问题呢？" class="headerlink" title="方法一：先排序(类似于暴力解决，双指针遍历) 三指针 ——那么这种思路可以解决哪类问题呢？"></a>方法一：先排序(类似于暴力解决，双指针遍历) <strong>三指针</strong> ——<strong>那么这种思路可以解决哪类问题呢？</strong></h6><pre><code>public int[] solve(int[] nums1, int[] nums2) &#123;
+  //要排序,这是后面一切操作的依据
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int n = nums1.length;
+        int m = nums2.length;
+        int newarr[] = new int[Math.min(n, m)];
+        int index1 = 0, index2 = 0, index = 0;
+        // while (index &lt; newarr.length) 可能会造成index1或2越界
+        //此处应对两个指针进行限制防止越界
+          while (index1 &lt; n &amp;&amp; index2 &lt; m) &#123;
+            if (nums1[index1] &gt; nums2[index2]) &#123;
+                index2++;
+            &#125;
+            else if (nums1[index1] &lt; nums2[index2]) &#123;
+                index1++;
+            &#125;
+            else &#123;
+                newarr[index] = nums1[index1];
+                index++;
+                index1++;
+                index2++;
+            &#125;
+        &#125;
+          //copyOfRange()方法 下标左闭右开，因此取0，index
+        return Arrays.copyOfRange(newarr, 0, index);
+    &#125;
+</code></pre>
+<h6 id="方法二：哈希表"><a href="#方法二：哈希表" class="headerlink" title="方法二：哈希表"></a>方法二：哈希表</h6><pre><code>public int[] intersect(int[] nums1, int[] nums2) &#123;
+        //降低空间复杂度
+        if (nums1.length &gt; nums2.length) &#123;
+            return intersect(nums2, nums1);
+        &#125;
+
+        Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();
+        //遍历nums1,将数组元素存入
+        for (int num:nums1) &#123;
+            //每出现相同的num加1
+            int count = map.getOrDefault(num, 0) + 1;
+            map.put(num, count);
+
+        &#125;
+        //创建一个新数组
+        int[] intersection = new int[nums1.length];
+        int index = 0;
+        //遍历数组2
+        for (int num:nums2) &#123;
+            //设定值，此时map对应的数已经有了值
+            int count = map.getOrDefault(num, 0);
+            if (count &gt; 0) &#123;
+                //count大于0说明此前哈希表中有该数字,存入要返回的数组
+                intersection[index++] = num; //存入元素操作
+                count--;//减去直至0便于后续条件
+                if (count &gt; 0) &#123;
+                    map.put(num, count); //更新哈希表键值对
+                &#125; else &#123;
+                    //count=0说明此时
+                    map.remove(num);
+                &#125;
+            &#125;
+        &#125;
+        //类比普通方法
+        return Arrays.copyOfRange(intersection, 0, index);
+
+    &#125;
+</code></pre>
+<h6 id="削弱版本：返回的数组，重复有就行不要求次数。"><a href="#削弱版本：返回的数组，重复有就行不要求次数。" class="headerlink" title="削弱版本：返回的数组，重复有就行不要求次数。"></a>削弱版本：返回的数组，重复有就行不要求次数。</h6><h6 id="用Set"><a href="#用Set" class="headerlink" title="用Set"></a>用Set</h6><p>这种肯定要慢一些。</p>
+<pre><code>public int[] intersection(int[] nums1, int[] nums2) &#123;
+    if (num2.length &gt; nums1.length) &#123;
+        return intersection(nums1, nums2);
+    &#125;
+    Set&lt;Integer&gt; set1 = new HashSet&lt;&gt;();
+    Set&lt;Integer&gt; set2 = new HashSet&lt;&gt;();
+
+    // 遍历
+    for (int i : nums1) &#123;
+        set1.add(i);
+    &#125;
+    // 遍历数组2的过程中判断哈希表中是否存在该元素
+    for (int i : nums2) &#123;
+        if (set1.contains(i)) &#123;
+            set2.add(i);
+
+        &#125;
+    &#125;
+    int[] resSet = new int[set2.size()];
+
+    for (int i : set1) &#123;
+        resSet.add(i);
+    &#125;
+    return resSet;
+
+&#125;
+</code></pre>
+<h5 id="Day6-加一-精彩绝伦的一行代码！！！"><a href="#Day6-加一-精彩绝伦的一行代码！！！" class="headerlink" title="Day6 加一 精彩绝伦的一行代码！！！"></a>Day6 加一 精彩绝伦的一行代码！！！</h5><p>给定一个由<strong>整数</strong>组成的 非空 数组所表示的非负整数，在<strong>该数的基础上加一</strong>。 最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。</p>
+<p>此题的难点在于最终位是否是9，若不是9则程序可直接结束，若为9则需向下考虑倒数第234…位是否为9，显然只用if判断是不行的。</p>
+<p>而使用for循环，不能再像其他情况下，利用i++,而应该<strong>从后向前判断，且需要取余</strong>。</p>
+<p>每次循环后判断该位是否为0（已进位）如果不是，则可以直接返回数组，结束程序运行。</p>
+<p>①对return的理解。②取余。③定义新数组增加长度</p>
+<pre><code>public int[] plusOne(int[] digits) &#123;
+        //数组长度+1？
+        //是9就改为0 不是9就加1
+        int n = digits.length;
+        //因为是从末尾+1，因此反常规从后往前遍历
+        for (int i = n-1; i &gt;= 0; i--) &#123;
+            digits[i]++;
+            digits[i] = digits[i]%10;
+            //每次循环判断一次，如果+1后没有进位说明不是9，直接在此处返回数组不再循环，结束程序运行
+            if (digits[i] != 0) return digits;
+
+        &#125;
+        //如果全为9，即在上个for循环中没有返回数组则需重新建立数组
+        digits = new int[digits.length+1];
+        digits[0] = 1;
+        return
+          digits;
+
+    &#125;
+</code></pre>
+<h5 id="Day7-移动零"><a href="#Day7-移动零" class="headerlink" title="Day7 移动零"></a>Day7 移动零</h5><p>给定一个数组 <code>nums</code>，编写一个函数将所有 <code>0</code> 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+<p><strong>思考:</strong></p>
+<p>此问题显然需要使用双指针，不过不知道为什么使用以下方法时，输入[1, 2]得到了[2, 1]</p>
+<p>先将整体翻转，此时0位于末尾完成。而后将统计到的0有多少个，作为翻转的末尾。可以通过一部分测试用例</p>
+<pre><code>public void slove(int[] nums) &#123;
+        Arrays.sort(nums);
+        int n = nums.length;
+        int k = 0;
+        for (int i = 0; i &lt; n; i++) &#123;
+            if (nums[i] == 0) &#123;
+                k += 1;
+            &#125;
+        &#125;
+        if (k != 0) &#123;//&#123;2, 1&#125;输入时输出的是&#123;1,2&#125;
+            swap(nums, 0, n-1);
+            swap(nums, 0, k);
+
+        &#125;
+
+
+    &#125;
+
+    public void swap(int[] nums, int start, int end) &#123;
+        while (start &lt; end) &#123;
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        &#125;
+    &#125;
+</code></pre>
+<p>下面参考网友提供的一种简洁的思路：①注意遍历方式 for(int num:nums)②i++与 ++i的不同</p>
+<pre><code>public void move(int[] nums) &#123;
+        int index = 0;
+        //遍历数组中每个元素,由于要求移动0那么此时只考虑非0元素即可
+        for (int num : nums) &#123;
+            if (num != 0) &#123;
+                /*
+                ！！！此处利用index++作为索引，index将先取值而后自增
+                 相当于nums[index] = num;
+                      index++;*/
+                nums[index++] = num;
+            &#125;
+
+        &#125;
+        //此时已经完成非0元素转移，仅需将剩余位置全部赋为0即可
+        for (int i = index; i &lt; nums.length; i++) &#123;
+            nums[i] = 0;
+        &#125;
+    &#125;
+</code></pre>
+<h5 id="Day8-两数之和"><a href="#Day8-两数之和" class="headerlink" title="Day8 两数之和"></a>Day8 两数之和</h5><p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中<strong>同一个元素不能使用两遍</strong>。</p>
+<h6 id="方法一：暴力直接"><a href="#方法一：暴力直接" class="headerlink" title="方法一：暴力直接"></a>方法一：暴力直接</h6><p>自写:</p>
+<p>此题初看可以直接暴力解决，使用双指针，但是需要利用到嵌套for循环，O(n²)时间复杂度</p>
+<pre><code>public int[] twoSum(int[] nums, int target) &#123;
+        int arr[] = new int[2];
+        for (int j = 0; j &lt; nums.length; j++) &#123;
+            for (int i = 1; i &lt; nums.length; i++) &#123;
+              //一定要使得两指针不相同，易出现[5,5,2,8] target=10等情况
+                if (i != j &amp;&amp; nums[i] + nums[j] == target) &#123;
+                    arr[0] = j;
+                    arr[1] = i;
+                    return arr;
+                &#125;
+            &#125;
+        &#125;
+        return arr;
+    &#125;
+</code></pre>
+<p><strong>改进：</strong></p>
+<p>减少代码行数，遍历次数（实际上还是两个for循环，从时间复杂度上是一个量级)</p>
+<p>思路由寻找两数之和转换为取一个x，寻找数组中是否存在target-x <strong>最外层循环处由于已经尝试过，故内层循环起始应考虑从外层循环起始后一位。</strong></p>
+<pre><code>public int[] twoSumUp(int[] nums, int target) &#123;
+        int n = nums.length;
+        for (int i = 0; i &lt; n; ++i) &#123;
+            for (int j = i + 1; j &lt; n; ++j) &#123;
+                if (nums[i] + nums[j] == target) &#123;
+                  //更简洁
+                    return new int[]&#123;i, j&#125;;
+                &#125;
+            &#125;
+        &#125;
+        return new int[0];
+    &#125;
+</code></pre>
+<h6 id="方法二：哈希表-1"><a href="#方法二：哈希表-1" class="headerlink" title="方法二：哈希表"></a>方法二：哈希表</h6><p>**思路:**暴力解决的时间复杂度较高（但是同时空间复杂度是常数级的）寻找target-x的时间复杂度过高。</p>
+<p>因此要设法更快速地寻找数组中的目标元素。</p>
+<p>创建一个hash表，对于元素中的每一个值设为x，首先<strong>查询哈希表中是否存在target -x，而后再将x插入哈希表中</strong>，使得x不会和自己相配。</p>
+<p>**containsKey() ** hashmap.get()获取下标</p>
+<p><strong>！！！注意此处利用的是Map但是创建的还是HashMap的对象</strong></p>
+<pre><code> public int[] twoSum(int[] nums, int target) &#123;
+        // 直接暴力解决遍历就完事儿了，但是怎样哈希
+        // 主要是对各种数据结构api的使用  如果解决重复的问题
+        Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();
+        int[] result = new int[2];
+        for (int i = 0; i &lt; nums.length; i++) &#123;
+            int temp = target - nums[i];
+            if (map.containsKey(temp)) &#123;
+                // 要避免出现[3,3]  6这种因此就要将put的操作放在每次遍历的最后段
+                // 尽管这里key肯定是一样的 
+                result[0] = i;
+                result[1] = map.get(temp);
+            &#125;
+            map.put(nums[i], i);
+        &#125;
+        return result;
+    &#125;
+</code></pre>
+<h5 id="Day9有效的数独"><a href="#Day9有效的数独" class="headerlink" title="Day9有效的数独"></a>Day9有效的数独</h5><p>判断一个 9x9 的数独是否有效。</p>
+<p>①1-9每行只出现一次。</p>
+<p>②1-9每列只出现一次</p>
+<p>③1-9每粗实线分割的3x3各自内仅出现一次</p>
+<p>（显然要利用二维数组，首次）。且题目中要求使用<strong>char类型</strong></p>
+<p><strong>思路</strong>：可能需要对表进行三次遍历。</p>
+<p>问题在于，既要对列、行进行遍历，同时还要将其分为子数独遍历。</p>
+<p>问题一：<strong>如何分子数独？</strong> 数独要分为九个子部。0-8不能是1-9。</p>
+<p>根据其行列号的特点：box_index&#x3D;(row&#x2F;3)*3+colums&#x2F;3</p>
+<p>问题二：完成①②③的要求。即<strong>无重复项</strong>。 哈希映射跟踪已遇到的值</p>
+<p>转化为编程语言</p>
+<ul>
+<li>对数独进行初始化 将一个数独以行、列、子数独为界分割为三个数组</li>
+</ul>
+<pre><code>public boolean isValidSudoku(char[][] board) &#123;
+        //分离的三次遍历，而不是嵌套的遍历。若嵌套遍历，则必定有相同元素。
+//    数学思路   子数独   box_index = (row/3) * 3 + columns/3
+        //初始化数据
+        HashMap&lt;Integer, Integer&gt; []rows = new HashMap[9];
+        HashMap&lt;Integer, Integer&gt; []columns = new HashMap[9];
+        HashMap&lt;Integer, Integer&gt; []boxes = new HashMap[9];
+        for (int i = 0; i &lt; 9; i++) &#123;
+          //存入元素，一个数组
+            rows[i] = new HashMap&lt;Integer, Integer&gt;();
+            columns[i] = new HashMap&lt;Integer, Integer&gt;();
+            boxes[i] = new HashMap&lt;Integer, Integer&gt;();
+        &#125;
+&#125;
+</code></pre>
+<ul>
+<li><p>验证是否有重复项</p>
+</li>
+<li><p>注意，要先判断num不为.，这是后续操作的基础，因此就决定了强转后的变量是局部变量，在判断是否重复时的if逻辑判断是嵌套在！&#x3D;’.’这一逻辑下才会实现的</p>
+</li>
+<li><p>box_index &#x3D; (i&#x2F;3)*3 + j&#x2F;3; 控制子棋盘</p>
+<pre><code>         for (int i = 0; i &lt; 9; i++) &#123;
+            for (int j = 0; j &lt; 9; j++) &#123; //二维数组当然是用两个for循环遍历
+                char num = board[i][j]; 
+                if (num != &#39;.&#39;) &#123;
+                    //强转,因为之前是char
+                    int n = (int)num;
+                    //以行、列号划分子数独
+                    int box_index = (i/3)*3 + j/3;
+                    //暂存值  注意对应各自下标
+                    rows[i].put(n, rows[i].getOrDefault(n, 0) + 1);
+                    columns[j].put(n, columns[j].getOrDefault(n, 0) + 1);
+                    boxes[box_index].put(n, boxes[box_index].getOrDefault(n, 0) + 1);
+
+                    //是否值已经存在
+                    if (rows[i].get(n) &gt; 1 ||
+                            columns[j].get(n) &gt; 1 ||
+                            boxes[box_index].get(n) &gt; 1)
+                        return false;
+                &#125;
+            &#125;
+        &#125;
+        return true;
+</code></pre>
+</li>
+</ul>
+<h5 id="Day10-旋转图像"><a href="#Day10-旋转图像" class="headerlink" title="Day10 旋转图像"></a>Day10 旋转图像</h5><ul>
+<li><img src="/" alt="image-20210113140642991"><img src="/" alt="image-20210113140825884"></li>
+</ul>
+<p><strong>规律</strong>:矩阵的第i行第j列的元素，在旋转后，出现在倒数第i列的第j个位置上。</p>
+<p>接下来解题的依据即是元素位置的变化。</p>
+<h6 id="方法一：建立辅助数组-（不符合题目要求）"><a href="#方法一：建立辅助数组-（不符合题目要求）" class="headerlink" title="方法一：建立辅助数组 （不符合题目要求）"></a>方法一：建立辅助数组 （不符合题目要求）</h6><p>直接建立一个新的二维数组，赋值。再转化回来完事儿。O（n²) 时间复杂度 O(n²)空间复杂度</p>
+<p>即：matrix{row}{col} →matrixnew{row}{col}</p>
+<h6 id=""><a href="#" class="headerlink" title=""></a></h6><h6 id="方法二-原地旋转-创建一临时变量，经过五次转换得到（留作以后讨论）"><a href="#方法二-原地旋转-创建一临时变量，经过五次转换得到（留作以后讨论）" class="headerlink" title="方法二 原地旋转 创建一临时变量，经过五次转换得到（留作以后讨论）"></a>方法二 原地旋转 创建一临时变量，经过五次转换得到（留作以后讨论）</h6><h6 id="方法三-翻转替代"><a href="#方法三-翻转替代" class="headerlink" title="方法三 翻转替代"></a>方法三 翻转替代</h6><p>实际上，这是个矩阵，先水平翻转后再以主对角线翻转。（转置）</p>
+<p><strong>思想可类比Day3旋转数组</strong>。（！！！实际上，这说明迁移能力有问题。因为二维数组依然是数组，只不过二维数组存储的元素是一维数组）</p>
+<p>matrix[row] [col] → matrix[n-row-1] [col]</p>
+<p>matrix[row] [col] → matrix[col] [row]</p>
+<p>联立 ：matrix[col] [n-row-1] &#x3D; matrix[row] [col]</p>
+<p>注意嵌套for循环的终结条件，水平翻转是只需要翻转一半的行即可，对角线翻转时要求j &lt; i</p>
+<pre><code>    //方法三 翻转替代旋转
+    public void rotate2(int[][] matrix) &#123;
+        int n = matrix.length;
+        int temp;
+        //水平翻转  注意下标对翻转次数的控制
+        for (int i = 0; i &lt; n/2; i++) &#123;
+            for (int j = 0; j &lt; n; j++) &#123;
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[n-i-1][j];
+                matrix[n-i-1][j] = temp;
+            &#125;
+
+        &#125;
+
+        //对角线翻转
+        for (int i = 0; i &lt; n; i++) &#123;
+            for (int j = 0; j &lt; i; j++) &#123;
+                temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>基本操作：</p>
+<ul>
+<li>获取字符串长度length()</li>
+<li>获取字符串中的第i个字符charAt(i)</li>
+<li>获取指定位置的字符方法getChars(4个参数)</li>
+</ul>
+<h5 id="Day11-反转字符串"><a href="#Day11-反转字符串" class="headerlink" title="Day11 反转字符串"></a>Day11 反转字符串</h5><h5 id="整数反转"><a href="#整数反转" class="headerlink" title="整数反转"></a>整数反转</h5><p>INT_MAX INT_MIN</p>
+<p>给出一个 <strong>32 位</strong>的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
+<h5 id="Day12-字符串中的第一个唯一字符"><a href="#Day12-字符串中的第一个唯一字符" class="headerlink" title="Day12 字符串中的第一个唯一字符"></a>Day12 字符串中的第一个唯一字符</h5><p>给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。</p>
+<p>此题显然需要利用哈希表，利用哈希表的键值对，输出值为1的字符即可。</p>
+<p>对字符串的操作不够熟悉。</p>
+<p>方法一 哈希表正常操作 存值再遍历值即可即可</p>
+<pre><code>public int firstUniqChar(String s) &#123;
+        Map&lt;Character, Integer&gt; frequency = new HashMap&lt;Character, Integer&gt;();
+        for (int i = 0; i &lt; s.length(); i++) &#123;
+            //单个字符存入哈希表中，并记录出现次数。
+            char ch = s.charAt(i);
+            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);//常用操作套路
+
+        &#125;
+        for (int i = 0; i &lt; s.length(); ++i) &#123;
+            if (frequency.get(s.charAt(i)) == 1) &#123;
+                return i;
+            &#125;
+        &#125;
+        return -1;
+
+    &#125;
+</code></pre>
+<p>方法二 利用队列实现 (暂时先了解)</p>
+<p><strong>队列具有「先进先出」的性质，因此很适合用来找出第一个满足某个条件的元素。</strong></p>
+<pre><code>public int firstUniqChar2(String s) &#123;
+        Map&lt;Character, Integer&gt; position = new HashMap&lt;Character, Integer&gt;();
+        Queue&lt;Pair&gt; queue = new LinkedList&lt;Pair&gt;();
+        int n = s.length();
+        for (int i = 0; i &lt; n; i++) &#123;
+            char ch = s.charAt(i);
+            if (!position.containsKey(ch)) &#123;
+                position.put(ch, i);
+                queue.offer(new Pair(ch, i));
+            &#125; else &#123;
+                position.put(ch, -1);
+                while (!queue.isEmpty() &amp;&amp; position.get(queue.peek().ch) == -1) &#123;
+                    queue.poll();
+                &#125;
+            &#125;
+        &#125;
+        return queue.isEmpty() ? -1 :queue.poll().pos;
+    &#125;
+    
+    //构造一个内部类，作为二元组
+    class Pair &#123;
+        char ch;
+        int pos;
+        Pair(char ch, int pos) &#123;
+            this.ch = ch;
+            this.pos = pos;
+        &#125;
+    &#125;
+</code></pre>
+<h5 id="Day14-验证回文串"><a href="#Day14-验证回文串" class="headerlink" title="Day14 验证回文串"></a>Day14 验证回文串</h5><p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。(空字符串也算)</p>
+<p>此题需要去除符号</p>
+<p>实际上，<strong>字符串可以看作一个数组，单独一个字符可以视作</strong>元素。 处理时转化为char数组利用for循环处理。</p>
+<ul>
+<li>利用StringBuffer修改字符串，又与StringBuffer不同</li>
+<li>append方法 以及Charcater类的方法</li>
+</ul>
+<p><strong>方法一 调用api 利用StringBuffer</strong></p>
+<pre><code>public boolean isPalindrome(String s) &#123;
+        StringBuffer sgood = new StringBuffer();
+        int n = s.length();
+        for (int i = 0; i &lt; n; i++) &#123;
+            char ch = s.charAt(i);
+            //判断是否是字母或数字 即除去其他符号
+            if (Character.isLetterOrDigit(ch)) &#123;
+                sgood.append(Character.toLowerCase(ch));
+            &#125;
+
+        &#125;
+        //得到逆序字符串
+        StringBuffer sgood_rev = new StringBuffer(sgood).reverse();
+        return sgood.toString().equals(sgood_rev.toString());
+    &#125;
+</code></pre>
+<p><strong>方法二 双指针</strong></p>
+<pre><code>public boolean isPalindrome(String s) &#123;
+  
+&#125;
+</code></pre>
+<p>第一种方法利用了Java的方法equals reverse 方法二用的常规方法不需调用</p>
+<h5 id="Day15-字符串转换整数"><a href="#Day15-字符串转换整数" class="headerlink" title="Day15 字符串转换整数"></a>Day15 字符串转换整数</h5><ul>
+<li>请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数函数 myAtoi(string s) 的算法如下：</li>
+<li>读入字符串并丢弃无用的前导空格</li>
+<li>检查第一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数。 如果两者都不存在，则假定结果为正。</li>
+<li>读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。</li>
+<li>将前面步骤读入的这些数字转换为整数（即，”123” -&gt; 123， “0032” -&gt; 32）。</li>
+<li>如果没有读入数字，则整数为 0 。必要时更改符号（从步骤 2 开始）。</li>
+<li>如果整数数超过 32 位有符号整数范围 [−231, 231 − 1] ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 −231 的整数应该被固定为 −231 ，大于 231 − 1 的整数应该被固定为 231 − 1 。 返回整数作为最终结果。</li>
+</ul>
+<p>此题要求极多，</p>
+<p><strong>且用到了编译原理的知识</strong> 暂且了解</p>
+<p>为了有条理地分析每个输入字符的处理方法，我们可以使用自动机这个概念：</p>
+<p><img src="/" alt="image-20210121104732302"></p>
+<pre><code>public int atoi(String str) &#123;
+        Automaton automaton = new Automaton();
+        int length = str.length();
+        for (int i = 0; i &lt; length; i++) &#123;
+            automaton.get(str.charAt(i));
+        &#125;
+        return (int) (automaton.sign*automaton.ans);
+
+    &#125;
+
+class Automaton &#123;
+    public int sign = 1;
+    public long ans = 0;
+    private String state = &quot;start&quot;;
+    //记住这个操作
+    private Map&lt;String, String[]&gt; table = new HashMap&lt;&gt;() &#123;
+        &#123;
+            put(&quot;start&quot;, new String[] &#123;&quot;start&quot;, &quot;signed&quot;, &quot;in_number&quot;, &quot;end&quot;&#125;);
+            put(&quot;signed&quot;, new String[] &#123;&quot;end&quot;, &quot;end&quot;, &quot;in_number&quot;, &quot;end&quot;&#125;);
+            put(&quot;in_number&quot;, new String[] &#123;&quot;end&quot;, &quot;end&quot;, &quot;in_number&quot;, &quot;end&quot;&#125;);
+            put(&quot;end&quot;, new String[] &#123;&quot;end&quot;, &quot;end&quot;, &quot;end&quot;, &quot;end&quot;&#125;);
+        &#125;
+    &#125;;
+
+    public void get(char c) &#123;
+        state = table.get(state)[get_col(c)];
+        if (&quot;in_number&quot;.equals(state)) &#123;
+            ans = ans*10 + c - &#39;0&#39;;
+            ans = sign == 1? Math.min(ans, (long)Integer.MAX_VALUE):Math.min(ans, -(long)Integer.MIN_VALUE);
+        &#125; else if (&quot;signed&quot;.equals(state)) &#123;
+            sign = c == &#39;+&#39; ? 1:-1;
+        &#125;
+    &#125;
+
+    private int get_col(char c) &#123;
+        if (c == &#39; &#39;)             return 0;
+        if (c == &#39;+&#39; || c == &#39;-&#39;) return 1;
+        if (Character.isDigit(c)) return 2;
+        return 3;
+    &#125;
+
+
+&#125;
+</code></pre>
+<h5 id="实现strStr"><a href="#实现strStr" class="headerlink" title="实现strStr()"></a>实现strStr()</h5><p><strong>subString(startIndex, endIndex)</strong></p>
+<p>有多种方法，本质上前两种都是类似于暴力求解的遍历字符串。</p>
+<p>第一种是遍历haystack所有与needle等长的子串，</p>
+<pre><code>int h = haystack.length(), n = needle.length();
+for (int start = 0; start &lt; h-n+1; start++) &#123;
+    if (haystack.substring(start, start+n).equals(needle)) &#123;
+        return start;
+    &#125;
+    
+&#125;
+return -1;
+</code></pre>
+<p>改进后可使得只要有一个字符不相等则退出比较该子串（回溯）类似于数据结构中串部份的KMP算法</p>
+<pre><code>//不一一比较所有字串，一旦有一个不同回溯
+public int strIndexTrack(String haystack, String needle) &#123;
+    int n = needle.length(), h = haystack.length();
+    if(n == 0) return 0;
+    int pn = 0;
+    while (pn &lt; h-n+1) &#123;
+        //比较起始字符
+        while (pn &lt; h-n+1 &amp;&amp; haystack.charAt(pn) != needle.charAt(0)) pn++;
+        //起始字符相等，比较后续字符，同时初始化currLen作为相等的判断依据
+        int currLen = 0, pL = 0;
+        while (pL &lt; n &amp;&amp; haystack.charAt(pn) == needle.charAt(pL))&#123;
+            pn++;
+            pL++;
+            currLen++;
+
+        &#125;
+        if (currLen == n) return pn - n;
+        pn = pn - currLen+1;
+
+    &#125;
+    return -1;
+&#125;
+
+//改进
+public int strIndexTrack2(String haystack, String needle) &#123;
+    int m = haystack.length(), n = needle.length();
+    if (n == 0) return 0;
+    for (int i = 0; i &lt;= m - n; i++) &#123;
+        for (int j = 0; j &lt; n; j++) &#123;
+            if (haystack.charAt(i + j) != needle.charAt(j)) break;
+            if (j == n - 1) return i;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+</code></pre>
+<p>尽管第二种方法比第一种方法少比较了若干次，但两者时间复杂度实际上是一个量级。</p>
+<h5 id="Day16-外观数列-递归"><a href="#Day16-外观数列-递归" class="headerlink" title="Day16 外观数列 递归"></a>Day16 外观数列 递归</h5><p>给定一个正整数 <code>n</code> ，输出外观数列的第 <code>n</code> 项。</p>
+<p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。</p>
+<p>本题难以入手的是并未给出固定的输入，而是只给出数字n，由11开始。如下：</p>
+<ol>
+<li><pre><code>1
+</code></pre>
+</li>
+<li><pre><code>11
+</code></pre>
+</li>
+<li><pre><code>21
+</code></pre>
+</li>
+<li><pre><code>1211
+</code></pre>
+</li>
+<li><pre><code>111221
+</code></pre>
+</li>
+</ol>
+<p>显然下一轮要利用上一轮的结果，联系递归</p>
+<pre><code>public String countAndSay(int n) &#123;
+    //结束条件
+    if (n == 1) &#123;
+        return &quot;1&quot;;
+    &#125;
+    //递归
+    StringBuffer ans = new StringBuffer(); //存放本次递归结果
+    String res = countAndSay(n-1); //本轮的输入是上一轮的输出
+    int len = res.length();
+    int start = 0;
+    for (int i = 1; i &lt; len+1; i++) &#123;
+        if (i == len) &#123; //单独处理最后一个元素
+            ans.append(i - start).append(res.charAt(start));
+
+        &#125;
+        else if (res.charAt(i) != res.charAt(start)) &#123;
+            //此时i记录了i-start即表示res.charAt(start)出现了几次
+            ans.append(i-start).append(res.charAt(start));
+            start = i;
+        &#125;
+    &#125;
+    return ans.toString();
+
+&#125;
+</code></pre>
+<h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h4><p>哈希表这个结构，用来判断字符的出现比较有力。</p>
+<p>有效的字母异位词</p>
+<p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+<pre><code>// 首先最菜的，直接排序完事儿  注意Arrays的两个api
+public boolean isAnagram(String s, String t) &#123;
+    if (s.length() != t.length()) &#123;
+        return -1;
+    &#125;
+    char[] sarr = s.toCharArray();
+    char[] tarr = t.toCharArray();
+    Arrays.sort(sarr);
+    Arrays.sort(tarr);
+    return Arrays.equals(sarr, tarr);
+    
+&#125;
+</code></pre>
+<p>哈希表其实也是特殊的数组，这里可以考虑使用长度为26的数组进行记录每个字母的出现次数，然后分别遍历两个字符串，如果是字母异位词的话，在遍历后该数组中的元素应该都为0。</p>
+<p>这里直接去用一个字符去减去某个字符，表示下标，记住这点有用处。</p>
+<pre><code>public boolean isAnagram(String s, String t) &#123;
+        int[] arr = new int[26];
+    for (char c : s.toCharArray()) &#123;
+        arr[c-&#39;a&#39;]++;
+    &#125;
+    for (char c : t.toCharArray()) &#123;
+        arr[c-&#39;a&#39;]--;
+    &#125;
+    for (int i : arr) &#123;
+        if (arr[i] != 0) &#123;
+            return false;
+        &#125;
+    &#125;
+    return true;
+        
+    &#125;
+</code></pre>
+<p><strong>Plus</strong></p>
+<p>如果哈希值比较少、特别分散、跨度非常大，使用数组就造成空间的极大浪费！ 哈希结构数值映射到key上总要做一下hash计算，这里数组的key就无需计算直接塞就行了。</p>
+<p>使用数组来做哈希的题目，是因为<strong>题目都限制了数值的大小</strong>。</p>
+<p>Set</p>
+<p>两个for循环和双指针（即一个for循环一个自增）有什么区别 分别什么条件下用呢</p>
+<h5 id="快乐数"><a href="#快乐数" class="headerlink" title="快乐数"></a>快乐数</h5><p>这里要注意，拿char直接去转别的类型，比如char转int 转出来发现是该字符对应的ASCII表中的位置。</p>
+<p><strong>当我们遇到了要快速判断一个元素是否出现集合里的时候，就要考虑哈希法了。</strong></p>
+<p>注意递归的问题，可能会导致比如栈溢出等。</p>
+<pre><code> // 取各个位上的数，还是数学不行
+private int getNextNumber(int n) &#123;
+        int res = 0;
+        while (n &gt; 0) &#123;
+            int temp = n % 10;
+            res += temp * temp;
+            n = n / 10;
+        &#125;
+        return res;
+    &#125;
+</code></pre>
+<h4 id="小总结："><a href="#小总结：" class="headerlink" title="小总结："></a>小总结：</h4><p>本题呢，则要使用map，那么来看一下使用数组和set来做哈希法的局限。</p>
+<ul>
+<li>数组的大小是<strong>受限制的</strong>，而且如果元素很少，而哈希值太大会造成内存空间的浪费。</li>
+<li>set是一个集合，<strong>里面放的元素只能是一个</strong>key，而两数之和这道题目，不仅要判断y是否存在而且还要记录y的下标位置，因为要返回x 和 y的下标。所以set 也不能用。</li>
+</ul>
+<p>此时就要选择另一种数据结构：map</p>
+<h5 id="四数相加"><a href="#四数相加" class="headerlink" title="四数相加"></a>四数相加</h5><p>给你四个整数数组 <code>nums1</code>、<code>nums2</code>、<code>nums3</code> 和 <code>nums4</code> ，数组长度都是 <code>n</code> ，请你计算有多少个元组 <code>(i, j, k, l)</code> 能满足：</p>
+<ul>
+<li><code>0 &lt;= i, j, k, l &lt; n</code></li>
+<li><code>nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0</code></li>
+</ul>
+<p>思考的问题见题内注释，就是这道题超时了可是跟题解里一样都是两次双循环呀 后来发现是在双循环中每次都要初始化这个变量这种错误真是小白啊，明天具体比较一下为啥</p>
+<pre><code>public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) &#123;
+        // 四个数组 长度大小相同  任取下标 在其中拿数=0 最后返回这样的个数
+//        int[] result = new int[nums1.length];
+        int count = 0;
+        // 这个数组用来记录结果
+        // 1.怎么存放这四个数组中的元素  ❌
+        // 2.然后去 遍历 求和
+        // 只考虑一半 即将四个数组相加为0  可以视作 a+b = -(c+d)
+        // 有点数学上的奇妙了 思维打开 另外这种map 所谓的值做键 的思维要转换过来
+        // 算是两数之和的加强版  就是可惜这种逃不掉O²复杂度
+        Map&lt;Integer, Integer&gt; sum12 = new HashMap&lt;&gt;();
+        for (int i = 0; i &lt; nums1.length; i++) &#123;
+            for (int j = 0; j &lt; nums2.length;) &#123;
+                int sum = nums1[i]+nums2[j];// ❌
+                sum12.put(sum, sum12.getOrDefault(sum, 0)+1);
+
+            &#125;
+
+        &#125;
+
+        for (int i = 0; i &lt; nums3.length; i++) &#123;
+            for (int j = 0; j &lt; nums4.length;) &#123;
+                int sum2 = 0 - (nums3[i]+nums4[j]); // ❌
+                if (sum12.get(sum2) != 0) &#123;  // 这里用containsKey更好
+                    count += sum12.get(sum2);
+                &#125;
+            &#125;
+        &#125;
+
+
+        return count;
+    &#125;
+</code></pre>
+<p>现在看来，数组适合去做限定长度的，Set显然是去重，而要去找key-value这种显然是map，map去hash计算查询是否含有该值最快且开始不用去限制长度，正如之前所认为的，集合（数组）就是一种特殊的map，它的key是递增的有序的。</p>
+<h5 id="赎金信"><a href="#赎金信" class="headerlink" title="赎金信"></a>赎金信</h5><p>给你两个字符串：<code>ransomNote</code> 和 <code>magazine</code> ，判断 <code>ransomNote</code> 能不能由 <code>magazine</code> 里面的字符构成。</p>
+<p>如果可以，返回 <code>true</code> ；否则返回 <code>false</code> 。</p>
+<p><code>magazine</code> 中的每个字符只能在 <code>ransomNote</code> 中使用一次。</p>
+<pre><code>/** 这俩是个字符串 肯定得转成char数组
+直接看去是两个字符串，其实就是char数组然后前一个能不能由后一个组成
+其实想想还是取交集嘛，只不过这个交集比较零散要求很低，不是像两个数组的要求那样
+必须连起来，只要求后一个取完前能够把前一个拼出来就行故尝试如下方法
+**/
+
+public boolean canConstruct(String ransomNote, String magazine) &#123;
+        // 只能使用一次这个怎么去做呢  其实还是取交集嘛
+        // 字符串 跟kmp算法是两个事儿
+        char[] mArr = magazine.toCharArray();
+        char[] rArr = ransomNote.toCharArray();
+        Map&lt;Character, Integer&gt; countMap = new HashMap&lt;&gt;();
+        for (char c : mArr) &#123;
+            countMap.put(c, countMap.getOrDefault(c, 0) + 1);
+
+        &#125;
+        int index = 0;
+        for (char c : rArr) &#123;
+            if (countMap.containsKey(c)) &#123;
+                int count = countMap.get(c);
+                countMap.put(c, count-1);
+                if (countMap.get(c) == 0) &#123;
+                    countMap.remove(c);
+                &#125;
+                index++;
+            &#125;
+        &#125;
+        return index == rArr.length;
+
+&#125;
+</code></pre>
+<p>这种方法时空复杂度都有点高。</p>
+<p>进一步分析，其实有点取交集的意思，但是我们也可以将其看作一种字母异位词的变体，将出现的字母记录下来他们的次数，然后去遍历“字典”只要下标大于0 说明这个字母在赎金信出现过所以就去减去它，但是这里要注意去限制只有大于0时才去减因为“字典”里有许多无关的字母，会影响最后的判断。</p>
+<p>嗯，这里或许可以理解为阻止脏数据进入程序影响我们的判断吧。</p>
+<pre><code>//借鉴字母异位词去尝试，发现无论是速度还是内存消耗都提高了很多
+public boolean canConstruct(String ransomNote, String magazine) &#123;
+        // 有效的字母异位词plus
+        char[] rArr = ransomNote.toCharArray();
+        char[] mArr = magazine.toCharArray();
+        int[] count = new int[26];
+        for (char c : rArr) &#123;
+            count[c-&#39;a&#39;]++;
+
+        &#125;
+        for (char c : mArr) &#123;
+            // 先将ransomNote遍历 然后有这个了才去减掉
+            if (count[c-&#39;a&#39;] != 0) &#123;
+                count[c-&#39;a&#39;]--;
+            &#125;
+        &#125;
+        for (int i:count) &#123;
+            if (i != 0) &#123;
+                return false;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+</code></pre>
+<p><strong>map要维护红黑树或者哈希表，而且还要做哈希函数，是费时的</strong></p>
+<h5 id="三数之和"><a href="#三数之和" class="headerlink" title="三数之和"></a>三数之和</h5><p>给你一个包含 <code>n</code> 个整数的数组 <code>nums</code>，判断 <code>nums</code> 中是否存在三个元素 <em>a，b，c ，</em>使得 <em>a + b + c &#x3D;</em> 0 ？请你找出所有和为 <code>0</code> 且不重复的三元组。</p>
+<p><strong>注意：</strong>答案中不可以包含重复的三元组。 (本题最麻烦地方，也是用哈希法去解比较费力的地方)</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入：nums = [-1,0,1,2,-1,-4]
+输出：[[-1,-1,2],[-1,0,1]]
+</code></pre>
+<p>这道题开始尝试写的时候，比较麻烦的两点，①是返回的是个比较扯的结构，List<List>，然后如果直接去借鉴四数相加，利用a+b&#x3D;-c这种路子去解的话倒是能获得答案，但是②去重去比较恶心了，要考虑的太多。</p>
+<p>先将数组排序一下，然后去解利用双指针（等等，总觉得这种做法在哪出现过，是借鉴的哪里呢还是说双指针大同小异2022.1.8）</p>
+<p>**********<em><strong>双指针法一定要排序</strong></em> but why? （多做几道就明白了 ,如果我不排序呢 比如说这道题 我不排序</p>
+<p>双指针这种在对付明显需要借助下标解题又有唯一性要求的很有利。for循环的i起到一个定点的作用，帮助我们能够顺利遍历所有情况，真正去遍历元素解题的是指针。</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123;
+        // 不能包含重复的三元组  这里列表比较好的一点是我不用去直接限制他的长度
+        List&lt;List&lt;Integer&gt;&gt; results = new ArrayList&lt;&gt;();
+        // 排序同时也是为了解决后面不重复的问题的操作
+        Arrays.sort(nums);
+        for (int i = 0; i &lt; nums.length; i++) &#123;
+            // 任何题目都是先去解决特殊情况再去处理
+            // 所谓双指针 就是利用for循环去遍历一个集合或数组 定点 然后去
+            if (nums[i] &gt; 0) &#123;
+                return results;
+            &#125;
+            if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) &#123;
+                continue; //加速
+            &#125;
+
+            int left = i+1;
+            int right = nums.length-1;
+
+            while (right &gt; left) &#123;
+                int sum = nums[i] + nums[left] + nums[right];
+                if (sum &gt; 0) &#123;
+                    right--;
+                &#125; else if (sum &lt; 0) &#123;
+                    left++;
+                &#125; else if (sum == 0) &#123;
+                    results.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    // 保证去重
+                    while (right &gt; left &amp;&amp; nums[right] == nums[right - 1]) right--;
+                    while (right &gt; left &amp;&amp; nums[left] == nums[left + 1]) left++;
+                    left++;
+                    right--;
+                &#125;
+
+
+            &#125;
+        &#125;
+
+        return results;
+
+    &#125;
+</code></pre>
+<p>continue 与 break</p>
+<p>对while的理解有问题：while的判断条件仅会在循环体内的语句执行完后才生效，并不是说言出法随随时检测循环体内是不是不满足条件了</p>
+<p>一点提醒： 写这种题要注意测试用例的复杂性，很容易会出现数组越界这种问题。在哪里初始化变量，哪里赋值，哪里做判断都是能够影响到结果的。</p>
+<p>每次遍历都应该有遍历的意义，其实算法少不了遍历（for也好，while也好），每次的遍历一定是相同的呀（可能最后一次会不同）</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>所以我们其实要考虑的应该是——一次遍历中做什么，然后将这种操作复制n次我们就完成了解题。一定要考虑清楚一次遍历应该做什么，判断什么。</p>
+<h5 id="四数之和"><a href="#四数之和" class="headerlink" title="四数之和"></a>四数之和</h5><p>一个由 <code>n</code> 个整数组成的数组 <code>nums</code> ，和一个目标值 <code>target</code> 。请你找出并返回满足下述全部条件且<strong>不重复</strong>的四元组 <code>[nums[a], nums[b], nums[c], nums[d]]</code> （若两个四元组元素一一对应，则认为两个四元组重复）：</p>
+<ul>
+<li><code>0 &lt;= a, b, c, d &lt; n</code></li>
+<li><code>a</code>、<code>b</code>、<code>c</code> 和 <code>d</code> <strong>互不相同</strong></li>
+<li><code>nums[a] + nums[b] + nums[c] + nums[d] == target</code>你可以按 <strong>任意顺序</strong> 返回答案 。</li>
+</ul>
+<p><strong>示例 1：</strong></p>
+<p>输入：nums &#x3D; [1,0,-1,0,-2,2], target &#x3D; 0 输出：[[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]</p>
+<p>这道题考虑起来，三数之和有借鉴意义，三数之和的目标值是0，这里给了一个明确的目标值target。</p>
+<p>多了一个数，该数必须要在数组中，因此我们应该再套一层for循环，多加一个指针。</p>
+<p>去除重复很重要。 指针，就是指针一定要在循环的前面，循环负责定点，保证不会重复。</p>
+<h5 id="大总结"><a href="#大总结" class="headerlink" title="大总结"></a>大总结</h5><p><strong>一般来说哈希表都是用来快速判断一个元素是否出现集合里</strong>。</p>
+<p>要知道<strong>哈希函数</strong>和<strong>哈希碰撞</strong>在哈希表中的作用.</p>
+<p>哈希函数是把传入的key映射到符号表的索引上。</p>
+<p>哈希碰撞处理有多个key映射到相同索引上时的情景，处理碰撞的普遍方式是拉链法和线性探测法。</p>
+<p>直接进入双指针的练习</p>
+<h4 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h4><p>剑指offer5:请实现一个函数，把字符串 <code>s</code> 中的每个空格替换成”%20”。</p>
+<p>空格怎么说？在String转为char数组时空格不会被忽略掉，这个就正常遍历然后用Stringbuilder.append替换char字符就可。</p>
+<p>逆向思维，从后往前和从前往后有时一样有时又不一样，对于数组这种内存空间地址是连续的，那么其从前往后遍历，挪动元素挪动位置后面的元素都要后移。</p>
+<h5 id="翻转字符串中的单词"><a href="#翻转字符串中的单词" class="headerlink" title="翻转字符串中的单词"></a>翻转字符串中的单词</h5><p>给你一个字符串 <code>s</code> ，逐个翻转字符串中的所有 <strong>单词</strong> 。</p>
+<p><strong>单词</strong> 是由非空格字符组成的字符串。<code>s</code> 中使用至少一个空格将字符串中的 <strong>单词</strong> 分隔开。</p>
+<p>请你返回一个翻转 <code>s</code> 中单词顺序并用单个空格相连的字符串。</p>
+<p><strong>说明：</strong></p>
+<ul>
+<li>输入字符串 <code>s</code> 可以在前面、后面或者单词间包含多余的空格。</li>
+<li>翻转后单词间应当仅用一个空格分隔。</li>
+<li>翻转后的字符串中不应包含额外的空格。</li>
+</ul>
+<p>这道题比较沙雕的还是空格的处理：</p>
+<ol>
+<li>首先翻转前多余空格是存在的，翻转后不能有多余空格。</li>
+<li>多余的空格还可能是多余多个。</li>
+</ol>
+<pre><code>public String reverseWords(String s) &#123;
+    char[] carr = s.toCharArray();
+    StringBuilder builder = new StringBuilder();
+    StringBuilder part = new StringBuilder();
+    // 目前考虑的是第一遍遍历的时候先不对首尾的空格做处理
+    for (int i = s.length()-1; i &gt; -1; i--) &#123;
+        if (i &gt; 0 &amp;&amp; carr[i] == &#39; &#39; &amp;&amp; carr[i-1] == &#39; &#39;) &#123;
+            i--;
+        &#125; else if (i &gt; 0 &amp;&amp; carr[i] == &#39; &#39; &amp;&amp; carr[i-1] != &#39; &#39;) &#123;
+            part.reverse();
+            part.append(&#39; &#39;);
+            builder.append(part);
+            part.setLength(0);
+        &#125; else &#123;
+            part.append(carr[i]);
+            if (i == 0) &#123;
+                part.reverse();
+                builder.append(part);
+            &#125;
+
+        &#125;
+    &#125;
+    return builder.toString();
+
+&#125;
+</code></pre>
+<p>这么写复杂度有点高，而且处理不了首字母前有空格的情况。不过这种移除多余空格的思路倒也正确。</p>
+<p>其实还是对字符串的操作不熟悉，比如这里可以直接使用split分割，然后直接拼就完事儿了。</p>
+<p>这里遵循进阶的要求，只使用O(1)的辅助空间。</p>
+<p>这里我们其实做的是翻转了整个字符串，只不过翻转字符串后我们要将单词再翻转回来。而且要移除多余的空格，这里主要是首尾的，单词前后的空格可以视作单词的一部分。</p>
+<p>所以解题思路如下：</p>
+<ul>
+<li>移除多余空格</li>
+<li>将整个字符串反转</li>
+<li>将每个单词反转</li>
+</ul>
+<p>将一个大的问题分三步走，拆成几个小问题，这是一种思想。从整体到部分。</p>
+<p>移除多余空格，这不就是移除元素嘛。（笑，特殊到一般要学会自己推论呀）。两头都有空格，两头都应该考虑到。</p>
+<p><strong>Error</strong>: require varaible found value</p>
+<pre><code>char temp; // 在这里初始化了一个变量，然后下面赋值的时候就出现了上面这一行的错误
+while (start &lt; end) &#123;
+    temp = sb.charAt(start);
+    sb.charAt(start) = sb.charAt(end);
+    sb.charAt(end) = temp;
+
+    start++;
+    end--;
+&#125;
+</code></pre>
+<p>所以这里不能直接去用charAt()，而应该是去用 setCharAt()去赋值。</p>
+<h4 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h4><p>1.善于将一个问题拆分，比如上面这道题。</p>
+<p>2.灵活利用所学。比如上面这道题，就是利用了移除元素，逆转字符串。而且第2、3步利用的方法应该是相同的。</p>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>三要素：</p>
+<ol>
+<li>确定递归函数的参数和返回值</li>
+<li>确定终止条件</li>
+<li>确定单层递归的逻辑</li>
+</ol>
+<p>从上述三元素来看，递归的定义就是在方法中调用自身，那么我们要清楚，递归的颗粒度就是方法。</p>
+<p>我认为，递归的方法不可能没有参数，要不然层层调用还调什么劲儿啊。第三点其实也就是方法体。</p>
+<p>在完成基本方法以外，需要格外注意的就是要设置一个终止条件。</p>
+<p>以<strong>树的中序遍历方式</strong>为例：</p>
+<pre><code>// 树节点
+public class TreeNode &#123;
+     int val;
+     TreeNode left;
+     TreeNode right;
+     TreeNode() &#123;&#125;
+     TreeNode(int val) &#123; this.val = val; &#125;
+     TreeNode(int val, TreeNode left, TreeNode right) &#123;
+         this.val = val;
+         this.left = left;
+         this.right = right;
+     &#125;
+&#125;
+
+    // 操作方法
+    public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123;
+        //        // 递归方式
+        List&lt;Integer&gt; res = new ArrayList&lt;&gt;();
+        inorder(root, res);
+        return res;
+
+    &#125;
+
+    public void inorder(TreeNode root, List&lt;Integer&gt; list) &#123;
+        if (root == null) &#123;
+            return;
+        &#125;
+        inorder(root.left, list);
+        list.add(root.val);
+        inorder(root.right, list);
+    &#125;
+</code></pre>
+<p>当然，递归的代码看起来很简洁，有时候会造成低效，我们可以用迭代替代递归（借助于栈，然后在一个while循环中进行操作</p>
+<pre><code>public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;
+        List&lt;Integer&gt; result = new LinkedList&lt;&gt;();
+        Stack&lt;TreeNode&gt; st = new Stack&lt;&gt;();
+        if (root != null) st.push(root);
+        while (!st.empty()) &#123;
+            TreeNode node = st.peek();
+            if (node != null) &#123;
+                st.pop(); // 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中
+                if (node.right!=null) st.push(node.right);  // 添加右节点（空节点不入栈）
+                if (node.left!=null) st.push(node.left);    // 添加左节点（空节点不入栈）
+                st.push(node);                          // 添加中节点
+                st.push(null); // 中节点访问过，但是还没有处理，加入空节点做为标记。
+                
+            &#125; else &#123; // 只有遇到空节点的时候，才将下一个节点放进结果集
+                st.pop();           // 将空节点弹出
+                node = st.peek();    // 重新取出栈中元素
+                st.pop();
+                result.add(node.val); // 加入到结果集
+            &#125;
+        &#125;
+        return result;
+    &#125;
+</code></pre>
+<p>下面正式进入二叉树小节</p>
+<hr>
+<h4 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h4><p>前面以二叉树的中序遍历作为引子，介绍了递归，借助栈可以实现迭代的方式对二叉树进行遍历。</p>
+<p>这里重新对迭代改造递归理解一下，如果我们去创建一个栈其实是在内存（我认为是内存）申请了一块空间，从而代替Java虚拟机中的那个“栈”。原来是每个方法咔咔咔，一个个的栈帧弹入虚拟机中。现在是用程序语言去申请内存，开辟一块空间来存储我们遍历得到节点的数据。</p>
+<p>所谓遍历其实就是按某种方式把二叉树一个节点不落的取一遍呗。</p>
+<p>注意一点，下面的迭代方式用了<strong>链表</strong>作为队列的存储结构。</p>
+<pre><code>// 迭代
+    public void levelOrderWithQueue(TreeNode node, List&lt;List&lt;Integer&gt;&gt; resList) &#123;
+        if (node == null) return;
+        Queue&lt;TreeNode&gt; que = new LinkedList&lt;TreeNode&gt;();
+        // 将根节点加入队列中
+        que.offer(node);
+        while (!que.isEmpty()) &#123;
+            // 这里新建一个列表
+            List&lt;Integer&gt; itemList = new ArrayList&lt;Integer&gt;();
+            int len = que.size();
+            while (len &gt; 0) &#123;
+                TreeNode tmpNode = que.poll();
+                itemList.add(tmpNode.val);
+                if (tmpNode.left != null) que.offer(tmpNode.left);
+                if (tmpNode.right != null) que.offer(tmpNode.right);
+                len--;
+            &#125;
+        &#125;
+
+        resList.add(itemList);
+
+    &#125;
+</code></pre>
+<h2 id="华为机试"><a href="#华为机试" class="headerlink" title="华为机试"></a>华为机试</h2><h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>重复元素</p>
+<p>1.问题</p>
+<p>HashMap用的不熟了。</p>
+<p>能想到是用滑动窗口，时间久不写Java实现起来反而困难了。</p>
+<p>这道题的滑动窗口用法还有点不同，或者和过去理解的有点不同。</p>
+<p>这个的思想，是以每个元素为起点，去探测看有没有重复。窗口左侧的变动随着for循环变动。</p>
+<pre><code>    public int lengthOfLongestSubstring(String s) &#123;
+        Set&lt;Character&gt; set = new HashSet&lt;&gt;();
+        int len = s.length();
+        int ans = 0;
+        int right = 0;
+        for (int left = 0; left &lt; len; left++) &#123;
+            if (left &gt; 0) &#123;
+                set.remove(s.charAt(left - 1));
+            &#125;
+            // for的指针负责遍历 right的指针负责看是否重复
+            while (right &lt; len &amp;&amp; !set.contains(s.charAt(right))) &#123;
+                set.add(s.charAt(right));
+                right++;
+            &#125;
+            ans = Math.max(ans, right - left);
+
+        &#125;
+        return ans;
+        
+    &#125;
+</code></pre>
+<p>滑动窗口的关键实现就是while循环，即对窗口自身内部情况的判断。这里把窗口开头的移动和遍历字符串的指针合二为一了。</p>
+<p>对比过去的两个滑动窗口。</p>
+<h3 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h3><p>这个解法和上面那个不同。 这个的for循环指针是作为了窗口的结束位置，上面那个是作为了起始位置，怪不得昨天直接套着那么费劲儿。</p>
+<p>造成这个不同是因为什么呢。</p>
+<p>本题是为了找出来，连续的和 &gt;&#x3D; target的最小数组， 还是正向思考更合适。</p>
+<pre><code>        int left = 0;
+        int sum = 0;
+        int len = nums.length;
+        int minLength = Integer.MAX_VALUE;
+        for (int right = 0; right &lt; len; right++) &#123;
+            sum += nums[i];
+            while (sum &gt;= target) &#123;
+                minLength = Math.min(subLength, right - left + 1);
+                sum -= nums[left++];
+            &#125;
+        &#125;
+        // 针对所有元素加一起依然&lt;target的特例
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
+</code></pre>
+<p>两道题目的目的不同：</p>
+<ul>
+<li>一个是为了找连续和超出某个值</li>
+<li>一个是为了找无重复最短数组</li>
+</ul>
+<p>滑动窗口问题的相同点在于，首先它是一个连续的问题，要对窗口中的元素做处理。</p>
+<p>困难的点在于，边界的确定——这往往和for循环遍历时的指针有关。</p>
+<p>在连续求和与目标值比较中for循环遍历作为尾部，在无重复最短数组时又作为开头。</p>
+<p>本质上来说，for循环的作用都是保证对数组（字符串也是一种数组）的遍历。但是是什么造成了这种不同。</p>
+<p>寻找无重复字符的子串的逻辑是这样的，从左到右遍历字符串，到一个新的元素，就往前走两步有重复就停止，然后看下一个元素。同时将前面的元素移除，不移除的话该子串必有重复元素。</p>
+<p>子数组之和的逻辑是这样的。也是从左到右遍历字符串，不过嘞，这次for循环是作为右边界。</p>
+<p>for循环的指针作为左右边界，其实看实际需求。怎么处理窗口内的元素。 无重复元素子串，因为要保证子串无重复，所以每次for循环遍历都向前一格，排除了已经重复的元素，因此for循环作为开始。而连续元素之和&gt;&#x3D;target若也作为开头，那每次都要把窗口内的元素算一遍</p>
+<h3 id="水果成篮"><a href="#水果成篮" class="headerlink" title="水果成篮"></a>水果成篮</h3><p>Map的相关操作。</p>
+<pre><code>public int totalFruit(int[] fruits) &#123;
+        int left = 0; 
+        int ans = Integer.MIN_VALUE;
+        int length = fruits.length;
+        Map&lt;Integer,Integer&gt; basket = new HashMap&lt;&gt;();
+        // 左侧往往是需要被移除的
+        for (int right = 0; right &lt; length; right++) &#123;
+            basket.put(fruits[right], basket.getOrDefault(fruits[right], 0)+1);
+            while (basket.size() &gt; 2) &#123;
+                // 这是一个常用手段 不去直接移除 而是减少key对应value的数值
+                basket.put(fruits[left], basket.get(fruits[left])-1);
+                if (basket.get(fruits[left]) == 0) &#123;
+                    basket.remove(fruits[left]);
+                &#125;
+                left++;
+            &#125;
+            ans = Math.max(ans, right-left+1);
+        &#125;
+        return ans;
+ &#125;
+</code></pre>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/%E5%9F%BA%E7%A1%80/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>java基础</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/%E9%97%AE%E9%A2%98/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>实际问题</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

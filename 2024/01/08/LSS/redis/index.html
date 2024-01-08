@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>Redis学习-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,redis,">
+<meta name="description" content="Redis学习过程">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/redis">redis</a></li>
+            
+            
+        </ul>
+        
+        <h1>Redis学习</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Redis/" target="_blank" >Redis</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>[TOC]</p>
+<h3 id="NoSql与网站架构演进"><a href="#NoSql与网站架构演进" class="headerlink" title="NoSql与网站架构演进"></a>NoSql与网站架构演进</h3><h3 id="Redis入门"><a href="#Redis入门" class="headerlink" title="Redis入门"></a>Redis入门</h3><p><strong>概述</strong></p>
+<p>what？</p>
+<p><strong>Re</strong>mote <strong>Di</strong>ctionary <strong>S</strong>erver</p>
+<p>开源、使用C编写、支持网络、可基于内存亦可持久化的日志型、key-value数据库，并提供多种语言的api</p>
+<p>Redis会周期性的把更新的数据写入磁盘或者将修改操作写入追加的记录文件。并在此基础上实现master-slave同步</p>
+<p>结构化数据库</p>
+<hr>
+<p><strong>do what?</strong></p>
+<p>1.内存存储，持久化。（内存断电即失，so持久化很重要）</p>
+<p>2.效率高，可用于高速缓存</p>
+<p>3.发布订阅系统。</p>
+<p>4.地图信息分析</p>
+<p>5.计时器计数器（浏览量） ……</p>
+<hr>
+<p>特性：</p>
+<ol>
+<li>多样数据类型。</li>
+<li>持久化。3.集群 4.事务 。。。。</li>
+</ol>
+<hr>
+<p>本次学习基于Linux学习:服务器地址</p>
+<p>安装过程如下：下载reids-xxx.tar.gz</p>
+<p>镜像：<a href="https://gitee.com/link?target=https://mirrors.huaweicloud.com/redis/">https://mirrors.huaweicloud.com/redis/</a></p>
+<p>解压：放在opt目录下</p>
+<pre><code>tar -xzf redis-6.0.11.tar.gz -C /opt
+</code></pre>
+<p>将redis的配置文件redis.conf另外拷贝至一个文件夹，在此文件下进行操作。 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;fanconfig</p>
+<p>4.基本环境安装</p>
+<pre><code>yum intsall gcc-c++
+make
+make install
+</code></pre>
+<p>使用配置文件启动。修改默认的配置：daemonize为yes</p>
+<pre><code># 启动Redis服务
+redis-server fanconfig/redis.conf
+# 连接测试：
+redis-cli -p 6379
+# 查看进程是否开启
+ps -ef|grep redis
+# 关闭服务
+shutdown 
+# 退出
+exit
+</code></pre>
+<h4 id="测试性能-redis-benchmark"><a href="#测试性能-redis-benchmark" class="headerlink" title="测试性能 redis-benchmark"></a>测试性能 redis-benchmark</h4><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>默认有16个数据库</p>
+<p>命令不区分大小写</p>
+<p>redis-server xx（配置文件启动</p>
+<pre><code>[root@iZ2ze7un4jvbitvy08fyxxZ bin]# redis-cli -p 6379   #测试连接
+127.0.0.1:6379&gt; ping
+PONG
+127.0.0.1:6379&gt; keys *      #查看此时的Keys
+1) &quot;myset:__rand_int__&quot;
+2) &quot;mylist&quot;
+3) &quot;name&quot;
+4) &quot;key:__rand_int__&quot;
+5) &quot;counter:__rand_int__&quot;
+127.0.0.1:6379&gt; set name fanfan   #设置Key-value
+OK
+127.0.0.1:6379&gt; get name   #获取指定key对应的value
+&quot;fanfan&quot;
+127.0.0.1:6379&gt; set age 1
+OK
+127.0.0.1:6379&gt; keys *      #获得所有Key
+1) &quot;myset:__rand_int__&quot;
+2) &quot;age&quot;
+3) &quot;mylist&quot;
+4) &quot;name&quot;
+5) &quot;key:__rand_int__&quot;
+6) &quot;counter:__rand_int__&quot;
+127.0.0.1:6379&gt; EXISTS name  #判断key是否存在
+(integer) 1
+127.0.0.1:6379&gt; EXISTS name1
+(integer) 0
+127.0.0.1:6379&gt; EXPIRE name 10   #设置过期时间    --比如短信验证码的token设置一分钟即可
+(integer) 1
+127.0.0.1:6379&gt; get name
+&quot;fanfan&quot;
+127.0.0.1:6379&gt; ttl name
+(integer) -2
+127.0.0.1:6379&gt; get name
+#查看key的类型
+type name
+</code></pre>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><h4 id="String字符串类型"><a href="#String字符串类型" class="headerlink" title="String字符串类型"></a>String字符串类型</h4><pre><code>127.0.0.1:6379&gt; set key1 v1
+OK
+127.0.0.1:6379&gt; get key1
+&quot;v1&quot;
+127.0.0.1:6379&gt; EXISTS key1
+(integer) 1
+127.0.0.1:6379&gt; APPEND key1 &quot;hello&quot;   (相当于java中的append)  
+(integer) 7 
+127.0.0.1:6379&gt; get key1  
+&quot;v1hello&quot;
+127.0.0.1:6379&gt; APPEND name &quot;pingping&quot; #如果不存在name 则直接生成（set)
+set views 0 #初始浏览量为0
+incr xxx    #自增1 
+#可设置步长，指定增量
+127.0.0.1:6379&gt; INCRBY views 10
+(integer) 13
+#清空缓存
+flushdb
+#截取字符串
+set key1 &quot;hello:xiaozi&quot;
+GETRANGE key1 0 3
+#替换指定位置
+SETRANGE key1 1 woshi
+(integer) 12
+127.0.0.1:6379&gt; get key1
+&quot;hwoshixiaozi&quot;
+#setex     设置过期时间
+setex key3 30 &quot;xxx&quot;
+#setnx   分布式锁中常用
+mset k1 v1 k2 v22 k3 v3 #同时设置多个  获取多个当然就是mget
+OK
+keys *
+1) &quot;k3&quot;
+2) &quot;k2&quot;
+3) &quot;k1&quot;
+
+127.0.0.1:6379&gt; msetnx k1 v1 k4 v4  #msetnx是一个原子性的操作，一起成功or一起失败（k1之前已存在过）
+(integer) 0
+get k4
+(nil)
+
+
+#设置一个json字符串
+set user:1 &#123;name:liyfian, age:22&#125;
+#设置对象
+mset user:1:name fanfan user:1:age 22
+# 获取对象
+mget user:1:name user:1:age
+#先get后set   如果不存在值则返回nil,如果存在值获取原来的值，并设置新的值。
+#这种骚操作可以
+getset db redis
+(nil)
+127.0.0.1:6379&gt; get db
+&quot;redis&quot;
+127.0.0.1:6379&gt; getset db moogodb
+&quot;redis&quot;
+127.0.0.1:6379&gt; get db
+&quot;moogodb&quot;
+</code></pre>
+<p>数据结构是相同的。 –指应用在Java时</p>
+<p>类似的使用场景：value除了是字符串也可是数字</p>
+<p>如:计数器</p>
+<p>统计多单位的数量</p>
+<p>粉丝数</p>
+<p>对象缓存</p>
+<h4 id="List类型"><a href="#List类型" class="headerlink" title="List类型"></a>List类型</h4><p>在Redis中可以将其改造成栈或队列</p>
+<p>Redis中list的命令都是以l开头</p>
+<pre><code>#自动创建了list作为一个
+127.0.0.1:6379&gt; LPUSH list one   #添加元素和指定下标查看
+(integer) 1
+127.0.0.1:6379&gt; LPUSH list two
+(integer) 2
+127.0.0.1:6379&gt; LPUSH list three
+(integer) 3
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;three&quot;
+2) &quot;two&quot;
+3) &quot;one&quot;
+127.0.0.1:6379&gt; LRANGE list 0 1
+1) &quot;three&quot;
+2) &quot;two&quot;
+</code></pre>
+<p>**从头或尾插入 移除 相对的有push也就有pop ** Rpush 再Rpop就有栈的感觉了</p>
+<pre><code>127.0.0.1:6379&gt; LPUSH list one
+(integer) 1
+127.0.0.1:6379&gt; LPUSH list two
+(integer) 2
+127.0.0.1:6379&gt; LPUSH list three
+(integer) 3
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;three&quot;
+2) &quot;two&quot;
+3) &quot;one&quot;
+127.0.0.1:6379&gt; LRANGE list 0 1
+1) &quot;three&quot;
+2) &quot;two&quot;
+#pop操作 移除元素
+127.0.0.1:6379&gt; Lpop list
+&quot;0&quot;
+127.0.0.1:6379&gt; Rpop list
+&quot;fanfan&quot;
+</code></pre>
+<p><strong>根据下标获取值与长度获取</strong></p>
+<pre><code>127.0.0.1:6379&gt; Lpop list
+&quot;0&quot;
+127.0.0.1:6379&gt; Rpop list
+&quot;fanfan&quot;
+127.0.0.1:6379&gt; lindex list 1
+&quot;two&quot;
+127.0.0.1:6379&gt; Llen list
+(integer) 3
+</code></pre>
+<p>移除 可指定移除多个相同值</p>
+<pre><code>#移除指定键
+127.0.0.1:6379&gt; lrem list 1 one
+(integer) 1
+127.0.0.1:6379&gt; lrange list 0 -1
+1) &quot;three&quot;
+2) &quot;three&quot;
+3) &quot;two&quot;
+127.0.0.1:6379&gt; lrem list 2 three
+(integer) 2
+127.0.0.1:6379&gt; lrange list 0 -1
+1) &quot;two&quot;
+</code></pre>
+<p>组合命令 类复制粘贴的操作</p>
+<pre><code>127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;shi&quot;
+2) &quot;ni&quot;
+127.0.0.1:6379&gt; rpoplpush list newlist
+&quot;ni&quot;
+127.0.0.1:6379&gt; LRANGE newlist 0 -1
+1) &quot;ni&quot;
+127.0.0.1:6379&gt; LRANGE list 0 -1
+1) &quot;shi&quot;
+</code></pre>
+<p>lset替换指定位置值 下标不存在就报错</p>
+<pre><code>127.0.0.1:6379&gt; lpush list value1 
+(integer) 1
+127.0.0.1:6379&gt; lrange list 0
+(error) ERR wrong number of arguments for &#39;lrange&#39; command
+127.0.0.1:6379&gt; lrange list 0 0
+1) &quot;value1&quot;
+127.0.0.1:6379&gt; lset list 0 item
+OK
+127.0.0.1:6379&gt; lrange list 0 0
+1) &quot;item&quot;
+</code></pre>
+<p>Linsert 指定值插入列表中</p>
+<pre><code>127.0.0.1:6379&gt; Rpush mylist &quot;wo&quot;
+(integer) 1
+127.0.0.1:6379&gt; LINSERT mylist before &quot;wo&quot; &quot;nidie&quot;
+(integer) 2
+127.0.0.1:6379&gt; LRANGE mylist 0 -1
+1) &quot;nidie&quot;
+2) &quot;wo&quot;
+</code></pre>
+<p><strong>小结</strong>：</p>
+<ul>
+<li>这里的List实际上是一个链表，任意位置都可以插入值</li>
+<li>如果key不存在则创建新的链表</li>
+<li>如果key存在新增内容</li>
+<li>移除了所有制，则为空链表也代表不存在</li>
+<li>在两边插入值、改动值效率最高。中间元素会效率低（参照链表）</li>
+</ul>
+<p>可作消息排队，比如消息队列，跟灵活使用L（R) push(pop)组合为栈、队列</p>
+<h4 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a>Set集合</h4><p>同Java中类似，不能重读。</p>
+<pre><code>127.0.0.1:6379&gt; sadd myset &quot;hello&quot;
+(integer) 1
+127.0.0.1:6379&gt; sadd myset &quot;hello&quot;
+(integer) 0  #显然 添加失败
+127.0.0.1:6379&gt; sadd myset &quot;hello1&quot;
+(integer) 1
+127.0.0.1:6379&gt; SMEMBERS myset  #查看指定set所有值
+1) &quot;hello1&quot;
+2) &quot;hello&quot;
+ SISMEMBER myset hello #判断某个值是不是在set集合中
+(integer) 1 
+127.0.0.1:6379&gt; SISMEMBER myset hell
+(integer) 0
+scard myset #查看指定set含多少元素
+#移除某个元素
+127.0.0.1:6379&gt; srem myset hello
+(integer) 1
+127.0.0.1:6379&gt; scard myset
+(integer) 2
+127.0.0.1:6379&gt; SMEMBERS myset
+&quot;hello2&quot;
+&quot;hello1&quot;
+#随机抽出一个元素  后面加数字可以抽出指定数目的元素
+127.0.0.1:6379&gt; SRANDMEMBER myset
+&quot;hello1&quot;
+127.0.0.1:6379&gt; SRANDMEMBER myset
+&quot;shazi&quot;
+127.0.0.1:6379&gt; SRANDMEMBER myset
+&quot;fengzi&quot;
+#随机删除指定key中的元素  --key是key key中元素是key中元素
+127.0.0.1:6379&gt; SMEMBERS myset
+1) &quot;fan&quot;
+2) &quot;li&quot;
+3) &quot;yi&quot;
+4) &quot;fengzi&quot;
+5) &quot;xiaohu&quot;
+127.0.0.1:6379&gt; spop myset
+&quot;yi&quot;
+#移动指定元素
+127.0.0.1:6379&gt; sadd movetest &quot;world&quot;
+(integer) 1
+127.0.0.1:6379&gt; SMEMBERS movetest
+1) &quot;world&quot;
+127.0.0.1:6379&gt; smove myset movetest &quot;li&quot;
+(integer) 1
+127.0.0.1:6379&gt; SMEMBERS movetest
+1) &quot;li&quot;
+2) &quot;world&quot;
+</code></pre>
+<p>看集合（数学上的）</p>
+<pre><code>#差集
+127.0.0.1:6379&gt; sadd key1 a
+(integer) 1
+127.0.0.1:6379&gt; sadd key2 b
+(integer) 1
+127.0.0.1:6379&gt; sadd key1 c
+(integer) 1
+127.0.0.1:6379&gt; sadd key2 c
+(integer) 1
+127.0.0.1:6379&gt; sadd key2 d
+(integer) 1
+127.0.0.1:6379&gt; sadd key2 e
+(integer) 1
+127.0.0.1:6379&gt; SDIFF key1 key2
+1) &quot;a&quot;
+#交集   (共同好友)
+127.0.0.1:6379&gt; SINTER key1 key2
+1) &quot;c&quot;
+#并集
+127.0.0.1:6379&gt; SUNION key1 key2
+1) &quot;b&quot;
+2) &quot;a&quot;
+3) &quot;c&quot;
+4) &quot;d&quot;
+5) &quot;e&quot;
+</code></pre>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><p>之前的都是key-value，现在是key-Map(有再哈希那味儿了)</p>
+<pre><code>hset myhash field1 fanfan  #set一个具体key-value
+hget myhash field1         #获取指定key对应的hash
+&quot;fanfan&quot;
+#重新赋值给field1，发现可以被覆盖，Map有点类似String类型
+hmset myhash field1 hello field2 niuer 
+OK
+127.0.0.1:6379&gt; hmget myhash field1 field2  #获取多个字段值
+1) &quot;hello&quot;
+2) &quot;niuer&quot;
+# 获取全部值，返回形式是key-value
+127.0.0.1:6379&gt; hgetall myhash
+1) &quot;field1&quot;
+2) &quot;hello&quot;
+3) &quot;field2&quot;
+4) &quot;niuer&quot;
+#删除一个值
+127.0.0.1:6379&gt; hgetall myhash
+1) &quot;field1&quot;
+2) &quot;fanfan&quot;
+3) &quot;field2&quot;
+4) &quot;hello&quot;
+127.0.0.1:6379&gt; hdel myhash field1
+(integer) 1
+127.0.0.1:6379&gt; hgetall myhash
+1) &quot;field2&quot;
+2) &quot;hello&quot;
+#获取指定key的值 
+HEXISTS myhash li
+(integer) 1
+#只获取所有的key
+127.0.0.1:6379&gt; hkeys myhash
+1) &quot;field2&quot;
+2) &quot;li&quot;
+3) &quot;yi&quot;
+###########
+自增  注意 所谓增是可以增负值的
+incr decr 
+hsetnx #同之前的命令
+</code></pre>
+<p>hash用于变更的数据</p>
+<h4 id="Zset-有序"><a href="#Zset-有序" class="headerlink" title="Zset(有序)"></a>Zset(有序)</h4><p>在set的基础上增加了一个值。</p>
+<pre><code>#操作大同小异
+127.0.0.1:6379&gt; zadd myset 1 one
+(integer) 1
+127.0.0.1:6379&gt; zadd myset 2 two 3 three
+(integer) 2
+127.0.0.1:6379&gt; ZRANGE myset 0 -1
+1) &quot;one&quot;
+2) &quot;two&quot;
+3) &quot;three&quot;
+#从小到大排序
+127.0.0.1:6379&gt; ZRANGEBYSCORE salary -inf +inf
+1) &quot;liyfian&quot;
+2) &quot;xiaoming&quot;
+3) &quot;xiaohong&quot;
+#排序 显示值
+ZRANGEBYSCORE salary -inf +inf withscores
+1) &quot;liyifan&quot;
+2) &quot;200&quot;
+3) &quot;xiaohong&quot;
+4) &quot;2500&quot;
+5) &quot;zhangsan&quot;
+6) &quot;5000&quot;
+#设定显示范围
+ZRANGEBYSCORE salary -inf 4500  withscores
+1) &quot;liyifan&quot;
+2) &quot;200&quot;
+3) &quot;xiaohong&quot;
+4) &quot;2500&quot;
+# 移除元素
+
+】ZRANGE salary 0 -1
+1) &quot;liyifan&quot;
+2) &quot;xiaohong&quot;
+3) &quot;zhangsan&quot;
+zrem salary xiaohong
+(integer) 1
+#指定范围
+ZRANGE salary 0 -1
+1) &quot;liyifan&quot;
+2) &quot;zhangsan&quot;
+ ZREVRANGE salary 0 -1
+1) &quot;zhangsan&quot;
+2) &quot;liyifan&quot;
+# 获取集合中元素个数
+zcard salary
+(integer) 2
+#获取指定区间元素
+ zcount myset 1 3
+(integer) 3
+127.0.0.1:6379&gt; zcount myset 1 2
+(integer) 2
+</code></pre>
+<p>set 排序 比如成绩单 工资表</p>
+<p>消息排队 按照重要级别</p>
+<h3 id="三种特殊类型"><a href="#三种特殊类型" class="headerlink" title="三种特殊类型"></a>三种特殊类型</h3><h4 id="geospatial地理位置类型"><a href="#geospatial地理位置类型" class="headerlink" title="geospatial地理位置类型"></a>geospatial地理位置类型</h4><p>可以推算地理位置的信息，两地之间的距离，附近的人。</p>
+<p>仅有六个命令。</p>
+<blockquote>
+<p>geoadd 添加地理位置</p>
+</blockquote>
+<p>两极无法直接添加，一般会下载城市数据然后利用java程序一次性导入</p>
+<pre><code>#有效的经度 维度 前者是-180到180 后者是-85.05到+85.05 坐标超出范围则报错
+geoadd china:city 116.40 39.9 beijing
+(integer) 1
+geoadd china:city 121.47 31.23 shanghai
+(integer) 1
+geoadd china:city 106.50 29.53 chongqing
+(integer) 1
+geoadd china:city 114.05 22.52 shenzhen
+(integer) 1
+geoadd china:city 120.16 30.24 hangzhou 108.96 34.26 xian
+</code></pre>
+<p>获取指定的城市的经度与维度</p>
+<pre><code>GEOPOS china:city beijing
+1) 1) &quot;116.39999896287918091&quot;
+   2) &quot;39.90000009167092543&quot;
+</code></pre>
+<p>获取两个地点的直线距离</p>
+<pre><code>GEODIST china:city beijing shanghai km
+&quot;1067.3788&quot;
+ GEORADIUS china:city 110 30 1000 km        #以100 30经纬度为中心，寻找方圆500km内的城市
+1) &quot;chongqing&quot;
+2) &quot;xian&quot;
+3) &quot;shenzhen&quot;
+4) &quot;hangzhou&quot;
+
+GEORADIUS china:city 110 30 500 km withdist  #显示到中间距离的位置
+1) 1) &quot;chongqing&quot;
+   2) &quot;341.9374&quot;
+2) 1) &quot;xian&quot;
+   2) &quot;483.8340&quot;
+127.0.0.1:6379&gt; GEORADIUS china:city 110 30 500 km withcoord  #显示范围内城市的定位信息
+1) 1) &quot;chongqing&quot;
+   2) 1) &quot;106.49999767541885376&quot;
+      2) &quot;29.52999957900659211&quot;
+2) 1) &quot;xian&quot;
+   2) 1) &quot;108.96000176668167114&quot;
+      2) &quot;34.25999964418929977&quot;
+      
+GEORADIUS china:city 110 30 500 km withcoord count 1        #筛选出指定(数量)结果
+1) 1) &quot;chongqing&quot;
+   2) 1) &quot;106.49999767541885376&quot;
+      2) &quot;29.52999957900659211&quot;
+GEORADIUSBYMEMBER china:city beijing 1000 km          #显示指定元素周围的元素
+1) &quot;beijing&quot;
+2) &quot;xian&quot;
+
+geohash china:city beijing chongqing    #返回多个位置元素的Geohash表示
+1) &quot;wx4fbxxfke0&quot;                        #二维的经纬度返回为一个一维字符串，内容接近代表距离近
+2) &quot;wm5xzrybty0&quot;
+
+127.0.0.1:6379&gt; zrem china:city beijing        #移除指定元素
+(integer) 1
+127.0.0.1:6379&gt; ZRANGE china:city 0 -1         #查看
+1) &quot;chongqing&quot;
+2) &quot;xian&quot;
+3) &quot;shenzhen&quot;
+4) &quot;hangzhou&quot;
+5) &quot;shanghai&quot;
+</code></pre>
+<h4 id="Hyperloglog"><a href="#Hyperloglog" class="headerlink" title="Hyperloglog"></a>Hyperloglog</h4><p>基数：不重复元素的数量</p>
+<p>Redis Hyperloglog 基数统计的<strong>算法</strong></p>
+<p>优点：占用的内存固定，2^64不同的元素的技术，只需要占用12KB内存。</p>
+<p><strong>网页的UV（访问网站多次，但还算作一个人）</strong> 另外好像还有个PV，见《淘宝技术这十年》</p>
+<p>set保存用户的id，就可统计set中的元素数量作为标准判断 –传统</p>
+<p>不过该方式还保存了大量的用户id，虽然<strong>满足了使用该方式的初衷</strong>（计数）但占用了不必要的空间。</p>
+<p>错误率0.81% 统计UV任务可以忽略不计</p>
+<pre><code>PFadd mykey a b c d e f g h i j
+(integer) 1
+127.0.0.1:6379&gt; PFCOUNT mykey    #统计基数数量
+(integer) 10
+127.0.0.1:6379&gt; PFADD mykey2 i j z x c v b n m
+(integer) 1
+127.0.0.1:6379&gt; PFCOUNT mykey2
+(integer) 9
+127.0.0.1:6379&gt; PFMERGE mykey3 mykey mykey2
+OK
+127.0.0.1:6379&gt; PFCOUNT mykey3
+(integer) 15
+ PFADD mykey4 a a a d a d
+(integer) 1
+127.0.0.1:6379&gt; PFCOUNT mykey4
+(integer) 2
+</code></pre>
+<h4 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h4><p><strong>位存储</strong></p>
+<p>统计用户信息，活跃、不活跃 登录未登录 打卡 365天打卡 两个状态 0 与 1 都可以使用Bitmaps</p>
+<p>Bitmaps位图 数据结构 都是操作二进制位进行记录。</p>
+<p>使用Bitmap记录一周的打卡情况</p>
+<pre><code> setbit sign 0 1
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 1 0
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 2 0
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 3 1
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 4 1
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 5 1
+(integer) 0
+127.0.0.1:6379&gt; setbit sign 6 1
+(integer) 0
+</code></pre>
+<p>查看某天是否打卡</p>
+<pre><code>getbit sign 3
+(integer) 1
+127.0.0.1:6379&gt; getbit sign 2
+(integer) 0
+</code></pre>
+<p>统计操作 – 打卡天数</p>
+<pre><code>bitcount sign
+(integer) 5
+</code></pre>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>与MySQL的事务有所不同</p>
+<p>一次性、顺序性、排他性：执行一些列的命令。</p>
+<p>Redis事务本质：1.一组命令的集合。一个事务中的所有命令都会被序列化，在事务执行过程中，会按照顺序执行。</p>
+<p>2.Redis事务没有隔离级别的概念。</p>
+<p>所有的命令在事务中，并没有直接被执行。只有发起执行命令时才会执行。Exec()</p>
+<p>特性3：不保证原子性</p>
+<p>Redis单条命令保持原子性，但是事务不保证原子性。即三条命令也许有一条是错误的，但是并不妨碍另外两条的成功执行。</p>
+<p>redis的事务：</p>
+<ul>
+<li>开启事务（） multi</li>
+<li>命令入队（） whatever</li>
+<li>执行事务（） exec</li>
+</ul>
+<p><strong>正常执行事务：</strong></p>
+<pre><code>#启动
+multi
+OK
+# 命令入队
+127.0.0.1:6379&gt; set k1 v1
+QUEUED
+127.0.0.1:6379&gt; set k2 v2
+QUEUED
+127.0.0.1:6379&gt; get k2
+QUEUED
+127.0.0.1:6379&gt; set k3 v3
+QUEUED
+# 发出执行命令，开始执行
+127.0.0.1:6379&gt; exec
+1) OK
+2) OK
+3) &quot;v2&quot;
+4) OK
+</code></pre>
+<p>放弃事务</p>
+<pre><code>multi   #开启
+OK
+127.0.0.1:6379&gt; set k1 v1
+QUEUED
+127.0.0.1:6379&gt; set k2 v2
+QUEUED
+127.0.0.1:6379&gt; set k4 v4
+QUEUED
+127.0.0.1:6379&gt; DISCARD  #取消事务
+OK
+127.0.0.1:6379&gt; get k4   #事务队列中命令都不会执行
+(nil)
+</code></pre>
+<p>编译型异常(代码有问题，命令有错)，事务中的所有命令都不会被执行。</p>
+<pre><code>127.0.0.1:6379&gt; set k1 v1
+QUEUED
+127.0.0.1:6379&gt; set k2 v2
+QUEUED
+127.0.0.1:6379&gt; set k3 v3
+QUEUED
+127.0.0.1:6379&gt; getset k3  #错误的命令
+(error) ERR wrong number of arguments for &#39;getset&#39; command
+127.0.0.1:6379&gt; set k4 v4
+QUEUED
+127.0.0.1:6379&gt; set k5 v5
+QUEUED
+127.0.0.1:6379&gt; exec    #执行事务异常，没有结果
+(error) EXECABORT Transaction discarded because of previous errors.
+127.0.0.1:6379&gt; get k4
+</code></pre>
+<p>运行时异常，如果事务队列中存在<strong>语法性错误</strong>则执行命令时：没有问题的命令可以正常执行。（即此处不体现原子性）</p>
+<pre><code>set k1 &quot;v1&quot;   #给key设置一个字符串类型value
+OK
+127.0.0.1:6379&gt; multi   #开启事务
+OK 
+127.0.0.1:6379&gt; incr k1  #实现自增
+QUEUED 
+127.0.0.1:6379&gt; set k2 v2   
+QUEUED
+127.0.0.1:6379&gt; set k3 v3
+QUEUED
+127.0.0.1:6379&gt; get k3
+QUEUED
+127.0.0.1:6379&gt; exec      #开始执行，可以看到第一条命令报了错但是其余都执行成功了。
+1) (error) ERR value is not an integer or out of range
+2) OK
+3) OK
+4) &quot;v3&quot;
+</code></pre>
+<h4 id="监控-（乐观锁的实现）"><a href="#监控-（乐观锁的实现）" class="headerlink" title="监控 （乐观锁的实现）"></a>监控 （乐观锁的实现）</h4><p><strong>悲观锁：</strong>啥啥都出问题，啥啥都加锁。</p>
+<p>**乐观锁： ** 依靠版本来控制</p>
+<ul>
+<li>啥啥都不会出问题，所以不上锁。更新数据的时候去判断：在此期间是否有人修改了这个数据。</li>
+<li><strong>获取version</strong></li>
+<li>更新时比较version</li>
+</ul>
+<p><strong>Redis测试监视</strong>: watch</p>
+<p>执行Multi前，先执行watch可以监视多个键</p>
+<p>如果在事务执行前这些key被其他命令改动，那么事务将被打断</p>
+<pre><code>set money 100
+OK
+127.0.0.1:6379&gt; set out 0
+OK
+127.0.0.1:6379&gt; watch money      #监视
+OK
+127.0.0.1:6379&gt; multi  #标记事务
+OK
+# 自增自减
+127.0.0.1:6379&gt; DECRBY money 20
+QUEUED
+127.0.0.1:6379&gt; INCRBY out 20
+QUEUED
+127.0.0.1:6379&gt; exec
+1) (integer) 80
+2) (integer) 20
+#事务正常结束 数据没有发生变动
+</code></pre>
+<p>多线程对值修改测试,使用<strong>watch可以当做redis的乐观锁操作</strong></p>
+<pre><code>#线程一：
+watch money   #监视money对象
+OK
+127.0.0.1:6379&gt; multi
+OK
+127.0.0.1:6379&gt; DECRBY money 10
+QUEUED
+127.0.0.1:6379&gt; INCRBY out 10
+QUEUED
+#线程二：在另一个线程事务未执行前修改Money
+set money 1000
+OK
+#线程一：  执行失败
+127.0.0.1:6379&gt; exec
+(nil)
+
+#######################################################
+#修改失败获取新的值即可
+unwatch  #如果执行失败 解除监视
+OK 
+127.0.0.1:6379&gt; watch money   #获取新的值，再次监视  select version
+OK
+127.0.0.1:6379&gt; multi
+OK
+127.0.0.1:6379&gt; DECRBY money 1
+QUEUED
+127.0.0.1:6379&gt; inCRBY money 1
+QUEUED
+127.0.0.1:6379&gt; exec #比对监视的值是否发生变化（select version）无变化则可执行成功，如果变了则失败
+1) (integer) 999
+2) (integer) 1000
+</code></pre>
+<h4 id="秒杀案例——事务的延伸"><a href="#秒杀案例——事务的延伸" class="headerlink" title="秒杀案例——事务的延伸"></a>秒杀案例——事务的延伸</h4><p>秒杀：商品减去对应数量</p>
+<p>秒杀成功者列入清单</p>
+<p><strong>核心逻辑</strong></p>
+<pre><code>//秒杀过程
+public static boolean doSecKill(String uid, String prodid) &#123;
+   //1. uid和prodid非空判断
+   if (uid == null || prodid == null) &#123;
+      return false;
+   &#125;
+
+   //2.连接Redis
+   Jedis jedis = new Jedis(&quot;8.140.23.86&quot;, 6379);
+   //3.拼接key
+   //3.1 库存Key
+   String storageKey = &quot;sk:&quot; + prodid + &quot;:qt&quot;;
+   //3.2秒杀成功用户key
+   String userKey = &quot;sk:&quot;+prodid+&quot;:user&quot;;
+   //4.获取库存，为空则说明秒杀未开始，等待
+   String storage = jedis.get(storageKey);
+   if (storage == null) &#123;
+      System.out.println(&quot;秒杀没有开始&quot;);
+      jedis.close();
+      return false;
+   &#125;
+   //5. 判断用户是否重复秒杀操作
+   if (jedis.sismember(userKey, uid)) &#123;
+      System.out.println(&quot;已经秒杀成功,不能重复秒杀&quot;);
+      jedis.close();
+      return false;
+   &#125;
+   //6. 判断如果商品数量，库存数量&lt;1，秒杀结束
+   if(Integer.parseInt(storage) &lt;= 0) &#123;
+      System.out.println(&quot;秒杀一结束&quot;);
+      jedis.close();
+      return false;
+   &#125;
+
+   /*
+   7. 秒杀过程
+   库存-1  秒杀成功用户添加到清单中
+    */
+   jedis.decr(storageKey);
+   jedis.sadd(userKey, uid);
+   System.out.println(&quot;秒杀成功&quot;);
+   jedis.close();
+   return true;
+
+&#125;
+</code></pre>
+<p>压力测试</p>
+<p>yum install httpd-tools</p>
+<p>ab -n 1000 -c 100 多少个请求 并发多少个请求</p>
+<pre><code>    set sk:0101:qt
+</code></pre>
+<p>ab -n 100 -c 2 -k -p ~&#x2F;postfile -T application&#x2F;x-www-form-urlencoded <a href="https://gitee.com/link?target=http://192.168.43.69:8080/Seckill/doseckill">http://192.168.43.69:8080/Seckill/doseckill</a></p>
+<h3 id="Jedis"><a href="#Jedis" class="headerlink" title="Jedis"></a>Jedis</h3><p>java来操作Redis，一个jar包，中间件。</p>
+<p>测试：</p>
+<p>1.导入对应的依赖</p>
+<pre><code>&lt;properties&gt;
+        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+
+&lt;!--    导入jedis包--&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+            &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+            &lt;version&gt;3.2.0&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+            &lt;version&gt;1.2.62&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+<p>引入日志(slf4j)依赖</p>
+<p>2.编码测试</p>
+<ul>
+<li>连接数据库</li>
+<li>操作命令</li>
+<li>断开连接</li>
+</ul>
+<p>测试ping</p>
+<pre><code>@Slf4j
+public class TestPing &#123;
+    public static void main(String[] args) &#123;
+        //获取Jedis对象
+        Jedis jedis = new Jedis(&quot;127.0.0.1&quot;, 6379);
+        //jedis所有的命令，在这里作为了该对象的方法
+        log.info(jedis.ping());
+
+    &#125;
+&#125;
+//输出了PONG
+</code></pre>
+<h4 id="常用api"><a href="#常用api" class="headerlink" title="常用api:"></a>常用api:</h4><p>String</p>
+<p>List</p>
+<p>Hash</p>
+<p>Set</p>
+<p>ZSet</p>
+<hr>
+<p><strong>测试：</strong></p>
+<pre><code>@Slf4j
+public class TestTransaction &#123;
+    public static void main(String[] args) &#123;
+        Jedis jedis = new Jedis(&quot;127.0.0.1&quot;, 6379);
+        jedis.flushDB();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put(&quot;hello&quot;, &quot;world&quot;);
+        jsonObject.put(&quot;name&quot;, &quot;liyifan&quot;);
+        //开启事务
+        Transaction multi = jedis.multi();
+        String result = jsonObject.toJSONString();
+        try &#123;
+            multi.set(&quot;user1&quot;, result);
+            multi.set(&quot;user2&quot;, result);
+            int i = 1/0;       //出现异常跳转catch
+            multi.exec();
+        &#125; catch (Exception e) &#123;
+            multi.discard();   //异常则放弃事务
+            e.printStackTrace();
+        &#125; finally &#123;
+            log.info(jedis.get(&quot;user1&quot;));
+            log.info(jedis.get(&quot;user2&quot;));
+            jedis.close();
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Springboot整合"><a href="#Springboot整合" class="headerlink" title="Springboot整合"></a>Springboot整合</h3><p>在Springboot2.x后原本使用的jedis被替换为lettuce</p>
+<p>jedis:采用的直连，多个线程操作不安全。如果想要避免不安全，使用jedis pool连接池。更像BIO模式。</p>
+<p>lettuce:采用netty,实例可以在多个线程中进行共享，不存在线程不安全的情况。可以减少线程数据，更像NIO模式。</p>
+<p><strong>源码分析</strong></p>
+<p><strong>测试</strong></p>
+<ol>
+<li>导入依赖</li>
+</ol>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>2连接配置</p>
+<pre><code>spring.redis.host=127.0.0.1
+spring.redis.port=6379
+</code></pre>
+<p>3.测试</p>
+<pre><code>@SpringBootTest
+@Slf4j
+class Redis03SpringbootApplicationTests &#123;
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Test
+    void contextLoads() &#123;
+        /*
+        redisTemplate   opsForValue 类似String
+        还有ForList Set Hash ZSet Geo HyperLogLog
+        除此外常用的方法比如multi()事务CRUD等都可以通过此操作
+         */
+        //获取Redis的连接对象
+        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
+        connection.flushDb();
+        connection.flushAll();
+        redisTemplate.opsForValue().set(&quot;testKey&quot;, &quot;liyifan&quot;);
+        System.out.println(redisTemplate.opsForValue().get(&quot;testKey&quot;));
+    &#125;
+
+&#125;
+</code></pre>
+<p>给定的Template默认使用了JDK进行序列化，我们可能需要json序列化，利用json进行对象的传递。</p>
+<p>序列化配置</p>
+<pre><code>@Nullable
+private RedisSerializer keySerializer = null;
+@Nullable
+private RedisSerializer valueSerializer = null;
+@Nullable
+private RedisSerializer hashKeySerializer = null;
+@Nullable
+private RedisSerializer hashValueSerializer = null;
+</code></pre>
+<p>在Redis中传递对象要使实体类实现Serializable类，从而进行序列化。</p>
+<p>自定义RedisTemplate</p>
+<pre><code>@Configuration
+public class RedisConfig &#123;
+    //自定义RedisTemplate，一般企业中都有模板可以直接复制粘贴使用.
+    @Bean
+    @SuppressWarnings(&quot;all&quot;)
+    public RedisTemplate&lt;String,Object&gt; redisTemplate(RedisConnectionFactory factory) &#123;
+        //字符串常用开发方便
+        RedisTemplate&lt;String, Object&gt; template = new RedisTemplate&lt;&gt;();
+        template.setConnectionFactory(factory);
+        //json序列化配置
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jackson2JsonRedisSerializer.setObjectMapper(om);
+        //String的序列化
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        //key采用String的序列化方式
+        template.setKeySerializer(stringRedisSerializer);
+        //hash的key采用String的序列化方式
+        template.setHashKeySerializer(stringRedisSerializer);
+        //value的序列化采用jackson
+        template.setValueSerializer(jackson2JsonRedisSerializer);
+        //hash的value序列化采用Jackson
+        template.setHashValueSerializer(jackson2JsonRedisSerializer);
+        template.afterPropertiesSet();
+        return template;
+    &#125;
+
+&#125;
+</code></pre>
+<p>使用自定义RedisTemplate</p>
+<pre><code>@Qualifier(&quot;myRedisTemplate&quot;)
+</code></pre>
+<p>见Spring学习自动装配处的讲解。若@Autowired自动装配环境复杂，因此可以使用@Qualifier指定一个唯一的bean对象（辅助）注入。</p>
+<p>由于自定义采用了字符串序列化替代了原有的JDK序列化，再次使用Redis命令查看</p>
+<p>keys *</p>
+<ol>
+<li>“user”</li>
+</ol>
+<p>发现返回了一个字符串。</p>
+<h3 id="Redis配置详解"><a href="#Redis配置详解" class="headerlink" title="Redis配置详解"></a>Redis配置详解</h3><p>启动就是利用配置文件启动</p>
+<p><strong>单位</strong></p>
+<p><img src="/" alt="image-20210517110258404"></p>
+<p>见最后一句，配置文件单位大小写不敏感</p>
+<p>可以将其余的配置文件组合起来,类比Spring时的ApplicationContext中&lt;import xx</p>
+<p><img src="/" alt="image-20210517110441872"></p>
+<p><strong>网络</strong></p>
+<p><img src="/" alt="image-20210517110519984"></p>
+<pre><code>bind 127.0.0.1 #绑定的IP
+protected-mode yes #保护模式
+port 6379 #端口设置
+</code></pre>
+<p><strong>通用GENERAL</strong></p>
+<pre><code>daemonize yes   #以守护进程的方式运行，默认为no,需要自己开启yes
+pidfile /var/run/redis_6379.pid   #一后台运行，就必须指定一个pid文件
+
+#日志
+</code></pre>
+<p><strong>快照</strong></p>
+<p>持久化，在规定时间中执行了多少次操作则会持久化到文件 .rdb .aof</p>
+<p>Redis是内存数据库，如果没有持久化那么数据断电即失。</p>
+<p><strong>安全</strong></p>
+<p>设置Redis的密码</p>
+<p><img src="/" alt="image-20210517112410683"></p>
+<p><strong>限制</strong></p>
+<p>maxclient</p>
+<p>maxmemory内存最大上限</p>
+<p>上限后有对应措施 Maxmemory-policy 针对过期的key</p>
+<ul>
+<li>默认是LRU</li>
+<li>随即删除 ……</li>
+</ul>
+<p>AOF配置 Append Only Mode</p>
+<p>默认是使用RDB。</p>
+<h3 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h3><p>Redis是内存数据库，如果不将内存状态保存至磁盘断电即失。</p>
+<p>后面是尚硅谷的课程内容</p>
+<h3 id="应用场景归纳"><a href="#应用场景归纳" class="headerlink" title="应用场景归纳"></a>应用场景归纳</h3><p>记录访问量</p>
+<p>地理位置</p>
+<p>用户喜好 状态</p>
+<p>短信业务一分钟有效</p>
+<p>查看所有内容 info Keyspace</p>
+<p>docker中启动</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/mybaits/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Mybatis-9.28</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/spring%20mvc/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Spring MVC</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

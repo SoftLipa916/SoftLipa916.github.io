@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>Spring MVC-🧠</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/dragon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="java,Spring MVC,Spring,">
+<meta name="description" content="SpringMVC架构">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 6.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/dragon.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										主页
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										文档
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										分类
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										标签
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										友情链接
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										我
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>SoftLipa</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">主页</a>
+        </li>
+        
+        <li>
+            <a href="/archives">文档</a>
+        </li>
+        
+        <li>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <a href="/links">友情链接</a>
+        </li>
+        
+        <li>
+            <a href="/about">我</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://tu.ltyuanfang.cn/api/fengjing.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/java">java</a></li>
+            
+            <li><a href="/tags/Spring MVC">Spring MVC</a></li>
+            
+            <li><a href="/tags/Spring">Spring</a></li>
+            
+            
+        </ul>
+        
+        <h1>Spring MVC</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">SoftLipa</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/java/" target="_blank" >java</a>
+                    
+                </div>
+                <p>2024-01-08 09:33:36</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="SpringMVC-架构是演进的"><a href="#SpringMVC-架构是演进的" class="headerlink" title="SpringMVC 架构是演进的"></a>SpringMVC 架构是演进的</h1><h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>注意观察网页所显示的错误，不一定是个人代码导致，可能是环境的问题</p>
+<p>培养<strong>重载 工具类 代码复用思想！！！！</strong></p>
+<p>切记：本框架中一些IDEA的设置很重要，如AddWebWork 和 Project Structure中的libraries</p>
+<p>学习方法：</p>
+<p>框架：研究官方问文档，锻炼自学、笔记、项目能力</p>
+<p>Spring:IoC和AOP</p>
+<p>SpringMVC:SpringMVC的执行流程</p>
+<p>@Component</p>
+<p>@Service</p>
+<p>@Controller</p>
+<p>@Repository</p>
+<p>&#x3D;&#x3D;&#x3D;</p>
+<p>SSM框架整合</p>
+<h3 id="1-回顾MVC"><a href="#1-回顾MVC" class="headerlink" title="1.回顾MVC"></a>1.回顾MVC</h3><h4 id="1-1what"><a href="#1-1what" class="headerlink" title="1.1what"></a>1.1what</h4><p>模型 视图 控制器 一种软件设计规范，一种架构模式，将业务逻辑、数据、显示分离的方法来组织代码。</p>
+<p><strong>Model（模型）：</strong>数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或JavaBean组件（包含数据和行为），不过现在一般都分离开来：Value Object（数据Dao） 和 服务层（行为Service）。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。</p>
+<p><strong>View（视图）：</strong>负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。</p>
+<p><strong>Controller（控制器）：</strong>接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示。也就是说控制器做了个调度员的工作。</p>
+<p>此即Controller层调用Service层，Service层调用dao层</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7KwPOPWq00pMJiaK86lF6BjIXW7Wmm9KVEV1FXUfJMD0KzuYZ7ic5UHggsZDAzyYyrd4pLvnBIVM5zA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>职责分析：</strong></p>
+<p><strong>Controller：控制器</strong></p>
+<ol>
+<li>取得表单数据</li>
+<li>调用业务逻辑</li>
+<li>转向指定的页面</li>
+</ol>
+<p><strong>Model：模型</strong></p>
+<ol>
+<li>业务逻辑</li>
+<li>保存数据的状态</li>
+</ol>
+<p><strong>View：视图</strong></p>
+<ol>
+<li>显示页面</li>
+</ol>
+<h4 id="1-4回顾Servlet"><a href="#1-4回顾Servlet" class="headerlink" title="1.4回顾Servlet"></a>1.4回顾Servlet</h4><ol>
+<li>新建一个父工程</li>
+</ol>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.12&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+        &lt;version&gt;5.1.9.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+        &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+        &lt;version&gt;2.5&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+        &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
+        &lt;version&gt;2.2&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+        &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+        &lt;version&gt;1.2&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>2.新建module，导入servlet和jsp的jar依赖</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+        &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+        &lt;version&gt;2.5&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+        &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
+        &lt;version&gt;2.2&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h3 id="2-SpringMVC"><a href="#2-SpringMVC" class="headerlink" title="2.SpringMVC"></a>2.SpringMVC</h3><h4 id="2-1概述"><a href="#2-1概述" class="headerlink" title="2.1概述"></a>2.1概述</h4><p>MVC架构要做哪些事情</p>
+<p>1.将url映射到java类或java类的方法</p>
+<p>2.封装用户提交的请求</p>
+<p>3.处理请求 &#x3D;&#x3D;&gt;调用相关的业务处理&#x3D;&#x3D;&gt;封装响应数据</p>
+<p>4.将响应的数据进行渲染 .jsp&#x2F;html等表示层数据</p>
+<p>SpringMVC的特点：</p>
+<p>巴拉巴拉</p>
+<p>6.简洁灵活</p>
+<p>Spring的web框架围绕DispatcherServlet【调度Servlet】设计</p>
+<p>DispatcherServlet的作用是将请求分发到不同的处理器。</p>
+<h4 id="2-2中心控制器"><a href="#2-2中心控制器" class="headerlink" title="2.2中心控制器"></a>2.2中心控制器</h4><p>Spring的web框架围绕DispatcherServlet【调度Servlet】设计，DispatcherServlet的作用是将请求分发到不同的处理器。</p>
+<p>现在可以用基于注解的Controller声明方式。</p>
+<p>以请求为驱动，围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet.</p>
+<p><strong>原理</strong>:</p>
+<p>当发起请求时被前置的控制器拦截请求，根据请求参数生成代理请求。</p>
+<p>找到请求对应的实际控制器</p>
+<p>控制器处理 创建数据模型 访问数据库 将模型响应给中心控制器</p>
+<p>控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，</p>
+<p>再将结果返回给控制器</p>
+<p><img src="/" alt="image-20210310210901660"></p>
+<p>（注意与采用Vue后的MVVC进行对比）</p>
+<p>执行流程：</p>
+<p>1.DispatchServlet表示前置控制器，整个SpringMVC的控制中心。用户发出请求，DispatchServlet接收请求并拦截请求。</p>
+<p>假设请求的url为：<a href="https://gitee.com/link?target=http://localost:8080/SpringMVC/hello">http://localost:8080/SpringMVC/hello</a></p>
+<p>由三部分组成：服务器域名 SpriingMVC部署在服务器上的web站点 hello:控制器</p>
+<p>（要改变传统对于所谓网址的认知）</p>
+<h3 id="3-第一个SpringMVC程序"><a href="#3-第一个SpringMVC程序" class="headerlink" title="3.第一个SpringMVC程序"></a>3.第一个SpringMVC程序</h3><p>配置：新建模块，导入SpringMVC依赖。</p>
+<p>2.配置web.xml，注册DispatcherServlet</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+&lt;!--    1.注册DispatcherServlet--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+&lt;!--        关联一个springmvc的配置文件 --&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:spring-mvc.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+&lt;!--        启动级别--&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+&lt;!--    匹配所有的请求 注意/--&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<p>3.SpringMVC配置文件，springmvc-servlet — 注意[servletname] -servlet.xml的官方要求</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+&lt;!--    添加 前端控制器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;/&gt;
+&lt;!--    添加处理适配器 分配控制器 控制器返回一个ModelAndView交给视图解析器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;/&gt;
+&lt;!--    添加视图解析器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;
+          id=&quot;internalResourceViewResolver&quot;&gt;
+&lt;!--        前缀--&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+&lt;!--        后缀--&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<ol>
+<li><p>编写操作业务的Controller，①实现Controller接口(注意导包是servlet下的) ②增加注解</p>
+<p>需要返回一个ModelAndView，装数据封装视图。</p>
+</li>
+</ol>
+<pre><code>public class HelloController implements Controller &#123;
+    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception &#123;
+        //ModelAndView模型和视图
+        ModelAndView mv = new ModelAndView();
+        //封装对象，放在ModelAndView中， --Model
+        mv.addObject(&quot;msg&quot;, &quot;HelloSpringMVC&quot;);
+        //封装要跳转的视图,放在ModelAndView中
+        mv.setViewName(&quot;hello&quot;); //:
+        return mv;
+    &#125;
+&#125;
+</code></pre>
+<ol>
+<li><p>将自己的类交给SpringIOC容器，注册bean</p>
+<pre><code>&lt;!--    Handler--&gt;
+    &lt;bean id=&quot;/hello&quot; class=&quot;com.fan.controller.HelloController&quot;/&gt;
+</code></pre>
+</li>
+<li><p>写要跳转的jsp页面，显示ModelAndView存放的数据，以及正常页面</p>
+<p>如果出现错误，①Saxbalababala不允许前言什么的，可能是web.xml配置servlet的时候忘记写classpath了</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;实际上，上述实现方式有些复杂&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+</li>
+</ol>
+<p>下面利用注解来实现</p>
+<h4 id="3-2-注解实现"><a href="#3-2-注解实现" class="headerlink" title="3.2 注解实现"></a>3.2 注解实现</h4><p>1.新建module</p>
+<p>2.此时需要配置完善，防止资源过滤的问题</p>
+<pre><code>&lt;build&gt;
+    &lt;resources&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/resources&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.properties&lt;/include&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+            &lt;/includes&gt;
+            &lt;filtering&gt;false&lt;/filtering&gt;
+        &lt;/resource&gt;
+        &lt;resource&gt;
+            &lt;directory&gt;src/main/java&lt;/directory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**/*.properties&lt;/include&gt;
+                &lt;include&gt;**/*.xml&lt;/include&gt;
+            &lt;/includes&gt;
+            &lt;filtering&gt;false&lt;/filtering&gt;
+        &lt;/resource&gt;
+    &lt;/resources&gt;
+&lt;/build&gt;
+</code></pre>
+<p>3.导入依赖（父依赖中已有）</p>
+<p>4.配置web.xml （要最新版 4.0）</p>
+<p>在SpringMVC中 &#x2F;与&#x2F;*的区别:</p>
+<p>&#x2F;: 只匹配所有的请求，不会去匹配jsp页面</p>
+<p>&#x2F;*:匹配所有的请求，包括jsp页面</p>
+<h3 id="4-Controller详解"><a href="#4-Controller详解" class="headerlink" title="4. Controller详解"></a>4. Controller详解</h3><p>控制器Controller</p>
+<ul>
+<li>控制器负责提供访问应用程序的行为通常通过接口定义或注解定义两种方法实现</li>
+<li>负责解析用户请求 &#x3D;&#x3D;》 一个模型</li>
+<li>SpringMVC中一个控制器类可以包含多个方法</li>
+<li>SpringMVC中 对于其配置方式有很多种</li>
+</ul>
+<p><strong>说明：</strong></p>
+<p>实现接口Controller定义控制器是较老的办法</p>
+<p>缺点：一个控制器只能有一个方法，如果要多个方法则需要定义多个Controller，定义方式比较麻烦</p>
+<p>因此，主要关注注解吧：</p>
+<h4 id="4-2-注解实现-Controller"><a href="#4-2-注解实现-Controller" class="headerlink" title="4.2 注解实现 @Controller"></a>4.2 注解实现 @Controller</h4><p>@Controller注解类型用于声明Spring类的实例是一个控制器，（如下三个也是，不过应用于不同层）</p>
+<p>@Component 组件</p>
+<p>@Service</p>
+<p>@Repository dao</p>
+<p>Spring可以使用扫描机制来找到应用程序中所有基于注解的控制器类，为了保证Spring能找到控制器，需要在配置文件中声明组件扫描。</p>
+<pre><code>&lt;context:component-scan base-package=&quot;com.fan.controller&quot;/&gt;
+</code></pre>
+<p>使用注解实现一个ControllerTest2类</p>
+<pre><code>@Controller //代表这个类会被Spring接管
+//被这个注解的类中的所有方法，如果返回值是String，并且有具体页面可以跳转，那么就会被视图解析器解析
+public class ControllerTest2 &#123;
+     //映射访问路径
+    @RequestMapping(&quot;/t2&quot;)
+    public String test1(Model model) &#123;
+        //SpringMVC会自动实例化一个Model对象用于向视图中传值
+        model.addAttribute(&quot;msg&quot;, &quot;test2&quot;);
+        return &quot;test&quot;; //跳转页面的位置
+    &#125;
+&#125;
+</code></pre>
+<p>在上述两个例子中，请求不同，但指向的视图是同一个（均为test.jsp），但是页面的结果却并不相同。</p>
+<p>从此处可以看出视图是被复用的，而控制器与视图之间是弱耦合关系。</p>
+<h3 id="5-RequestMapping"><a href="#5-RequestMapping" class="headerlink" title="5.RequestMapping"></a>5.RequestMapping</h3><p>@RequestMapping</p>
+<p>该注解用于映射url到控制器类或一个特定的处理程序方法。（一般都用在方法上，一个类中有多个方法维护时易遗漏）</p>
+<p>用于类上，表示所有的响应请求的方法都是以该地址作为父路径。</p>
+<p>注解位置不同访问的路径不同</p>
+<h3 id="6-Restful风格"><a href="#6-Restful风格" class="headerlink" title="6.Restful风格"></a>6.Restful风格</h3><p>Restful即一个资源定位及资源操作的风格，不是标准也不是协议，只是一种风格。</p>
+<p>基于该风格设计的软件可以更简洁，更有层次，且更易于实现缓存等机制。</p>
+<p><strong>功能</strong></p>
+<p>资源：互联网所有的事物都可以被抽象为资源</p>
+<p>资源操作：POST DELETE PUT GET</p>
+<p>对应：添加 删除 修改 查询</p>
+<p>传统方式操作资源：使用不同的参数来实现不同的效果， 只有post和get两种方法 <strong>–注意看请求地址是不同的</strong></p>
+<p><a href="https://gitee.com/link?target=http://127.0.0.1/item/queryItem.action?id=1">http://127.0.0.1/item/queryItem.action?id=1</a> 查询,GET</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item/saveItem.action">http://127.0.0.1/item/saveItem.action</a> 新增,POST</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item/updateItem.action">http://127.0.0.1/item/updateItem.action</a> 更新,POST</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item/deleteItem.action?id=1">http://127.0.0.1/item/deleteItem.action?id=1</a> 删除,GET或POST</p>
+<p>使用RESTful操作资源 ：可以通过不同的请求方式来实现不同的效果！如下：<strong>请求地址一样</strong>，但是功能可以不同！</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item/1">http://127.0.0.1/item/1</a> 查询,GET</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item">http://127.0.0.1/item</a> 新增,POST</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item">http://127.0.0.1/item</a> 更新,PUT</p>
+<p> <a href="https://gitee.com/link?target=http://127.0.0.1/item/1">http://127.0.0.1/item/1</a> 删除,DELETE</p>
+<p>测试： 引入了所谓的“路径变量”</p>
+<p>– 目前浅显地看来 似乎卓越性并不强，可能是为后续缓存做铺垫</p>
+<pre><code>@Controller
+public class RestfulController &#123;
+    //映射访问路径
+    //原来http://localhost:8080/add?a=1&amp;b=2
+    //Restful:                 /add/1/2
+    @RequestMapping(value=&quot;/add/&#123;a&#125;/&#123;b&#125;&quot;, method = RequestMethod.GET)
+    public String index(@PathVariable int a, @PathVariable int b, Model model) &#123;
+        int res = a+b;
+        model.addAttribute(&quot;msg&quot;, &quot;restfu&quot; + res);
+        return &quot;test&quot;;
+    &#125;
+    
+     @GetMapping(&quot;/add/&#123;a&#125;/&#123;b&#125;&quot;)
+    public String test2(@PathVariable int a, @PathVariable String b, Model model) &#123;
+        String res = a + b;
+        model.addAttribute(&quot;msg&quot;, &quot;resfu&quot;+res);
+        return &quot;test&quot;;
+    &#125;
+    
+&#125;
+</code></pre>
+<p>思考：使用路径变量的好处？</p>
+<ol>
+<li>路径简洁</li>
+<li>参数更加方便，框架会自动进行类型转换</li>
+<li>通过路径变量的类型可以约束访问参数，如果类型不一样，则访问不到对应的请求方法， （多态的应用？）</li>
+</ol>
+<p>SpringMVC的@RequestMapping注解能够处理HTTP请求的方法，比如GET，PUT，POST，DELETE以及PATCH</p>
+<p>所有的地址栏请求默认都会是HTTP GET类型的。 方法级别的注解变体有如下几个：组合注解</p>
+<p>@GetMapping 一个组合注解，平时用较多 @RequestMapping(method &#x3D; RequestMethod.GET)的一个快捷方式</p>
+<p>@PostMapping</p>
+<p>@PutMapping</p>
+<p>@DeleteMapping</p>
+<p>@PatchMapping</p>
+<h3 id="7-结果跳转方式"><a href="#7-结果跳转方式" class="headerlink" title="7.结果跳转方式"></a>7.结果跳转方式</h3><h4 id="7-1-ModelAndView"><a href="#7-1-ModelAndView" class="headerlink" title="7.1 ModelAndView"></a>7.1 ModelAndView</h4><p>设置“mv”对象，根据view的名称，和视图解析器跳到指定的页面</p>
+<p>页面：{视图解析器的前缀} + viewName &#x3D;{视图解析器后缀}</p>
+<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;
+      id=&quot;internalResourceViewResolver&quot;&gt;
+    &lt;!--        前缀--&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+    &lt;!--        后缀--&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>对应的Controller类 –传统实现</p>
+<pre><code>public class ControllerTest1 implements Controller &#123;
+    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception &#123;
+        //返回一个视图模型对象
+        ModelAndView mv = new ModelAndView();
+        mv.addObject(&quot;msg&quot;, &quot;test1&quot;);
+        mv.setViewName(&quot;test&quot;);
+        return mv;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="7-2-ServletAPI"><a href="#7-2-ServletAPI" class="headerlink" title="7.2 ServletAPI"></a>7.2 ServletAPI</h4><h4 id="7-3-SpringMVC"><a href="#7-3-SpringMVC" class="headerlink" title="7.3 SpringMVC"></a>7.3 SpringMVC</h4><p>通过该框架实现转发和重定向，无需视图解析器</p>
+<p>测试： （要注释掉视图解析器）</p>
+<h4 id="7-4关于转发与重定向的补充"><a href="#7-4关于转发与重定向的补充" class="headerlink" title="7.4关于转发与重定向的补充"></a>7.4关于转发与重定向的补充</h4><p>区别：</p>
+<p>1、请求次数：重定向是浏览器向服务器发送一个请求并收到响应后再次向一个新地址发出请求，转发是服务器收到请求后为了完成响应跳转到一个新的地址；重定向至少请求两次，转发请求一次；</p>
+<p>2、地址栏不同：重定向地址栏会发生变化，转发地址栏不会发生变化；</p>
+<p>3、是否共享数据：重定向两次请求不共享数据，转发一次请求共享数据（在request级别使用信息共享，使用重定向必然出错）；</p>
+<p>4、跳转限制：重定向可以跳转到任意URL，转发只能跳转本站点资源；</p>
+<p>5、发生行为不同：重定向是客户端行为，转发是服务器端行为；</p>
+<h3 id="8-数据处理"><a href="#8-数据处理" class="headerlink" title="8.数据处理"></a>8.数据处理</h3><h4 id="8-1-处理提交数据"><a href="#8-1-处理提交数据" class="headerlink" title="8.1 处理提交数据"></a>8.1 处理提交数据</h4><p>（1） 提交的域名称与处理方法的参数名一致</p>
+<p>提交数据：<a href="https://gitee.com/link?target=http://localhost:8080/springmvc_05_controller_war_exploded/user/t1?name=fan">http://localhost:8080/springmvc_05_controller_war_exploded&#x2F;user&#x2F;t1?name&#x3D;fan</a></p>
+<pre><code>@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController &#123;
+    @GetMapping(&quot;/t1&quot;)
+    public String test1(String name, Model model) &#123;
+        //1.接收前端参数
+        System.out.println(&quot;接收到前端的参数为&quot; + name);
+        //2. 将返回的结果传递给前端  Model
+        model.addAttribute(&quot;msg&quot;, name);
+        return &quot;test&quot;;
+    &#125;
+
+&#125;
+</code></pre>
+<p>（2）处理的域名称和处理方法的参数名不一致</p>
+<p>提交数据：<a href="https://gitee.com/link?target=http://localhost:8080/springmvc_05_controller_war_exploded/user/t1?username=fan">http://localhost:8080/springmvc_05_controller_war_exploded&#x2F;user&#x2F;t1?username&#x3D;fan</a></p>
+<p>处理方法： 使用@RequestParam注解，首先此即提醒开发者此值为前端传入</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController &#123;
+    @GetMapping(&quot;/t1&quot;)
+    public String test1(@RequestParam(&quot;username&quot;) String name, Model model) &#123;
+        //1.接收前端参数
+        System.out.println(&quot;接收到前端的参数为&quot; + name);
+        //2. 将返回的结果传递给前端  Model
+        model.addAttribute(&quot;msg&quot;, name);
+        return &quot;test&quot;;
+    &#125;
+
+&#125;
+</code></pre>
+<p>（3）提交的是一个对象 实体类 id, name, age – 注意一致</p>
+<p>提交数据：<a href="https://gitee.com/link?target=http://localhost:8080/springmvc_05_controller_war_exploded/user/t2?id=3&name=fan&age=13">http://localhost:8080/springmvc_05_controller_war_exploded&#x2F;user&#x2F;t2?id&#x3D;3&amp;name&#x3D;fan&amp;age&#x3D;13</a></p>
+<p>处理方法：</p>
+<pre><code>//前端接收的是一个对象
+/*
+1. 接收前端用户传递的参数，判断参数的名字，假设名字直接在方法上，可以直接使用
+2. 假设传递的是一个对象user，匹配User对象中的字段名：如果名字一致则OK，否则匹配不到。
+ */
+@GetMapping(&quot;/t2&quot;)
+public String test2(User user) &#123;
+    System.out.println(user);
+    return &quot;test&quot;;
+&#125;
+</code></pre>
+<h4 id="8-2-数据显示到前端"><a href="#8-2-数据显示到前端" class="headerlink" title="8.2 数据显示到前端"></a>8.2 数据显示到前端</h4><p>（1）通过ModelAndView new一个对象，mv.addObject 设置视图名称 return</p>
+<p>（2）通过ModelMap 类似下</p>
+<p>(3) 通过Model model.addAttribute return</p>
+<p><strong>对比</strong></p>
+<p>Model只有几个方法只适合于存储数据，简化了新手对于Model对象的操作和理解</p>
+<p>ModelMap继承了LinkedMap，除了实现自身的一些方法，同样的继承LinkedMap的方法和特性</p>
+<p>ModelAndView可以在存储数据的同时，设置返回的逻辑视图，进行控制展示层的跳转。</p>
+<h3 id="9-JSON"><a href="#9-JSON" class="headerlink" title="9.JSON"></a>9.JSON</h3><h4 id="9-1-what"><a href="#9-1-what" class="headerlink" title="9.1 what"></a>9.1 what</h4><p>前后端分离时代</p>
+<p>后端部署，提供接口</p>
+<p>前端渲染后端提供的数据页面</p>
+<p>JSON：一种轻量级的数据交换格式 用来存储和表示数据</p>
+<p>在JS中，一切都是对象。因此，任何JavaScript支持的类型都可以通过JSON表示。</p>
+<p>语法格式：</p>
+<ul>
+<li>对象表示为键值对，数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+<p><strong>切记切记！！！！！！！！括号问题 &#x2F;问题</strong></p>
+<p>本质上是一个字符串。使用文本表示一个JavaScript对象的信息。</p>
+<pre><code>var obj = JSON.parse(&#39;&#123;&quot;a&quot;:&quot;Hello&quot;, &quot;b&quot;:&quot;World&quot;&#125;&#39;); //JSON转换为JavaScript对象
+var json = JSON.stringify(&#123;a:&#39;Hello&#39;,b:&#39;World&#39;&#125;);  //JavaScript转换为JSON
+</code></pre>
+<h4 id="9-2-Controller返回json数据"><a href="#9-2-Controller返回json数据" class="headerlink" title="9.2 Controller返回json数据"></a>9.2 Controller返回json数据</h4><p>JackSon json解析工具</p>
+<p>导入JackSon的jar包：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;2.9.8&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>乱码问题待续（最后一定要看）</p>
+<p>配置web.xml （加入了乱码解决）</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;
+         version=&quot;4.0&quot;&gt;
+&lt;!--    注册Servlet--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;
+            org.springframework.web.servlet.DispatcherServlet
+        &lt;/servlet-class&gt;
+        &lt;!--            初始化Spring配置文件的参数--&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:springmvc-servlet.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+&lt;!--    所有请求都会被springmvc拦截--&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;utf-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;encoding&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<p>springmvc-servlet.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+    &lt;context:component-scan base-package=&quot;com.fan.controller&quot;/&gt;
+
+&lt;!--    视图解析器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;
+          id=&quot;internalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+     &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<p>编写一个实体类User 几个属性 注解完事儿</p>
+<p>测试类UserController</p>
+<p>引入了两个新工具① ResponseBody 注解会将str转化为json格式返回。</p>
+<p> ②ObjectMapper jackson对象映射器，解析数据</p>
+<pre><code>@Controller
+public class UserController &#123;
+    @RequestMapping(&quot;/json1&quot;)
+    @ResponseBody
+    public String json1() throws JsonProcessingException &#123;
+        //创建一个jackson对象映射器，用来解析数据
+        ObjectMapper mapper = new ObjectMapper();
+        //创建一个对象
+        User user = new User(&quot;凡凡&quot;, 3, &quot;男&quot;);
+        //解析为json格式
+        String str = mapper.writeValueAsString(user);
+        //检验一下此事str到底是否是普通的字符串
+        System.out.println(str);
+        //@ResponseBody注解会将str转化为json格式返回。
+        return str;
+
+    &#125;
+&#125;
+</code></pre>
+<p>运行，乱码滴干活！ –使用json大概率会遇到该类问题</p>
+<p><img src="/" alt="image-20210311212943741"></p>
+<p>在springmvc的配置文件上添加一段消息， StringHttpMessageConverter转换配置</p>
+<pre><code>&lt;context:component-scan base-package=&quot;com.fan.controller&quot;/&gt;
+&lt;mvc:annotation-driven&gt;
+    &lt;mvc:message-converters register-defaults=&quot;true&quot;&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;
+            &lt;constructor-arg value=&quot;UTF-8&quot;/&gt;
+        &lt;/bean&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+            &lt;property name=&quot;objectMapper&quot;&gt;
+                &lt;bean class=&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;&gt;
+                    &lt;property name=&quot;failOnEmptyBeans&quot; value=&quot;false&quot;/&gt;
+                &lt;/bean&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    &lt;/mvc:message-converters&gt;
+&lt;/mvc:annotation-driven&gt;
+</code></pre>
+<h4 id="9-3-返回json字符串统一解决"><a href="#9-3-返回json字符串统一解决" class="headerlink" title="9.3 返回json字符串统一解决"></a>9.3 返回json字符串统一解决</h4><p>在类上直接使用@RestController，类中的方法都只会返回json字符串，不需再每个添加@ResponseBody</p>
+<p>ObjectMapper 一个jackson对象映射器，解析数据</p>
+<pre><code>@RestController
+public class UserController &#123;
+@RequestMapping(&quot;/json1&quot;)
+@ResponseBody
+public String json1() throws JsonProcessingException &#123;
+    //创建一个jackson对象映射器，用来解析数据
+    ObjectMapper mapper = new ObjectMapper();
+    //创建一个对象
+    User user = new User(&quot;凡凡&quot;, 3, &quot;男&quot;);
+    //解析为json格式
+    String str = mapper.writeValueAsString(user);
+    //检验一下此事str到底是否是普通的字符串
+    System.out.println(str);
+    //@ResponseBody注解会将str转化为json格式返回。
+    return str;
+
+&#125;@RequestMapping(&quot;/json1&quot;)
+    @ResponseBody
+    public String json1() throws JsonProcessingException &#123;
+        //创建一个jackson对象映射器，用来解析数据
+        ObjectMapper mapper = new ObjectMapper();
+        //创建一个对象
+        User user = new User(&quot;凡凡&quot;, 3, &quot;男&quot;);
+        //解析为json格式
+        String str = mapper.writeValueAsString(user);
+        //检验一下此事str到底是否是普通的字符串
+        System.out.println(str);
+        //@ResponseBody注解会将str转化为json格式返回。
+        return str;
+
+    &#125;
+&#125;
+</code></pre>
+<p><strong>乱码统一解决!!!!!!</strong></p>
+<pre><code>&lt;mvc:annotation-driven&gt;
+    &lt;mvc:message-converters register-defaults=&quot;true&quot;&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;&gt;
+            &lt;constructor-arg value=&quot;UTF-8&quot;/&gt;
+        &lt;/bean&gt;
+        &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+            &lt;property name=&quot;objectMapper&quot;&gt;
+                &lt;bean class=&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;&gt;
+                    &lt;property name=&quot;failOnEmptyBeans&quot; value=&quot;false&quot;/&gt;
+                &lt;/bean&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    &lt;/mvc:message-converters&gt;
+&lt;/mvc:annotation-driven&gt;
+</code></pre>
+<p><strong>测试集合输出</strong></p>
+<pre><code>@RequestMapping(&quot;/json2&quot;)
+public String json2() throws JsonProcessingException &#123;
+    ObjectMapper mapper = new ObjectMapper();
+    User user1 = new User(&quot;1凡&quot;,5,&quot;娜娜&quot;);
+    User user3 = new User(&quot;2凡&quot;,5,&quot;娜娜&quot;);
+    User user2 = new User(&quot;3凡&quot;,5,&quot;娜娜&quot;);
+    User user14 = new User(&quot;4凡&quot;,5,&quot;娜娜&quot;);
+    User user6 = new User(&quot;6凡&quot;,5,&quot;娜娜&quot;);
+    List&lt;User&gt; list = new ArrayList&lt;User&gt;();
+    list.add(user1);
+    list.add(user2);
+    list.add(user3);
+    list.add(user6);
+    list.add(user14);
+    //对象解析为json
+    String str = mapper.writeValueAsString(list);
+    return str;
+
+&#125;
+</code></pre>
+<p><strong>输出时间对象</strong></p>
+<pre><code>@RequestMapping(&quot;/json3&quot;)
+public String json3() throws JsonProcessingException &#123;
+    ObjectMapper obj = new ObjectMapper();
+    //创建一个时间对象
+    Date date = new Date();
+    //解析为json
+    String str = obj.writeValueAsString(date);
+    return str;
+&#125;
+</code></pre>
+<p>返回的会是一列数字，因为是采用的timestamps形式</p>
+<p>取消该形式，自定义时间格式 –（是否可以自定义一个工具类呢？</p>
+<p>抽取为工具类</p>
+<p>FastJson 阿里开发的包，方便的实现json对象和JavaBean对象的转换，实现JavaBean对象与json字符串的转换，json对象与json字符串的转换。</p>
+<p>依赖</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;version&gt;1.2.60&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>fastjson三个主要的类</p>
+<p>JSONObject代表json对象</p>
+<p>JSONArray代表 数组</p>
+<p>JSON代表上述两者的转化。</p>
+<p>测试</p>
+<pre><code>public class FastJsonDemo &#123;
+    public static void main(String[] args) &#123;
+        User user1 = new User(&quot;1凡&quot;,3,&quot;娜娜&quot;);
+        User user3 = new User(&quot;2凡&quot;,4,&quot;娜娜&quot;);
+        User user2 = new User(&quot;3凡&quot;,5,&quot;娜娜&quot;);
+        User user4 = new User(&quot;4凡&quot;,6,&quot;娜娜&quot;);
+        List&lt;User&gt; list = new ArrayList&lt;User&gt;();
+        list.add(user1);
+        list.add(user2);
+        list.add(user3);
+        list.add(user4);
+        System.out.println(&quot;***********Java对象转JSON**************&quot;);
+        String str1 = JSON.toJSONString(list);
+        System.out.println(&quot;JSON.toJSONString(list)===&gt;&quot; + str1);
+        String str2 = JSON.toJSONString(user1);
+        System.out.println(&quot;JSON.toJSONString(user1)===&gt;&quot; + str2);
+
+        System.out.println(&quot;****************JSON字符串转Java对象**********&quot;);
+        User js_user = JSON.parseObject(str2, User.class);
+        System.out.println(&quot;JSON.parseObject(str2, User.class)==&gt;&quot; + js_user);
+
+        System.out.println(&quot;*******Java对象 转 JSON对象**********&quot;); //方便作为一个对象操作其属性
+        JSONObject object = (JSONObject) JSON.toJSON(user2);
+        System.out.println(&quot;(JSONObject) JSON.toJSON(user2)==&gt;&quot;+object.getString(&quot;name&quot;));
+
+        System.out.println(&quot;******JSON对象转Java对象**********&quot;);
+        User to_user = JSON.toJavaObject(object, User.class);
+        System.out.println(&quot;JSON.toJavaObject(object, User.class)==&gt;&quot; + to_user);
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="10-拦截器"><a href="#10-拦截器" class="headerlink" title="10.拦截器"></a>10.拦截器</h3><p>创建拦截器要实现HandlerInterceptor接口，但并不强制重写其方法。因此可以有选择性地针对处理前、处理后、清理工作重写方法。</p>
+<p>相比过滤器（filter)，不需要继承所有方法，同时只针对controller下的方法的请求进行拦截。是SpringMVC自己的。</p>
+<p>是AOP思想的具体应用。 横切进去，不影响原有业务，只用写个地方。</p>
+<p>例子如下：</p>
+<p>web.xml(同上) springmvc-servlet.xml配置</p>
+<pre><code>    &lt;context:component-scan base-package=&quot;com.fan.controller&quot;/&gt;
+    &lt;mvc:annotation-driven&gt;
+        &lt;mvc:message-converters register-defaults=&quot;true&quot;&gt;
+ &lt;!--            巴拉巴拉省去--&gt;           
+        &lt;/mvc:message-converters&gt;
+    &lt;/mvc:annotation-driven&gt;
+    &lt;mvc:interceptors&gt;
+        &lt;mvc:interceptor&gt;
+&lt;!--           /** 包括路径及其子路径
+             /admin/* 拦截的是 /admin/add
+          而/admin/add/user 不会被拦截
+          /admin/** 拦截的是/admin/下的所有--&gt;
+            &lt;mvc:mapping path=&quot;/**&quot;/&gt;
+&lt;!--            配置拦截器   不能同时在其中写多个--&gt;
+            &lt;bean id=&quot;loginInterceptor&quot; class=&quot;com.fan.interceptor.LoginInterceptor&quot;&gt;&lt;/bean&gt;
+        &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
+    &lt;!--    视图解析器--&gt;
+</code></pre>
+<p>自定义一个简单的拦截器，先了解一下 （省去）</p>
+<p>具体小功能的实现–登录:</p>
+<ol>
+<li>登录页面，写一个controller访问</li>
+<li>登录页面提交表单，在controller中处理判断用户名密码等。正确：向session中写入用户信息，登录成功。</li>
+<li>同时要拦截用户请求判断是否已登录：是放行否跳转回去不管点击的是哪个页面。</li>
+</ol>
+<p>前端 登录页面login,jsp (区别于教程，我没有在WEB-INF下建jsp包当然同时修改了视图解析器的配置)</p>
+<pre><code>&lt;form action=&quot;$&#123;pageContext.request.contextPath&#125;/user/login&quot;&gt;
+    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+    密码：&lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>编写一个Controller处理请求 在拦截器的帮助下 共同处理请求</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController &#123;
+    //跳转到登录页面
+    @RequestMapping(&quot;/jumplogin&quot;)
+    public String jumpLogin() &#123;
+        return &quot;login&quot;;
+    &#125;
+
+    //跳转到登录成功
+    @RequestMapping(&quot;/jumpSuccess&quot;)
+    public String jumpSuccess() throws Exception &#123;
+        return &quot;success&quot;;
+    &#125;
+
+    @RequestMapping(&quot;/login&quot;)
+    public String login(HttpSession session, String username, String pwd, Model model) &#123;
+        //向session记录用户身份信息
+        System.out.println(&quot;接收前端==&quot; +username);
+        session.setAttribute(&quot;userLogInfo&quot;, username);
+        model.addAttribute(&quot;username&quot;,username);
+        return &quot;success&quot;;
+    &#125;
+
+    //退出登录
+    @RequestMapping(&quot;loginout&quot;)
+    public String loginout(HttpSession session) &#123;
+        //session过期
+        session.removeAttribute(&quot;userLogInfo&quot;);
+        return &quot;login&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>-编写登录成功页面success.jsp</p>
+<pre><code>&lt;body&gt;
+
+&lt;span&gt;$&#123;username&#125;&lt;/span&gt;
+&lt;a href=&quot;$&#123;pageContext.request.contextPath&#125;/user/loginout&quot;&gt;注销&lt;/a&gt;
+&lt;/body&gt;
+</code></pre>
+<p>index.jsp</p>
+<pre><code>&lt;body&gt;
+&lt;a href=&quot;$&#123;pageContext.request.contextPath&#125;/user/jumplogin&quot;&gt;
+  登录
+&lt;/a&gt;
+&lt;a href=&quot;$&#123;pageContext.request.contextPath&#125;/user/jumpSuccess&quot;&gt;
+  成功页面
+&lt;/a&gt;
+&lt;/body&gt;
+</code></pre>
+<p>在这种情况下，从主页面不经登录也可以进入成功界面，但是配置拦截器后</p>
+<pre><code>public class LoginInterceptor implements HandlerInterceptor &#123;
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;
+        //如果是登录页面则放行
+        System.out.println(&quot;uri:&quot; + request.getRequestURI());
+        if (request.getRequestURI().contains(&quot;login&quot;)) &#123;
+            return true;
+        &#125;
+        HttpSession session = request.getSession();
+        //如果用户已登录也放行
+        if (session.getAttribute(&quot;user&quot;)!=null) &#123;
+            return true;
+        &#125;
+        //用户没有登录跳转到登录页面
+        request.getRequestDispatcher(&quot;/WEB-INF/login.jsp&quot;).forward(request, response);
+        return false;
+    &#125;
+
+&#125;
+</code></pre>
+<p>该拦截器仅继承了处理前的方法（preHandle),对是否有用户信息进行判断，没有就返回登录页面，因为此时的拦截器可以说是一个全局的拦截器 （&#x2F;**)</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p><strong>cookie与session</strong></p>
+<p><strong>ServletContext</strong></p>
+<p>监听器 广播或发送消息通知</p>
+<h3 id="011-文件上传和下载"><a href="#011-文件上传和下载" class="headerlink" title="011.文件上传和下载"></a>011.文件上传和下载</h3><p>这次没有用到上面的配置(因为跑不通），用的是毕设中的配置。</p>
+<p>pom.xml</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;3.1.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+            &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+            &lt;version&gt;1.3.3&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>springmvc.xml 略过 同毕设</p>
+<p>对应Controller</p>
+<pre><code>@Controller
+@RequestMapping(&quot;testFile&quot;)
+public class TestFileController &#123;
+    @RequestMapping(&quot;upload&quot;)
+    public String fileUpload(@RequestParam(&quot;file&quot;)CommonsMultipartFile file, HttpServletRequest request) throws IOException &#123;
+        String uploadFileName = file.getOriginalFilename();
+
+        //如果文件名为空，直接回到首页！
+        if (&quot;&quot;.equals(uploadFileName))&#123;
+            return &quot;test/loginTest&quot;;
+        &#125;
+        System.out.println(&quot;上传文件名 : &quot;+uploadFileName);
+
+        //上传路径保存设置
+        String path = request.getServletContext().getRealPath(&quot;/upload&quot;);
+        //如果路径不存在，创建一个
+        File realPath = new File(path);
+        if (!realPath.exists())&#123;
+            realPath.mkdir();
+        &#125;
+        System.out.println(&quot;上传文件保存地址：&quot;+realPath);
+
+        InputStream is = file.getInputStream(); //文件输入流
+        OutputStream os = new FileOutputStream(new File(realPath,uploadFileName)); //文件输出流
+
+        //读取写出
+        int len=0;
+        byte[] buffer = new byte[1024];
+        while ((len=is.read(buffer))!=-1)&#123;
+            os.write(buffer,0,len);
+            os.flush();
+        &#125;
+        os.close();
+        is.close();
+        return &quot;system/main/login&quot;;
+    &#125;
+
+&#125;
+</code></pre>
+<p>前端</p>
+<pre><code>&lt;body&gt;
+&lt;form action=&quot;$&#123;fan&#125;/testFile/upload.action&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;upload&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+</code></pre>
+<h1 id="SSM整合-写一步-测一步"><a href="#SSM整合-写一步-测一步" class="headerlink" title="SSM整合 写一步 测一步"></a>SSM整合 写一步 测一步</h1><p>** ！此次竟然犯了<em>mapper.xml文件中没有写对应mapper方法的错误！！！</em>*</p>
+<p>依赖注入</p>
+<pre><code>&lt;dependencies&gt;
+   &lt;!--Junit--&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;junit&lt;/groupId&gt;
+       &lt;artifactId&gt;junit&lt;/artifactId&gt;
+       &lt;version&gt;4.12&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;!--数据库驱动--&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;mysql&lt;/groupId&gt;
+       &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+       &lt;version&gt;5.1.47&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;!-- 数据库连接池 --&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;com.mchange&lt;/groupId&gt;
+       &lt;artifactId&gt;c3p0&lt;/artifactId&gt;
+       &lt;version&gt;0.9.5.2&lt;/version&gt;
+   &lt;/dependency&gt;
+
+   &lt;!--Servlet - JSP --&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+       &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+       &lt;version&gt;2.5&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;
+       &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
+       &lt;version&gt;2.2&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+       &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+       &lt;version&gt;1.2&lt;/version&gt;
+   &lt;/dependency&gt;
+
+   &lt;!--Mybatis--&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+       &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+       &lt;version&gt;3.5.2&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+       &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+       &lt;version&gt;2.0.2&lt;/version&gt;
+   &lt;/dependency&gt;
+
+   &lt;!--Spring--&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+       &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+       &lt;version&gt;5.1.9.RELEASE&lt;/version&gt;
+   &lt;/dependency&gt;
+   &lt;dependency&gt;
+       &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+       &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+       &lt;version&gt;5.1.9.RELEASE&lt;/version&gt;
+   &lt;/dependency&gt;
+    &lt;!--lombok--&gt;
+    &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;version&gt;1.18.10&lt;/version&gt;
+        &lt;/dependency&gt;
+&lt;/dependencies&gt;
+    &lt;build&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/resources&lt;/directory&gt;
+                &lt;includes&gt;
+                    &lt;include&gt;**/*.properties&lt;/include&gt;
+                    &lt;include&gt;**/*.xml&lt;/include&gt;
+                &lt;/includes&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;/resource&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/java&lt;/directory&gt;
+                &lt;includes&gt;
+                    &lt;include&gt;**/*.properties&lt;/include&gt;
+                    &lt;include&gt;**/*.xml&lt;/include&gt;
+                &lt;/includes&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+    &lt;/build&gt;
+</code></pre>
+<h4 id="1-整合Mybatis层-（ModelAndView"><a href="#1-整合Mybatis层-（ModelAndView" class="headerlink" title="1.整合Mybatis层 （ModelAndView)"></a>1.整合Mybatis层 （ModelAndView)</h4><p>com.fan.dao.BookMapper</p>
+<pre><code>public interface BookMapper &#123;
+    //增加一本书
+    int addBook(Books books);
+    //删除一本书
+    int deleteBookById(int id);
+    //更新一本书
+    int updateBook(Books books);
+    //查询一本书
+    Books queryBookById(int id);
+    //查询全部的书
+    List&lt;Book&gt; queryAllBook();
+&#125;
+</code></pre>
+<p>对应mapper ！！！在settings languages中设置SQL dialect</p>
+<pre><code>&lt;mapper namespace=&quot;com.fan.dao.BookMapper&quot;&gt;
+    &lt;insert id=&quot;addBook&quot; parameterType=&quot;Books&quot;&gt;
+        insert into ssmbuild.books(bookName, bookCounts, detail)
+        values (#&#123;bookName&#125;, #&#123;bookCounts&#125;, #&#123;detail&#125;);
+    &lt;/insert&gt;
+    &lt;delete id=&quot;deleteBookById&quot; parameterType=&quot;int&quot;&gt;
+        delete from ssmbuild.books where bookID=#&#123;bookID&#125;;
+    &lt;/delete&gt;
+    &lt;update id=&quot;updateBook&quot; parameterType=&quot;Books&quot;&gt;
+        update ssmbuild.books
+        set bookName=#&#123;bookName&#125;, bookCounts=#&#123;bookCounts&#125;,
+            detail=#&#123;detail&#125;
+        where bookID=#&#123;bookID&#125;
+    &lt;/update&gt;
+    &lt;select id=&quot;queryAllBook&quot; resultType=&quot;Books&quot;&gt;
+        select * from ssmbuild.books;
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<p>在mybatis-config.xml中注册mapper，同时命名别名</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+&lt;!--    配置数据源--&gt;
+    &lt;typeAliases&gt;
+        &lt;package name=&quot;com.fan.pojo&quot;/&gt;
+    &lt;/typeAliases&gt;
+    &lt;mappers&gt;
+        &lt;mapper class=&quot;com.fan.dao.BookMapper&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+<p>Service</p>
+<p>BookService同BookMapper</p>
+<p>实现类（BookServiceImpl)：</p>
+<pre><code>public class BookServiceImpl implements BookService &#123;
+    //service调dao层
+    private BookMapper bookMapper;
+
+    public void setBookMapper(BookMapper bookMapper) &#123;
+        this.bookMapper = bookMapper;
+    &#125;
+
+    public int addBook(Books books) &#123;
+        return bookMapper.addBook(books);
+    &#125;
+
+    public int deleteBookById(int id) &#123;
+        return bookMapper.deleteBookById(id);
+    &#125;
+
+
+    public int updateBook(Books books) &#123;
+        return bookMapper.updateBook(books);
+    &#125;
+
+    public Books queryBookById(int id) &#123;
+        return bookMapper.queryBookById(id);
+    &#125;
+
+    public List&lt;Book&gt; queryAllBook() &#123;
+        return bookMapper.queryAllBook();
+    &#125;
+&#125;
+</code></pre>
+<p>database.properties 务必按照该格式！！！</p>
+<pre><code>jdbc.driver=com.mysql.jdbc.Driver
+#使用MySQL8.0+ 还需添加时区的配置： &amp;serverTimezone=Asia/Shanghai
+jdbc.url=jdbc:mysql://localhost:3306/mybatis?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
+jdbc.username = root
+jdbc.password = woaini123
+</code></pre>
+<h4 id="2-整合Spring层"><a href="#2-整合Spring层" class="headerlink" title="2.整合Spring层"></a>2.整合Spring层</h4><p>spring-dao.xml <strong>如果报utf-8的错则改为GBK</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+&lt;!--    关联数据库文件 通过spring读取配置文件--&gt;
+    &lt;context:property-placeholder location=&quot;classpath:database.properties&quot;/&gt;
+&lt;!--    连接池--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;
+        &lt;property name=&quot;driverClass&quot;  value=&quot;$&#123;jdbc.driver&#125;&quot;/&gt;
+        &lt;property name=&quot;jdbcUrl&quot;  value=&quot;$&#123;jdbc.url&#125;&quot;/&gt;
+        &lt;property name=&quot;user&quot;  value=&quot;$&#123;jdbc.username&#125;&quot;/&gt;
+        &lt;property name=&quot;password&quot;  value=&quot;$&#123;jdbc.password&#125;&quot;/&gt;
+        &lt;property name=&quot;maxPoolSize&quot; value=&quot;30&quot;/&gt;
+        &lt;property name=&quot;minPoolSize&quot; value=&quot;10&quot;/&gt;
+&lt;!--       关闭连接后不自动commit--&gt;
+        &lt;property name=&quot;autoCommitOnClose&quot; value=&quot;false&quot;/&gt;
+&lt;!--        获取连接超时时间--&gt;
+        &lt;property name=&quot;checkoutTimeout&quot; value=&quot;10000&quot;/&gt;
+&lt;!--        获取连接失败次数--&gt;
+        &lt;property name=&quot;acquireRetryAttempts&quot; value=&quot;2&quot;/&gt;
+ &lt;!--    c3p0私有属性--&gt;
+    &lt;/bean&gt;
+&lt;!--    SqlSessionFactory--&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;!--    配置dao接口扫描包，动态的实现了dao接口注入Spring容器中 无需在实现类中进行SQLSession相关的注入--&gt;
+    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+&lt;!--        注入SqlSessionFactory--&gt;
+        &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;/&gt;
+&lt;!--        要扫描的dao包--&gt;
+        &lt;property name=&quot;basePackage&quot; value=&quot;com.fan.dao&quot;/&gt;
+     &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p>Spring-dao 利用Spring配置文件实现之前的mybatis-config的大部分配置以及MybatisUtils工具类（可能需要最大 最小初始连接池）</p>
+<p>spring-service.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+&lt;!--    扫描service层--&gt;
+    &lt;context:component-scan base-package=&quot;com.fan.service&quot;/&gt;
+&lt;!--    2.将所有的实现类注入到Spring中 可以通过配置或者注解实现--&gt;
+    &lt;bean id=&quot;BookServiceImpl&quot; class=&quot;com.fan.service.BookServiceImpl&quot;&gt;
+        &lt;property name=&quot;bookMapper&quot; ref=&quot;bookMapper&quot;/&gt;
+    &lt;/bean&gt;
+&lt;!--    3.声明式事务配置--&gt;
+    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+&lt;!--        注入数据源--&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+
+    &lt;/bean&gt;
+&lt;!--    4.aop事务支持--&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h4 id="3-整合SpringMVC层"><a href="#3-整合SpringMVC层" class="headerlink" title="3.整合SpringMVC层"></a>3.整合SpringMVC层</h4><p>web.xml</p>
+<pre><code>&lt;!--    DispatchServlet--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+
+&lt;!--    乱码过滤--&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;utf-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+&lt;!--    Session--&gt;
+    &lt;session-config&gt;
+        &lt;session-timeout&gt;15&lt;/session-timeout&gt;
+    &lt;/session-config&gt;
+</code></pre>
+<p>spring-mvc.xml 注意最顶上的声明是错误的cache改做mvc</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
+&lt;!--1.注解驱动--&gt;
+    &lt;mvc:annotation-driven/&gt;
+&lt;!--    2.静态资源过滤--&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+&lt;!--    3，扫描包:controller--&gt;
+    &lt;context:component-scan base-package=&quot;com.fan.controller&quot;/&gt;
+&lt;!--    4.视图解析器--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<p>编写业务类</p>
+<p>BookController</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/book&quot;)
+public class BookController &#123;
+    //controller 调service层
+    @Autowired
+    @Qualifier(&quot;BookServiceImpl&quot;)
+    private BookService bookService;
+    //查询全部的书籍，并且返回到一个书籍展示页面
+    @RequestMapping(&quot;/allBook&quot;)
+    public String list(Model model) &#123;
+        List&lt;Books&gt; list = bookService.queryAllBook();
+        model.addAttribute(&quot;list&quot;, list);
+        return &quot;allBook&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>总合</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+&lt;import resource=&quot;classpath:spring-dao.xml&quot;/&gt;
+    &lt;import resource=&quot;classpath:spring-service.xml&quot;/&gt;
+    &lt;import resource=&quot;classpath:spring-mvc.xml&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<p>显示页面：</p>
+<p>主题页：</p>
+<pre><code>&lt;body&gt;
+&lt;h3&gt;
+  &lt;a href=&quot;$&#123;pageContext.request.contextPath&#125;/book/allBook&quot;&gt;进入书籍页面&lt;/a&gt;
+&lt;/h3&gt;
+&lt;/body&gt;
+</code></pre>
+<p>引入bootStrap</p>
+<p>整合后 mybatis的配置文件仅需别名 的配置 两个功能</p>
+<h4 id="4-正式建立CRUD"><a href="#4-正式建立CRUD" class="headerlink" title="4. 正式建立CRUD"></a>4. 正式建立CRUD</h4><p>注意大小写 括号问题</p>
+<p>allBook.jsp 接收后台查询所有书籍的结果，遍历各个item分步至表格中显示出</p>
+<pre><code>&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;书籍展示&lt;/title&gt;
+    &lt;link href=&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row clearfix&quot;&gt;
+        &lt;div class=&quot;col-md-12 column&quot;&gt;
+            &lt;div class=&quot;page-header&quot;&gt;
+                &lt;h1&gt;&lt;small&gt;书籍列表-显示所有书籍&lt;/small&gt;&lt;/h1&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt; &lt;div class=&quot;col-md-4&quot;&gt;
+&lt;%--                toAddBook--%&gt;
+                &lt;a class=&quot;btn btn-primary&quot; href=&quot;$&#123;pageContext.request.contextPath&#125;/book/toAddBook&quot;&gt;新增书籍&lt;/a&gt;&lt;/div&gt;&lt;/div&gt; &lt;/div&gt;
+    &lt;div class=&quot;row clearfix&quot;&gt;&lt;div class=&quot;col-md-12 column&quot;&gt;&lt;table class=&quot;table table-hover table-striped&quot;&gt;
+                
+        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;和书籍有关的各个项作为表头&lt;/tr&gt;&lt;/thead&gt;
+&lt;%--                书籍从数据库中查询 从后端返回的list中遍历出--%&gt;&lt;tbody&gt;
+    
+                   &lt;%--将book定义为list中的item 方便下面取出book对象的各个属性--%&gt;
+                   &lt;c:forEach var=&quot;book&quot; items=&quot;$&#123;list&#125;&quot;&gt;&lt;tr&gt;
+                           &lt;th&gt;利用$&#123;book.&#125;取出其属性
+                       &lt;/tr&gt;&lt;/c:forEach&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>增加书籍 –对应addBook.jsp</strong></p>
+<p>首先需要从书籍页面进入addBook.jsp，因此要在业务类中先写跳转业务再另写具体的增加实现（一个方法只做一件事）</p>
+<p>addBook是接受的前文传值</p>
+<pre><code>//跳转到增加书籍页面
+@RequestMapping(&quot;/toAddBook&quot;)
+public String toAddPaper() &#123;
+    return &quot;addBook&quot;;
+&#125;
+
+//添加书籍的请求 注意参数是与接口层一致的
+@RequestMapping(&quot;/addBook&quot;)
+public String addBook(Books books) &#123;
+    System.out.println(&quot;addBook&quot; + books);
+    //调用业务 将书本添加 然后再返回至allBook请求使其再次查找 利用重定向因为是新的页面
+    bookService.addBook(books);
+    return &quot;redirect:/book/allBook&quot;;
+&#125;
+</code></pre>
+<p>addBook.jsp，在上文allBook.jsp页面处略作修改即可 form action表示提交表单时将参数交给&#x2F;book&#x2F;addBook处理</p>
+<pre><code>&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+    &lt;div class=&quot;row clearfix&quot;&gt;
+        &lt;div class=&quot;col-md-12 column&quot;&gt;
+            &lt;div class=&quot;page-header&quot;&gt;
+                &lt;h1&gt;
+                    &lt;small&gt;新增书籍&lt;/small&gt;
+                &lt;/h1&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;%--    表对应的请求 注意name 即该div中显示的是什么与实体类属性一一对应且命名相同--%&gt;
+    &lt;form action=&quot;$&#123;pageContext.request.contextPath&#125;/book/addBook&quot; method=&quot;post&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label&gt;书籍名称&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;bookName&quot; class=&quot;form-control&quot; required&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label&gt;书籍数量&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;bookCounts&quot; class=&quot;form-control&quot; required&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label&gt;书籍描述&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;detail&quot; class=&quot;form-control&quot; required&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;input type=&quot;submit&quot; class=&quot;form-control&quot; value=&quot;添加&quot;&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>修改 与 删除</strong></p>
+<p>在书写业务时中间插入sout输出要操作的信息，可以判断是否是业务本身底层就有问题还是页面跳转之间传值的问题。也可以使用测试类进行单元测试。</p>
+<p>修改与增加有一定不同。要定位在修改的书的id，依然是借助于select功能将页面显示到要跳转的页面</p>
+<p>（从这次练习中可以看到查找功能在项目中的作用）</p>
+<p>此处传值利用的是model，之前也是（注意model.addAttribute的使用），但是无法传入书的id，因此无法提交成功。（事务commit是正常的），需要利用隐藏域</p>
+<h4 id="排错思路："><a href="#排错思路：" class="headerlink" title="排错思路："></a>排错思路：</h4><p>1.问题： bean不存在</p>
+<p>步骤：</p>
+<p>①.查看bean是否注入成功 —√</p>
+<p>②<strong>Junit单元测试</strong>，看我们的代码是否可查询出结果 —√</p>
+<p>③以上步骤如得出正确结果 则k说明底层没有问题 问题在Spring</p>
+<p>④SpringMVC 整合的时候没有调用到我们的Service层的bean</p>
+<p>可能为（1）applicationContext.xml没有注入bean</p>
+<p> (2) <strong>web.xml中我们也绑定过配置文件？？</strong></p>
+<p> 在这之中我们配置的是Spring-mvc.xml，这里面确实没有service bean，所以报空指针</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2024/01/08/LSS/redis/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Redis学习</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2024/01/08/LSS/spring/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Spring</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2024 By SoftLipa. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
